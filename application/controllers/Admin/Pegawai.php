@@ -16,4 +16,13 @@ class Pegawai extends CI_Controller
 		$data['row'] = $this->m_pegawai->get();
 		$this->template->load('template', 'Admin/pegawai', $data);
 	}
+
+	public function del($id)
+	{
+		$this->m_pegawai->del($id);
+		if ($this->db->affected_rows() > 0) {
+			echo "<script>alert('Data berhasil dihapus');</script>";
+		}
+		echo "<script>window.location='" . site_url('Admin/pegawai') . "';</script>";
+	}
 }

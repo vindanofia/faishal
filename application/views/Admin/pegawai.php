@@ -26,6 +26,7 @@
 					<th>Telepon</th>
 					<th>Email</th>
 					<th>Point</th>
+					<th>Opsi</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,14 +40,17 @@
 						<td><?= $data->email ?></td>
 						<td><?= $data->point ?></td>
 						<td class="text-center" width="160px">
-							<form action="<?= site_url('Admin/pegawai/del') ?>" method="POST">
-								<a href="<?= site_url('Admin/pegawai/edit/' . $data->id_pegawai) ?>" class="btn btn-primary btn-xs">
+							<!-- <form action="<?= site_url('Admin/pegawai/del') ?>" method="POST"> -->
+							<!-- <a href="<?= site_url('Admin/pegawai/edit/' . $data->id_pegawai) ?>" class="btn btn-primary btn-xs">
 									<i class="fa fa-pencil"></i> Ubah
-								</a>
-								<input type="hidden" name="pegawai_id" value="<?= $data->id_pegawai ?>">
-								<button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">
+								</a> -->
+							<a href="<?= site_url('Admin/pegawai/del/' . $data->id_pegawai) ?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">
+								<i class="fa fa-trash"></i> Delete
+							</a>
+							<!-- <input type="hidden" name="pegawai_id" value="<?= $data->id_pegawai ?>">
+							<button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">
 									<i class="fa fa-trash"></i> Hapus
-								</button>
+								</button> -->
 							</form>
 						</td>
 					</tr>
