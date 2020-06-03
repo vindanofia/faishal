@@ -43,9 +43,11 @@ class User extends CI_Controller
 			$post = $this->input->post(null, TRUE);
 			$this->m_user->add($post);
 			if ($this->db->affected_rows() > 0) {
-				echo "<script>alert('Data berhasil ditambahkan');</script>";
+				$this->session->set_flashdata('success', 'Data berhasil ditambahkan');
+				// echo "<script>alert('Data berhasil ditambahkan');</script>";
 			}
-			echo "<script>window.location='" . site_url('Admin/user') . "';</script>";
+			redirect('Admin/user');
+			// echo "<script>window.location='" . site_url('Admin/user') . "';</script>";
 		}
 	}
 
@@ -94,9 +96,11 @@ class User extends CI_Controller
 			$post = $this->input->post(null, TRUE);
 			$this->m_user->edit($post);
 			if ($this->db->affected_rows() > 0) {
-				echo "<script>alert('Data berhasil diubah');</script>";
+				$this->session->set_flashdata('success', 'Data berhasil diubah');
+				// echo "<script>alert('Data berhasil diubah');</script>";
 			}
-			echo "<script>window.location='" . site_url('Admin/user') . "';</script>";
+			redirect('Admin/user');
+			// echo "<script>window.location='" . site_url('Admin/user') . "';</script>";
 		}
 	}
 
@@ -117,8 +121,10 @@ class User extends CI_Controller
 		$id = $this->input->post('user_id');
 		$this->m_user->del($id);
 		if ($this->db->affected_rows() > 0) {
-			echo "<script>alert('Data berhasil dihapus');</script>";
+			$this->session->set_flashdata('success', 'Data berhasil dihapus');
+			// echo "<script>alert('Data berhasil dihapus');</script>";
 		}
-		echo "<script>window.location='" . site_url('Admin/user') . "';</script>";
+		redirect('Admin/user');
+		// echo "<script>window.location='" . site_url('Admin/user') . "';</script>";
 	}
 }

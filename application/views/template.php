@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/font-awesome/css/font-awesome.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/Ionicons/css/ionicons.min.css">
+	<!-- Datatables -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/AdminLTE.min.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -115,32 +117,42 @@
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">MAIN NAVIGATION</li>
-					<li>
+					<li <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
 						<a href="<?= base_url('Admin/dashboard'); ?>">
 							<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 						</a>
 					</li>
-
-					<?php if ($this->session->userdata('level') == 1) { ?>
-						<li class="treeview">
-							<a href="#">
-								<i class="fa fa-files-o"></i>
-								<span>Master Data</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="<?= site_url('Admin/user'); ?>"><i class="fa fa-circle-o"></i> User</a></li>
-								<li><a href="<?= site_url('Admin/pegawai'); ?>"><i class="fa fa-circle-o"></i> Pegawai</a></li>
-								<li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Mitra</a></li>
-								<li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Jenis Pelanggaran</a></li>
-								<li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> List Pelanggaran</a></li>
-								<li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Jenis Pelanggaran</a></li>
-								<li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Sanksi</a></li>
-							</ul>
-						</li>
-					<?php } ?>
+					<li class="treeview <?= $this->uri->segment(1) == 'user' ||
+											$this->uri->segment(1) == 'pegawai' ||
+											$this->uri->segment(1) == 'mitra' ||
+											$this->uri->segment(1) == 'jenis_pelanggaran' ||
+											$this->uri->segment(1) == 'list_pelanggaran' ||
+											$this->uri->segment(1) == 'jenis_penghargaan' ||
+											$this->uri->segment(1) == 'sanksi' ? 'active' : '' ?> ">
+						<a href="#">
+							<i class="fa fa-files-o"></i>
+							<span>Master Data</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li <?= $this->uri->segment(1) == 'user' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/user'); ?>"><i class="fa fa-circle-o"></i> User</a></li>
+							<li <?= $this->uri->segment(1) == 'pegawai' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/pegawai'); ?>"><i class="fa fa-circle-o"></i> Pegawai</a></li>
+							<li <?= $this->uri->segment(1) == 'mitra' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/mitra'); ?>"><i class="fa fa-circle-o"></i> Mitra</a></li>
+							<li <?= $this->uri->segment(1) == 'jenis_pelanggaran' ? 'class="active"' : '' ?>>
+								<a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Jenis Pelanggaran</a></li>
+							<li <?= $this->uri->segment(1) == 'list_pelanggaran' ? 'class="active"' : '' ?>>
+								<a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> List Pelanggaran</a></li>
+							<li <?= $this->uri->segment(1) == 'jenis_penghargaan' ? 'class="active"' : '' ?>>
+								<a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Jenis Penghargaan</a></li>
+							<li <?= $this->uri->segment(1) == 'sanksi' ? 'class="active"' : '' ?>>
+								<a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Sanksi</a></li>
+						</ul>
+					</li>
 
 					<li class="treeview">
 						<a href="#">
@@ -190,11 +202,15 @@
 		<script src="<?= base_url() ?>assets/bower_components/fastclick/lib/fastclick.js"></script>
 		<!-- AdminLTE App -->
 		<script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>
+		<!-- Datatables -->
+		<script src="<?= base_url() ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+		<!-- Datatables -->
+		<script src="<?= base_url() ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 		<!-- AdminLTE for demo purposes -->
 		<script src="<?= base_url() ?>assets/dist/js/demo.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('.sidebar-menu').tree()
+				$('#table1').DataTable()
 			})
 		</script>
 </body>

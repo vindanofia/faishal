@@ -1,5 +1,5 @@
 <h1>
-	Pegawai
+	mitra
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -9,9 +9,9 @@
 <!-- Main Content -->
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title"><?= ucfirst($page) ?> Data Pegawai</h3>
+		<h3 class="box-title"><?= ucfirst($page) ?> Data mitra</h3>
 		<div class="pull-right">
-			<a href="<?= site_url('Admin/pegawai') ?>" class="btn btn-warning btn-flat">
+			<a href="<?= site_url('Admin/mitra') ?>" class="btn btn-warning btn-flat">
 				<i class="fa fa-undo"></i> Kembali
 			</a>
 		</div>
@@ -19,15 +19,15 @@
 	<div class="box-body">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<form action="<?= site_url('Admin/pegawai/process'); ?>" method="post">
+				<form action="<?= site_url('Admin/mitra/process'); ?>" method="post">
 					<div class="form-group">
-						<label>Nama Pegawai *</label>
-						<input type="hidden" name="id" value="<?= $row->id_pegawai ?>">
-						<input type="text" name="nama_peg" value="<?= $row->nama_pegawai ?>" class="form-control" required>
+						<label>Nama mitra *</label>
+						<input type="hidden" name="id" value="<?= $row->id_mitra ?>">
+						<input type="text" name="nama_peg" value="<?= $row->nama_mitra ?>" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>NIP Pegawai *</label>
-						<input type="text" name="nip_peg" value="<?= $row->nip_pegawai ?>" class="form-control" required>
+						<label>NIP mitra *</label>
+						<input type="text" name="nip_peg" value="<?= $row->nip_mitra ?>" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Telp *</label>
