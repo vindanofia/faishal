@@ -144,13 +144,13 @@
 							<li <?= $this->uri->segment(1) == 'mitra' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/mitra'); ?>"><i class="fa fa-circle-o"></i> Mitra</a></li>
 							<li <?= $this->uri->segment(1) == 'jenis_pelanggaran' ? 'class="active"' : '' ?>>
-								<a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Jenis Pelanggaran</a></li>
+								<a href="<?= site_url('Admin/jenis_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> Jenis Pelanggaran</a></li>
 							<li <?= $this->uri->segment(1) == 'list_pelanggaran' ? 'class="active"' : '' ?>>
-								<a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> List Pelanggaran</a></li>
+								<a href="<?= site_url('Admin/list_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> List Pelanggaran</a></li>
 							<li <?= $this->uri->segment(1) == 'jenis_penghargaan' ? 'class="active"' : '' ?>>
-								<a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Jenis Penghargaan</a></li>
+								<a href="<?= site_url('Admin/reward'); ?>"><i class="fa fa-circle-o"></i> Jenis Penghargaan</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi' ? 'class="active"' : '' ?>>
-								<a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Sanksi</a></li>
+								<a href="<?= site_url('Admin/sanksi'); ?>"><i class="fa fa-circle-o"></i> Sanksi</a></li>
 						</ul>
 					</li>
 
