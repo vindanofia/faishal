@@ -163,7 +163,7 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> Pelanggaran Karyawan</a></li>
+							<li><a href="<?= site_url('Admin/pelanggaran_pegawai'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Pegawai</a></li>
 							<li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Pelanggaran Mitra</a></li>
 							<li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Penghargaan Karyawan</a></li>
 						</ul>
@@ -174,6 +174,8 @@
 		</aside>
 
 		<!-- =============================================== -->
+		<!-- jQuery 3 -->
+		<script src="<?= base_url() ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -192,8 +194,6 @@
 			<strong>PT. Petro Jordan Abadi.</strong>
 		</footer>
 
-		<!-- jQuery 3 -->
-		<script src="<?= base_url() ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap 3.3.7 -->
 		<script src="<?= base_url() ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<!-- SlimScroll -->

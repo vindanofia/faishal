@@ -11,6 +11,42 @@ class Pegawai extends CI_Controller
 		$this->load->model('m_pegawai');
 		// $this->load->library('form_validation');
 	}
+
+	function get_ajax()
+	{
+		$list = $this->m_pegawai->get_datatables();
+		$data = array();
+		$no = @$_POST['start'];
+		foreach ($list as $pegawai) {
+			$no++;
+			$row = array();
+			$point = $pegawai->point;
+			$potongan1 = 1000 * $point;
+			$row[] = $no . ".";
+			// $row[] = $pegawai->barcode . '<br><a href="' . site_url('item/barcode_qrcode/' . $item->item_id) . '" class="btn btn-default btn-xs">Generate <i class="fa fa-barcode"></i></a>';
+			$row[] = $pegawai->nama_pegawai;
+			$row[] = $pegawai->nip_pegawai;
+			$row[] = $pegawai->telp;
+			// $row[] = indo_currency($item->price);
+			$row[] = $pegawai->email;
+			$row[] = $pegawai->point;
+			$row[] = indo_currency($potongan1);
+			// $row[] = $item->image != null ? '<img src="' . base_url('uploads/product/' . $item->image) . '" class="img" style="width:100px">' : null;
+			// add html for action
+			$row[] = '<a href="' . site_url('Admin/pegawai/edit/' . $pegawai->id_pegawai) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
+                   <a href="' . site_url('Admin/pegawai/del/' . $pegawai->id_pegawai) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$data[] = $row;
+		}
+		$output = array(
+			"draw" => @$_POST['draw'],
+			"recordsTotal" => $this->m_pegawai->count_all(),
+			"recordsFiltered" => $this->m_pegawai->count_filtered(),
+			"data" => $data,
+		);
+		// output to json format
+		echo json_encode($output);
+	}
+
 	public function index()
 	{
 		$data['row'] = $this->m_pegawai->get();
