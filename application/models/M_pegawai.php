@@ -131,4 +131,10 @@ class M_pegawai extends CI_Model
 		$sql = 'UPDATE m_pegawai SET point = point - ' . $point_pel . ' WHERE id_pegawai = ' . $id_pegawai;
 		$this->db->query($sql);
 	}
+
+	public function resetPointPegawai(){
+		$this->db->update('m_pegawai', [
+            'point' => 0,
+        ]);
+	}
 }

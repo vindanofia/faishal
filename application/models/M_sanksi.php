@@ -43,4 +43,23 @@ class M_sanksi extends CI_Model
 		$this->db->where('id_sanksi', $id);
 		$this->db->update('m_sanksi', $params);
 	}
+
+	public function getSanksiByPoint($point = 0){
+		$this->db->from('m_sanksi');
+		$this->db->order_by('point_sanksi', 'ASC');
+		$sanksi = $this->db->get()->result();
+
+		$minimum_point = $sanksi[0]->point_sanksi;
+		foreach($sanksi as $key => $s){
+			if($key+1 < count($sanksi)){
+				if($point >= $s->point_sanksi && $point < $sanksi[$key+1]->point_sanksi){
+					return strpos(strtolower($s->nama_sanksi), 'denda') !== false ? 'Denda Rp. '.($point*1000) : $s->nama_sanksi;
+				}
+			}else if($point == $s->point_sanksi){
+				return $s->nama_sanksi;
+			}
+			$minimum_point = $s->point_sanksi;
+		}
+		return '-';
+	}
 }
