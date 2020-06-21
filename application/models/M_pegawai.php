@@ -100,7 +100,10 @@ class M_pegawai extends CI_Model
 
 	public function del($id)
 	{
-		$params['deleted'] = 0;
+		$params = [
+			'updated' => date("Y-m-d H:i:s"),
+			'deleted' => 0
+		];
 		$this->db->where('id_pegawai', $id);
 		$this->db->update('m_pegawai', $params);
 	}
@@ -108,12 +111,24 @@ class M_pegawai extends CI_Model
 	public function update_point($data)
 	{
 		$id_list_pel = $data['list_pelanggaran'];
-		$this->db->select('point_pel');
+		$id_pegawai = $data['pegawai'];
 		$this->db->from('m_list_pelanggaran');
 		$this->db->where('id_list_pel', $id_list_pel);
-		$point_pel = $this->db->get()->result();
-		$id_pegawai = $data['id_pegawai'];
+		$query = $this->db->get()->row();
+		$point_pel = $query->point_pel;
 		$sql = 'UPDATE m_pegawai SET point = point + ' . $point_pel . ' WHERE id_pegawai = ' . $id_pegawai;
+		$this->db->query($sql);
+	}
+
+	public function delete_point($data)
+	{
+		$id_pelanggaran_peg = $data['id_pelanggaran_peg'];
+		$id_pegawai = $data['id_pegawai'];
+		$this->db->from('t_pelanggaran_pegawai');
+		$this->db->where('id_pelanggaran_peg', $id_pelanggaran_peg);
+		$query = $this->db->get()->row();
+		$point_pel = $query->point_tpel;
+		$sql = 'UPDATE m_pegawai SET point = point - ' . $point_pel . ' WHERE id_pegawai = ' . $id_pegawai;
 		$this->db->query($sql);
 	}
 }

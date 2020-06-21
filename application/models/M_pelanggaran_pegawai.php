@@ -61,21 +61,23 @@ class M_pelanggaran_pegawai extends CI_Model
 
 	public function get($id = NULL)
 	{
-		// $deleted = array(1);
+		$this->db->select('id_list_pel');
 		$this->db->from('t_pelanggaran_pegawai');
-		$this->db->join('m_pegawai', 'm_pegawai.id_pegawai = t_pelanggaran_pegawai.id_pegawai');
-		$this->db->join('m_jenis_pelanggaran', 'm_jenis_pelanggaran.id_jenis_pel = t_pelanggaran_pegawai.id_jenis_pel');
-		$this->db->join('m_list_pelanggaran', 'm_list_pelanggaran.id_list_pel = t_pelanggaran_pegawai.id_list_pel');
-		if ($id !== NULL) {
+		if ($id != null) {
 			$this->db->where('id_pelanggaran_peg', $id);
 		}
-		$this->db->where('t_pelanggaran_pegawai.deleted = ', 1);
 		$query = $this->db->get();
 		return $query;
 	}
 
 	public function add($post)
 	{
+		$id_list_pel = $post['list_pelanggaran'];
+		$this->db->from('m_list_pelanggaran');
+		$this->db->where('id_list_pel', $id_list_pel);
+		$query = $this->db->get()->row();
+		$point_pel = $query->point_pel;
+
 		$params = [
 			'id_pegawai' => $post['pegawai'],
 			'id_jenis_pel' => $post['jenis_pelanggaran'],
@@ -84,6 +86,7 @@ class M_pelanggaran_pegawai extends CI_Model
 			'lokasi' => $post['lokasi'],
 			'deskripsi' => $post['deskripsi'],
 			'foto' => $post['image'],
+			'point_tpel' => $point_pel,
 			'deleted' => 1,
 			'add_by' => $this->session->userdata('userid')
 		];
@@ -113,7 +116,11 @@ class M_pelanggaran_pegawai extends CI_Model
 
 	public function del($id)
 	{
-		$params['deleted'] = 0;
+		$params = [
+			'deleted' => 0,
+			'updated_by' => $this->session->userdata('userid'),
+			'updated' => date("Y-m-d H:i:s"),
+		];
 		$this->db->where('id_pelanggaran_peg', $id);
 		$this->db->update('t_pelanggaran_pegawai', $params);
 	}
