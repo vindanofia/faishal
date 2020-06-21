@@ -27,6 +27,7 @@
 					<th>Telepon</th>
 					<th>Email</th>
 					<th>Point</th>
+					<th>Sanksi</th>
 					<th>Potongan</th>
 					<th>Opsi</th>
 				</tr>
@@ -51,10 +52,10 @@
 				"targets": [2, 3, 5, 6],
 				"className": 'text-right'
 			}, {
-				"targets": [0, 7, -1],
+				"targets": [0, 8, -1],
 				"className": 'text-center'
 			}, {
-				"targets": [0, 7, -1],
+				"targets": [0, 8, -1],
 				"orderable": false
 			}],
 			"order": []

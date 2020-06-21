@@ -29,7 +29,7 @@
 					<th>Lokasi</th>
 					<th>Deskripsi</th>
 					<th>Point</th>
-					<th>Sanksi</th>
+					<th>Gambar</th>
 					<th>Opsi</th>
 				</tr>
 			</thead>

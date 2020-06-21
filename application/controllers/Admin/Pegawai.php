@@ -8,7 +8,7 @@ class Pegawai extends CI_Controller
 	{
 		parent::__construct();
 		check_not_login();
-		$this->load->model('m_pegawai');
+		$this->load->model(['m_pegawai', 'm_sanksi']);
 		// $this->load->library('form_validation');
 	}
 
@@ -20,8 +20,8 @@ class Pegawai extends CI_Controller
 		foreach ($list as $pegawai) {
 			$no++;
 			$row = array();
-			$point = $pegawai->point;
-			$potongan1 = 1000 * $point;
+			// $point = $pegawai->point;
+			// $potongan1 = 1000 * $point;
 			$row[] = $no . ".";
 			// $row[] = $pegawai->barcode . '<br><a href="' . site_url('item/barcode_qrcode/' . $item->item_id) . '" class="btn btn-default btn-xs">Generate <i class="fa fa-barcode"></i></a>';
 			$row[] = $pegawai->nama_pegawai;
@@ -30,7 +30,8 @@ class Pegawai extends CI_Controller
 			// $row[] = indo_currency($item->price);
 			$row[] = $pegawai->email;
 			$row[] = $pegawai->point;
-			$row[] = indo_currency($potongan1);
+			$row[] = $this->m_sanksi->getSanksiPoint($pegawai->point);
+			$row[] = $this->m_sanksi->getPotongan($pegawai->point);
 			// $row[] = $item->image != null ? '<img src="' . base_url('uploads/product/' . $item->image) . '" class="img" style="width:100px">' : null;
 			// add html for action
 			$row[] = '<a href="' . site_url('Admin/pegawai/edit/' . $pegawai->id_pegawai) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
