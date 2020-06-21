@@ -9,11 +9,12 @@ class Pelanggaran_pegawai extends CI_Controller
 		parent::__construct();
 		check_not_login();
 		$this->load->model([
-			'm_pelanggaran_pegawai', 
-			'm_pegawai', 
-			'm_jenis_pelanggaran', 
+			'm_pelanggaran_pegawai',
+			'm_pegawai',
+			'm_jenis_pelanggaran',
 			'm_list_pelanggaran',
-			'm_sanksi']);
+			'm_sanksi'
+		]);
 	}
 
 	function get_ajax()
@@ -33,8 +34,7 @@ class Pelanggaran_pegawai extends CI_Controller
 			$row[] = $pegawai->deskripsi;
 			$row[] = $pegawai->point_pel;
 			$row[] = $this->m_sanksi->getSanksiByPoint($pegawai->point_pel);
-			$row[] = '<a href="' . site_url('Admin/pelanggaran_pegawai/edit/' . $pegawai->id_pelanggaran_peg) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
-                   <a href="' . site_url('Admin/pelanggaran_pegawai/del/' . $pegawai->id_pelanggaran_peg) . '/' . $pegawai->id_pegawai . '/' . $pegawai->id_list_pel . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Admin/pelanggaran_pegawai/del/' . $pegawai->id_pelanggaran_peg) . '/' . $pegawai->id_pegawai . '/' . $pegawai->id_list_pel . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
 			$data[] = $row;
 		}
 		$output = array(
@@ -181,18 +181,14 @@ class Pelanggaran_pegawai extends CI_Controller
 		}
 	}
 
-	public function del()
+	public function del($id)
 	{
-		$id_pelanggaran_peg = $this->uri->segment(5);
-		$id_pegawai = $this->uri->segment(6);
-		$id_list_pel = $this->uri->segment(7);
+		$id_pelanggaran_peg = $this->uri->segment(4);
+		$id_pegawai = $this->uri->segment(5);
 		$point_tpel = $this->m_pelanggaran_pegawai->get($id_pelanggaran_peg)->row()->point_tpel;
-		// $point_pel = $this->m_list_pelanggaran->get($id_list_pel)->row()->point_pel;
-		// $data = ['point_tpel' => $point_tpel, 'id_pegawai' => $id_pegawai];
 		$data = ['point_pel' => $point_tpel, 'id_pegawai' => $id_pegawai];
 		$this->m_pegawai->delete_point($data);
-		$this->m_pelanggaran_pegawai->del($id_pelanggaran_peg);
-		// $this->m_pelanggaran_pegawai->del($id);
+		$this->m_pelanggaran_pegawai->del($id);
 		if ($this->db->affected_rows() > 0) {
 			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		}

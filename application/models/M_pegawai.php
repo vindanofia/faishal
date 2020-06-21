@@ -132,9 +132,10 @@ class M_pegawai extends CI_Model
 		$this->db->query($sql);
 	}
 
-	public function resetPointPegawai(){
+	public function resetPointPegawai()
+	{
 		$this->db->update('m_pegawai', [
-            'point' => 0,
-        ]);
+			'point' => 0,
+		]);
 	}
 }
