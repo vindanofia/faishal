@@ -1,5 +1,5 @@
 <h1>
-	Pegawai
+	Realisasi Pelanggaran Pegawai
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -10,13 +10,10 @@
 <?php $this->view('message') ?>
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title">Data Pegawai</h3>
+		<h3 class="box-title">Data Realisasi Pelanggaran Pegawai</h3>
 		<div class="pull-right">
-			<a href="<?= site_url('Admin/pegawai/add') ?>" class="btn btn-primary btn-flat">
+			<a href="<?= site_url('Admin/pelanggaran_pegawai/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
-			</a>
-			<a href="<?= site_url('Admin/pegawai/add') ?>" class="btn btn-primary btn-flat">
-				<i class="fa fa-user-plus"></i> Import Excel
 			</a>
 		</div>
 	</div>
@@ -26,20 +23,21 @@
 				<tr>
 					<th>No</th>
 					<th>Nama Pegawai</th>
-					<th>NIP Pegawai</th>
-					<th>Telepon</th>
-					<th>Email</th>
+					<th>Jenis Pelanggaran</th>
+					<th>List Pelanggaran</th>
+					<th>Tanggal</th>
+					<th>Lokasi</th>
+					<th>Deskripsi</th>
 					<th>Point</th>
-					<th>Sanksi</th>
-					<th>Potongan</th>
+					<th>Gambar</th>
 					<th>Opsi</th>
 				</tr>
 			</thead>
 			<tbody>
-
 			</tbody>
 		</table>
 	</div>
+
 </div>
 
 <script>
@@ -48,17 +46,17 @@
 			"processing": true,
 			"serverSide": true,
 			"ajax": {
-				"url": "<?= site_url('Admin/pegawai/get_ajax') ?>",
+				"url": "<?= site_url('Admin/pelanggaran_pegawai/get_ajax') ?>",
 				"type": "POST",
 			},
 			"columnDefs": [{
 				"targets": [2, 3, 5, 6],
 				"className": 'text-right'
 			}, {
-				"targets": [0, 8, -1],
+				"targets": [0, 7, -1],
 				"className": 'text-center'
 			}, {
-				"targets": [0, 8, -1],
+				"targets": [0, 7, -1],
 				"orderable": false
 			}],
 			"order": []

@@ -26,8 +26,8 @@
 						<input type="text" name="nama_peg" value="<?= $row->nama_mitra ?>" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>NIP mitra *</label>
-						<input type="text" name="nip_peg" value="<?= $row->nip_mitra ?>" class="form-control" required>
+						<label>Kode mitra *</label>
+						<input type="text" name="kode_peg" value="<?= $row->kode_mitra ?>" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Telp *</label>

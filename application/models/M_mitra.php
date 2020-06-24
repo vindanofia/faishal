@@ -19,11 +19,9 @@ class M_mitra extends CI_Model
 	{
 		$params = [
 			'nama_mitra' => $post['nama_peg'],
-			'nip_mitra' => $post['nip_peg'],
+			'kode_mitra' => $post['kode_peg'],
 			'telp' => $post['telp'],
 			'email' => $post['email'],
-			'point' => 0,
-			// 'created' => now($timezone),
 			'deleted' => 1,
 		];
 		$this->db->insert('m_mitra', $params);
@@ -33,10 +31,9 @@ class M_mitra extends CI_Model
 	{
 		$params = [
 			'nama_mitra' => $post['nama_peg'],
-			'nip_mitra' => $post['nip_peg'],
+			'kode_mitra' => $post['kode_peg'],
 			'telp' => $post['telp'],
 			'email' => $post['email'],
-			'point' => 0,
 			'deleted' => 1,
 			'updated' => date('Y-mm-dd H:i:s')
 		];

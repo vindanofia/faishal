@@ -40,9 +40,9 @@
 						<td><?= $data->id_role == 1 ? "Admin" : "Member" ?></td>
 						<td class="text-center" width="160px">
 							<form action="<?= site_url('Admin/user/del') ?>" method="POST">
-								<a href="<?= site_url('Admin/user/edit/' . $data->id_user) ?>" class="btn btn-primary btn-xs">
+								<!-- <a href="<?= site_url('Admin/user/edit/' . $data->id_user) ?>" class="btn btn-primary btn-xs">
 									<i class="fa fa-pencil"></i> Ubah
-								</a>
+								</a> -->
 								<input type="hidden" name="user_id" value="<?= $data->id_user ?>">
 								<button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">
 									<i class="fa fa-trash"></i> Hapus

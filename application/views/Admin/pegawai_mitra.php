@@ -1,5 +1,5 @@
 <h1>
-	Pegawai
+	Pegawai Mitra
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -10,12 +10,12 @@
 <?php $this->view('message') ?>
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title">Data Pegawai</h3>
+		<h3 class="box-title">Data Pegawai Mitra</h3>
 		<div class="pull-right">
-			<a href="<?= site_url('Admin/pegawai/add') ?>" class="btn btn-primary btn-flat">
+			<a href="<?= site_url('Admin/pegawai_mitra/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
 			</a>
-			<a href="<?= site_url('Admin/pegawai/add') ?>" class="btn btn-primary btn-flat">
+			<a href="<?= site_url('Admin/pegawai_mitra/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Import Excel
 			</a>
 		</div>
@@ -25,10 +25,10 @@
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>Nama Pegawai</th>
-					<th>NIP Pegawai</th>
+					<th>Nama Perusahaan</th>
+					<th>Nama Pegawai Mitra</th>
+					<th>NIP Pegawai Mitra</th>
 					<th>Telepon</th>
-					<th>Email</th>
 					<th>Point</th>
 					<th>Sanksi</th>
 					<th>Potongan</th>
@@ -48,7 +48,7 @@
 			"processing": true,
 			"serverSide": true,
 			"ajax": {
-				"url": "<?= site_url('Admin/pegawai/get_ajax') ?>",
+				"url": "<?= site_url('Admin/pegawai_mitra/get_ajax') ?>",
 				"type": "POST",
 			},
 			"columnDefs": [{

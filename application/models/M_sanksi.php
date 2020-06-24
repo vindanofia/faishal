@@ -44,34 +44,37 @@ class M_sanksi extends CI_Model
 		$this->db->update('m_sanksi', $params);
 	}
 
-	public function getSanksiPoint($point = 0){
+	public function getSanksiPoint($point = 0)
+	{
 		return $this->getSanksi($point);
 	}
 
-	public function getPotongan($point = 0){
+	public function getPotongan($point = 0)
+	{
 		return $this->getSanksi($point, true);
 	}
 
-	public function getSanksi($point = 0, $denda = null){
+	public function getSanksi($point = 0, $denda = null)
+	{
 		$this->db->from('m_sanksi');
 		$this->db->order_by('point_sanksi', 'ASC');
 		$sanksi = $this->db->get()->result();
 		$maxPointPotongan = $this->getMaxPointPotongan();
-		
+
 		$minimum_point = $sanksi[0]->point_sanksi;
-		foreach($sanksi as $key => $s){
-			if($key+1 < count($sanksi)){
-				if($point >= $s->point_sanksi && $point < $sanksi[$key+1]->point_sanksi){
-					if($denda){
-						$potongan = strpos(strtolower($s->nama_sanksi), 'denda') !== false ?  ($point*1000) : 0;
+		foreach ($sanksi as $key => $s) {
+			if ($key + 1 < count($sanksi)) {
+				if ($point >= $s->point_sanksi && $point < $sanksi[$key + 1]->point_sanksi) {
+					if ($denda) {
+						$potongan = strpos(strtolower($s->nama_sanksi), 'denda') !== false ?  ($point * 2500) : 0;
 						return indo_currency($potongan);
-					}else{
-						return $s->nama_sanksi;					
+					} else {
+						return $s->nama_sanksi;
 					}
-				}else if($denda && $point >= $maxPointPotongan){
+				} else if ($denda && $point >= $maxPointPotongan) {
 					return indo_currency($maxPointPotongan * 1000);
 				}
-			}else if($point == $s->point_sanksi){
+			} else if ($point == $s->point_sanksi) {
 				return $denda ? indo_currency($maxPointPotongan * 1000) : $s->nama_sanksi;
 			}
 			$minimum_point = $s->point_sanksi;
@@ -79,14 +82,15 @@ class M_sanksi extends CI_Model
 		return $denda ? indo_currency(0) : '-';
 	}
 
-	function getMaxPointPotongan(){
+	function getMaxPointPotongan()
+	{
 		$this->db->from('m_sanksi');
 		$this->db->order_by('point_sanksi', 'ASC');
 		$sanksi = $this->db->get()->result();
 
 		$point = 0;
-		foreach($sanksi as $key => $s){
-			$point = strpos(strtolower($s->nama_sanksi), 'denda') !== false ? $sanksi[$key+1]->point_sanksi : $point;
+		foreach ($sanksi as $key => $s) {
+			$point = strpos(strtolower($s->nama_sanksi), 'denda') !== false ? $sanksi[$key + 1]->point_sanksi : $point;
 		}
 
 		return $point;

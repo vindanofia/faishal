@@ -142,15 +142,19 @@
 							<li <?= $this->uri->segment(1) == 'pegawai' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/pegawai'); ?>"><i class="fa fa-circle-o"></i> Pegawai</a></li>
 							<li <?= $this->uri->segment(1) == 'mitra' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Admin/mitra'); ?>"><i class="fa fa-circle-o"></i> Mitra</a></li>
-							<li <?= $this->uri->segment(1) == 'jenis_pelanggaran' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Admin/jenis_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> Jenis Pelanggaran</a></li>
+								<a href="<?= site_url('Admin/mitra'); ?>"><i class="fa fa-circle-o"></i> Perusahaan Mitra</a></li>
+							<li <?= $this->uri->segment(1) == 'pegawai_mitra' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/pegawai_mitra'); ?>"><i class="fa fa-circle-o"></i> Pegawai Mitra</a></li>
+							<!-- <li <?= $this->uri->segment(1) == 'jenis_pelanggaran' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/jenis_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> Jenis Pelanggaran</a></li> -->
 							<li <?= $this->uri->segment(1) == 'list_pelanggaran' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/list_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> List Pelanggaran</a></li>
 							<li <?= $this->uri->segment(1) == 'jenis_penghargaan' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/reward'); ?>"><i class="fa fa-circle-o"></i> Jenis Penghargaan</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Admin/sanksi'); ?>"><i class="fa fa-circle-o"></i> Sanksi</a></li>
+								<a href="<?= site_url('Admin/sanksi'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai</a></li>
+							<li <?= $this->uri->segment(1) == 'sanksi_mitra' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/sanksi_mitra'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai Mitra</a></li>
 						</ul>
 					</li>
 
@@ -164,7 +168,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="<?= site_url('Admin/pelanggaran_pegawai'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Pegawai</a></li>
-							<li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Pelanggaran Mitra</a></li>
+							<li><a href="<?= site_url('Admin/pelanggaran_mitra'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Mitra</a></li>
 							<li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Penghargaan Karyawan</a></li>
 						</ul>
 					</li>
