@@ -147,4 +147,12 @@ class M_pegawai_mitra extends CI_Model
 
 		return $result;
 	}
+
+	public function resetPointPegawai()
+	{
+		$this->db->update('m_pegawai_mitra', [
+			'point_peg_mitra' => 0,
+			'potongan_peg_mitra' => 0,
+		]);
+	}
 }

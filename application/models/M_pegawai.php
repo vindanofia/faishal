@@ -136,6 +136,7 @@ class M_pegawai extends CI_Model
 	{
 		$this->db->update('m_pegawai', [
 			'point' => 0,
+			'potongan' => 0,
 		]);
 	}
 }

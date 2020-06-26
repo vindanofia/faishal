@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
 class Pelanggaran_mitra extends CI_Controller
 {
 
@@ -75,7 +76,7 @@ class Pelanggaran_mitra extends CI_Controller
 		foreach ($query_mitra->result() as $mitra1) {
 			$mitra[$mitra1->id_mitra] = $mitra1->nama_mitra;
 		}
-		foreach ($query_pegawai_mitra->result() as $peg_mitra) {
+		foreach ($query_pegawai_mitra as $peg_mitra) {
 			$pegawai_mitra[$peg_mitra->id_pegawai_mitra] = $peg_mitra->nama_pegawai_mitra;
 		}
 		foreach ($query_list_pelanggaran->result() as $list_pel) {
@@ -89,6 +90,8 @@ class Pelanggaran_mitra extends CI_Controller
 			'pegawai_mitra' => $pegawai_mitra, 'selectedpegmitra' => null,
 			'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => null,
 		);
+
+		// print_r($pegawai_mitra);
 		$this->template->load('template', 'Admin/pelanggaran_mitra_form', $data);
 	}
 
@@ -203,5 +206,11 @@ class Pelanggaran_mitra extends CI_Controller
 			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		}
 		redirect('Admin/pelanggaran_mitra');
+	}
+
+	public function pegawai_mitra($id_mitra = 0){
+		$pegawai = $this->m_pegawai_mitra->get_mitra($id_mitra);
+		header('Content-Type: application/json');
+    	echo json_encode( $pegawai );
 	}
 }
