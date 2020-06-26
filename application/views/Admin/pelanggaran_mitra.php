@@ -1,5 +1,5 @@
 <h1>
-	Realisasi Pelanggaran Pegawai
+	Realisasi Pelanggaran Mitra
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -10,9 +10,9 @@
 <?php $this->view('message') ?>
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title">Data Realisasi Pelanggaran Pegawai</h3>
+		<h3 class="box-title">Data Realisasi Pelanggaran Mitra</h3>
 		<div class="pull-right">
-			<a href="<?= site_url('Admin/pelanggaran_pegawai/add') ?>" class="btn btn-primary btn-flat">
+			<a href="<?= site_url('Admin/pelanggaran_mitra/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
 			</a>
 		</div>
@@ -22,8 +22,8 @@
 			<thead>
 				<tr>
 					<th>No</th>
+					<th>Nama Perusahaan</th>
 					<th>Nama Pegawai</th>
-					<th>Jenis Pelanggaran</th>
 					<th>List Pelanggaran</th>
 					<th>Tanggal</th>
 					<th>Lokasi</th>
@@ -46,7 +46,7 @@
 			"processing": true,
 			"serverSide": true,
 			"ajax": {
-				"url": "<?= site_url('Admin/pelanggaran_pegawai/get_ajax') ?>",
+				"url": "<?= site_url('Admin/pelanggaran_mitra/get_ajax') ?>",
 				"type": "POST",
 			},
 			"columnDefs": [{

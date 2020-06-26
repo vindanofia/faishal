@@ -63,7 +63,7 @@ class M_pegawai_mitra extends CI_Model
 		// $deleted = array(1);
 		$this->db->from('m_pegawai_mitra');
 		if ($id !== NULL) {
-			$this->db->where('id_pegawai_mitra', $id);
+			$this->db->where('id_perusahaan', $id);
 		}
 		$this->db->where('deleted = ', 1);
 		$query = $this->db->get();
@@ -137,5 +137,14 @@ class M_pegawai_mitra extends CI_Model
 		$this->db->update('m_pegawai_mitra', [
 			'point_peg_mitra' => 0,
 		]);
+	}
+
+	public function get_mitra($id_mitra)
+	{
+		$this->db->where('id_perusahaan', $id_mitra);
+		$this->db->where('deleted', 1);
+		$result = $this->db->get('m_pegawai_mitra')->result();
+
+		return $result;
 	}
 }

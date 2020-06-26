@@ -10,6 +10,7 @@ class Pelanggaran_mitra extends CI_Controller
 		check_not_login();
 		$this->load->model([
 			'm_pelanggaran_mitra',
+			'm_mitra',
 			'm_pegawai_mitra',
 			'm_list_pelanggaran',
 			'm_sanksi_mitra'
@@ -31,9 +32,9 @@ class Pelanggaran_mitra extends CI_Controller
 			$row[] = $mitra->tanggal;
 			$row[] = $mitra->lokasi;
 			$row[] = $mitra->deskripsi;
-			$row[] = $mitra->point_pel;
+			$row[] = $mitra->point_tpel;
 			$row[] = $mitra->foto;
-			$row[] = '<a href="' . site_url('Admin/pelanggaran_mitra/del/' . $mitra->id_pelanggaran_peg) . '/' . $mitra->id_mitra . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Admin/pelanggaran_mitra/del/' . $mitra->id_pelanggaran_mitra) . '/' . $mitra->id_pegawai_mitra . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
 			$data[] = $row;
 		}
 		$output = array(
@@ -55,21 +56,27 @@ class Pelanggaran_mitra extends CI_Controller
 	public function add()
 	{
 		$pelanggaran_mitra = new stdClass();
-		$pelanggaran_mitra->id_pelanggaran_peg = null;
+		$pelanggaran_mitra->id_pelanggaran_mitra = null;
 		$pelanggaran_mitra->id_mitra = null;
-		$pelanggaran_mitra->id_jenis_pel = null;
+		$pelanggaran_mitra->id_pegawai_mitra = null;
+		$pelanggaran_mitra->id_list_pel = null;
 		$pelanggaran_mitra->tanggal = null;
 		$pelanggaran_mitra->lokasi = null;
 		$pelanggaran_mitra->deskripsi = null;
 		$pelanggaran_mitra->foto = null;
 
 		$query_mitra = $this->m_mitra->get();
-		$query_jenis_pelanggaran = $this->m_jenis_pelanggaran->get();
-		$jenis_pelanggaran[null] = '- Pilih -';
+		$mitra[null] = '- Pilih -';
+		$id_mitra = $this->input->post('id_mitra');
+		$query_pegawai_mitra = $this->m_pegawai_mitra->get_mitra($id_mitra);
+		$pegawai_mitra[null] = '- Pilih -';
 		$query_list_pelanggaran = $this->m_list_pelanggaran->get();
 		$list_pelanggaran[null] = '- Pilih -';
-		foreach ($query_jenis_pelanggaran->result() as $jenis_pel) {
-			$jenis_pelanggaran[$jenis_pel->id_jenis_pel] = $jenis_pel->nama_jenis_pel;
+		foreach ($query_mitra->result() as $mitra1) {
+			$mitra[$mitra1->id_mitra] = $mitra1->nama_mitra;
+		}
+		foreach ($query_pegawai_mitra->result() as $peg_mitra) {
+			$pegawai_mitra[$peg_mitra->id_pegawai_mitra] = $peg_mitra->nama_pegawai_mitra;
 		}
 		foreach ($query_list_pelanggaran->result() as $list_pel) {
 			$list_pelanggaran[$list_pel->id_jenis_pel] = $list_pel->nama_list_pel;
@@ -78,8 +85,8 @@ class Pelanggaran_mitra extends CI_Controller
 		$data = array(
 			'page' => 'add',
 			'row' => $pelanggaran_mitra,
-			'mitra' => $query_mitra,
-			'jenis_pelanggaran' => $jenis_pelanggaran, 'selectedjenispel' => null,
+			'mitra' => $mitra, 'selectedmitra' => null,
+			'pegawai_mitra' => $pegawai_mitra, 'selectedpegmitra' => null,
 			'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => null,
 		);
 		$this->template->load('template', 'Admin/pelanggaran_mitra_form', $data);
@@ -87,7 +94,7 @@ class Pelanggaran_mitra extends CI_Controller
 
 	public function process()
 	{
-		$config['upload_path'] = './uploads/';
+		$config['upload_path'] = './uploads/mitra';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['max_size'] = 2048;
 		$config['max_width'] = 1024;
@@ -100,7 +107,7 @@ class Pelanggaran_mitra extends CI_Controller
 				if ($this->upload->do_upload('image')) {
 					$post['image'] = $this->upload->data('file_name');
 					$this->m_pelanggaran_mitra->add($post);
-					$this->m_mitra->update_point($post);
+					$this->m_pegawai_mitra->update_point($post);
 					if ($this->db->affected_rows() > 0) {
 						$this->session->set_flashdata('success', 'Data berhasil disimpan');
 					}
@@ -112,7 +119,7 @@ class Pelanggaran_mitra extends CI_Controller
 				}
 			} else {
 				$this->m_pelanggaran_mitra->add($post);
-				$this->m_mitra->update_point($post);
+				$this->m_pegawai_mitra->update_point($post);
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				}
@@ -128,7 +135,7 @@ class Pelanggaran_mitra extends CI_Controller
 					}
 					$post['image'] = $this->upload->data('file_name');
 					$this->m_pelanggaran_mitra->edit($post);
-					$this->m_mitra->update_point($post);
+					$this->m_pegawai_mitra->update_point($post);
 					if ($this->db->affected_rows() > 0) {
 						$this->session->set_flashdata('success', 'Data berhasil disimpan');
 					}
@@ -155,23 +162,27 @@ class Pelanggaran_mitra extends CI_Controller
 		if ($query->num_rows() > 0) {
 			$pelanggaran_mitra = $query->row();
 			$query_mitra = $this->m_mitra->get();
-			$query_jenis_pelanggaran = $this->m_jenis_pelanggaran->get();
+			$mitra[null] = '- Pilih -';
+			$query_pegawai_mitra = $this->m_pegawai_mitra->get();
+			$pegawai_mitra[null] = '- Pilih -';
 			$query_list_pelanggaran = $this->m_list_pelanggaran->get();
-			$jenis_pelanggaran[null] = '- Pilih -';
-			foreach ($query_jenis_pelanggaran->result() as $jenis_pel) {
-				$jenis_pelanggaran[$jenis_pel->id_jenis_pel] = $jenis_pel->nama_jenis_pel;
-			}
 			$list_pelanggaran[null] = '- Pilih -';
+			foreach ($query_mitra->result() as $mitra1) {
+				$mitra[$mitra1->id_mitra] = $mitra1->nama_mitra;
+			}
+			foreach ($query_pegawai_mitra->result() as $peg_mitra) {
+				$pegawai_mitra[$peg_mitra->id_pegawai_mitra] = $peg_mitra->nama_pegawai_mitra;
+			}
 			foreach ($query_list_pelanggaran->result() as $list_pel) {
-				$list_pelanggaran[$list_pel->id_list_pel] = $list_pel->nama_list_pel;
+				$list_pelanggaran[$list_pel->id_jenis_pel] = $list_pel->nama_list_pel;
 			}
 
 			$data = array(
 				'page' => 'edit',
 				'row' => $pelanggaran_mitra,
-				'mitra' => $query_mitra,
-				'jenis_pelanggaran' => $jenis_pelanggaran, 'selectedjenispel' => $pelanggaran_mitra->id_jenis_pel,
-				'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => $pelanggaran_mitra->id_list_pel,
+				'mitra' => $mitra, 'selectedmitra' => null,
+				'pegawai_mitra' => $pegawai_mitra, 'selectedpegmitra' => null,
+				'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => null,
 			);
 			$this->template->load('template', 'Admin/pelanggaran_mitra_form', $data);
 		} else {
@@ -182,11 +193,11 @@ class Pelanggaran_mitra extends CI_Controller
 
 	public function del($id)
 	{
-		$id_pelanggaran_peg = $this->uri->segment(4);
-		$id_mitra = $this->uri->segment(5);
-		$point_tpel = $this->m_pelanggaran_mitra->get($id_pelanggaran_peg)->row()->point_tpel;
-		$data = ['point_pel' => $point_tpel, 'id_mitra' => $id_mitra, 'id_pelanggaran_peg' => $id_pelanggaran_peg];
-		$this->m_mitra->delete_point($data);
+		$id_pelanggaran_mitra = $this->uri->segment(4);
+		$id_pegawai_mitra = $this->uri->segment(5);
+		$point_tpel = $this->m_pelanggaran_mitra->get($id_pelanggaran_mitra)->row()->point_tpel;
+		$data = ['point_pel' => $point_tpel, 'id_mitra' => $id_pegawai_mitra, 'id_pelanggaran_mitra' => $id_pelanggaran_mitra];
+		$this->m_pegawai_mitra->delete_point($data);
 		$this->m_pelanggaran_mitra->del($id);
 		if ($this->db->affected_rows() > 0) {
 			$this->session->set_flashdata('success', 'Data berhasil dihapus');
