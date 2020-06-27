@@ -58,9 +58,6 @@
 			<div class="text-center">
 				<a href="forgot-password.html">I forgot my password</a>
 			</div>
-			<div class="text-center">
-				<a href="register.html">Register a new membership</a>
-			</div>
 		</div>
 		<!-- /.login-box-body -->
 	</div>

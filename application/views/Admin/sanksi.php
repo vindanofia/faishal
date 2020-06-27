@@ -1,5 +1,5 @@
 <h1>
-	Sanksi
+	Sanksi Pegawai
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>

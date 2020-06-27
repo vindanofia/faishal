@@ -26,15 +26,6 @@
 						<input type="text" name="nama_pel" value="<?= $row->nama_list_pel ?>" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Jenis Pelanggaran *</label>
-						<?php echo form_dropdown(
-							'jenis_pelanggaran',
-							$jenis_pelanggaran,
-							$selectedjenispel,
-							['class' => 'form-control', 'required' => 'required']
-						) ?>
-					</div>
-					<div class="form-group">
 						<label>Point Pelanggaran *</label>
 						<input type="number" name="point" value="<?= $row->point_pel ?>" class="form-control" required>
 					</div>

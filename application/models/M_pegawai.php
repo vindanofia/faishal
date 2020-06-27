@@ -108,27 +108,31 @@ class M_pegawai extends CI_Model
 		$this->db->update('m_pegawai', $params);
 	}
 
-	public function update_point($data)
+	public function update_penghargaan($data)
 	{
-		$id_list_pel = $data['list_pelanggaran'];
+		$id_reward = $data['jenis_penghargaan'];
 		$id_pegawai = $data['pegawai'];
-		$this->db->from('m_list_pelanggaran');
-		$this->db->where('id_list_pel', $id_list_pel);
+		$this->db->from('m_jenis_penghargaan');
+		$this->db->where('id_reward', $id_reward);
 		$query = $this->db->get()->row();
-		$point_pel = $query->point_pel;
-		$sql = 'UPDATE m_pegawai SET point = point + ' . $point_pel . ' WHERE id_pegawai = ' . $id_pegawai;
+		$point_penghargaan = $query->point_reward;
+		if ($point <= $point_penghargaan) {
+			$sql = 'UPDATE m_pegawai SET point = 0 WHERE id_pegawai = ' . $id_pegawai;
+		} else {
+			$sql = 'UPDATE m_pegawai SET point = point - ' . $point_penghargaan . ' WHERE id_pegawai = ' . $id_pegawai;
+		}
 		$this->db->query($sql);
 	}
 
-	public function delete_point($data)
+	public function delete_penghargaan($data)
 	{
-		$id_pelanggaran_peg = $data['id_pelanggaran_peg'];
+		$id_penghargaan_peg = $data['id_penghargaan_peg'];
 		$id_pegawai = $data['id_pegawai'];
-		$this->db->from('t_pelanggaran_pegawai');
-		$this->db->where('id_pelanggaran_peg', $id_pelanggaran_peg);
+		$this->db->from('t_penghargaan_pegawai');
+		$this->db->where('id_penghargaan_peg', $id_penghargaan_peg);
 		$query = $this->db->get()->row();
-		$point_pel = $query->point_tpel;
-		$sql = 'UPDATE m_pegawai SET point = point - ' . $point_pel . ' WHERE id_pegawai = ' . $id_pegawai;
+		$point_penghargaan = $query->point_penghargaan;
+		$sql = 'UPDATE m_pegawai SET point = point + ' . $point_penghargaan . ' WHERE id_pegawai = ' . $id_pegawai;
 		$this->db->query($sql);
 	}
 

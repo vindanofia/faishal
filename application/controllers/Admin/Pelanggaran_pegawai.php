@@ -27,7 +27,6 @@ class Pelanggaran_pegawai extends CI_Controller
 			$row = array();
 			$row[] = $no . ".";
 			$row[] = $pegawai->nama_pegawai;
-			$row[] = $pegawai->nama_jenis_pel;
 			$row[] = $pegawai->nama_list_pel;
 			$row[] = $pegawai->tanggal;
 			$row[] = $pegawai->lokasi;
@@ -58,29 +57,23 @@ class Pelanggaran_pegawai extends CI_Controller
 		$pelanggaran_pegawai = new stdClass();
 		$pelanggaran_pegawai->id_pelanggaran_peg = null;
 		$pelanggaran_pegawai->id_pegawai = null;
-		$pelanggaran_pegawai->id_jenis_pel = null;
+		$pelanggaran_pegawai->id_list_pel = null;
 		$pelanggaran_pegawai->tanggal = null;
 		$pelanggaran_pegawai->lokasi = null;
 		$pelanggaran_pegawai->deskripsi = null;
 		$pelanggaran_pegawai->foto = null;
 
 		$query_pegawai = $this->m_pegawai->get();
-		$query_jenis_pelanggaran = $this->m_jenis_pelanggaran->get();
-		$jenis_pelanggaran[null] = '- Pilih -';
 		$query_list_pelanggaran = $this->m_list_pelanggaran->get();
 		$list_pelanggaran[null] = '- Pilih -';
-		foreach ($query_jenis_pelanggaran->result() as $jenis_pel) {
-			$jenis_pelanggaran[$jenis_pel->id_jenis_pel] = $jenis_pel->nama_jenis_pel;
-		}
 		foreach ($query_list_pelanggaran->result() as $list_pel) {
-			$list_pelanggaran[$list_pel->id_jenis_pel] = $list_pel->nama_list_pel;
+			$list_pelanggaran[$list_pel->id_list_pel] = $list_pel->nama_list_pel;
 		}
 
 		$data = array(
 			'page' => 'add',
 			'row' => $pelanggaran_pegawai,
 			'pegawai' => $query_pegawai,
-			'jenis_pelanggaran' => $jenis_pelanggaran, 'selectedjenispel' => null,
 			'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => null,
 		);
 		$this->template->load('template', 'Admin/pelanggaran_pegawai_form', $data);
@@ -124,7 +117,7 @@ class Pelanggaran_pegawai extends CI_Controller
 				if ($this->upload->do_upload('image')) {
 					$list = $this->m_pelanggaran_pegawai->get($post['id'])->row();
 					if ($list->foto != null) {
-						$target_file = './uploads/' . $list->foto;
+						$target_file = './uploads/pegawai' . $list->foto;
 						unlink($target_file);
 					}
 					$post['image'] = $this->upload->data('file_name');
@@ -156,12 +149,7 @@ class Pelanggaran_pegawai extends CI_Controller
 		if ($query->num_rows() > 0) {
 			$pelanggaran_pegawai = $query->row();
 			$query_pegawai = $this->m_pegawai->get();
-			$query_jenis_pelanggaran = $this->m_jenis_pelanggaran->get();
 			$query_list_pelanggaran = $this->m_list_pelanggaran->get();
-			$jenis_pelanggaran[null] = '- Pilih -';
-			foreach ($query_jenis_pelanggaran->result() as $jenis_pel) {
-				$jenis_pelanggaran[$jenis_pel->id_jenis_pel] = $jenis_pel->nama_jenis_pel;
-			}
 			$list_pelanggaran[null] = '- Pilih -';
 			foreach ($query_list_pelanggaran->result() as $list_pel) {
 				$list_pelanggaran[$list_pel->id_list_pel] = $list_pel->nama_list_pel;
@@ -171,7 +159,6 @@ class Pelanggaran_pegawai extends CI_Controller
 				'page' => 'edit',
 				'row' => $pelanggaran_pegawai,
 				'pegawai' => $query_pegawai,
-				'jenis_pelanggaran' => $jenis_pelanggaran, 'selectedjenispel' => $pelanggaran_pegawai->id_jenis_pel,
 				'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => $pelanggaran_pegawai->id_list_pel,
 			);
 			$this->template->load('template', 'Admin/pelanggaran_pegawai_form', $data);

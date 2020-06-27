@@ -80,7 +80,7 @@ class Pelanggaran_mitra extends CI_Controller
 			$pegawai_mitra[$peg_mitra->id_pegawai_mitra] = $peg_mitra->nama_pegawai_mitra;
 		}
 		foreach ($query_list_pelanggaran->result() as $list_pel) {
-			$list_pelanggaran[$list_pel->id_jenis_pel] = $list_pel->nama_list_pel;
+			$list_pelanggaran[$list_pel->id_list_pel] = $list_pel->nama_list_pel;
 		}
 
 		$data = array(
@@ -133,7 +133,7 @@ class Pelanggaran_mitra extends CI_Controller
 				if ($this->upload->do_upload('image')) {
 					$list = $this->m_pelanggaran_mitra->get($post['id'])->row();
 					if ($list->foto != null) {
-						$target_file = './uploads/' . $list->foto;
+						$target_file = './uploads/mitra' . $list->foto;
 						unlink($target_file);
 					}
 					$post['image'] = $this->upload->data('file_name');
@@ -199,7 +199,7 @@ class Pelanggaran_mitra extends CI_Controller
 		$id_pelanggaran_mitra = $this->uri->segment(4);
 		$id_pegawai_mitra = $this->uri->segment(5);
 		$point_tpel = $this->m_pelanggaran_mitra->get($id_pelanggaran_mitra)->row()->point_tpel;
-		$data = ['point_pel' => $point_tpel, 'id_mitra' => $id_pegawai_mitra, 'id_pelanggaran_mitra' => $id_pelanggaran_mitra];
+		$data = ['point_pel' => $point_tpel, 'id_pegawai_mitra' => $id_pegawai_mitra, 'id_pelanggaran_mitra' => $id_pelanggaran_mitra];
 		$this->m_pegawai_mitra->delete_point($data);
 		$this->m_pelanggaran_mitra->del($id);
 		if ($this->db->affected_rows() > 0) {
@@ -208,9 +208,10 @@ class Pelanggaran_mitra extends CI_Controller
 		redirect('Admin/pelanggaran_mitra');
 	}
 
-	public function pegawai_mitra($id_mitra = 0){
+	public function pegawai_mitra($id_mitra = 0)
+	{
 		$pegawai = $this->m_pegawai_mitra->get_mitra($id_mitra);
 		header('Content-Type: application/json');
-    	echo json_encode( $pegawai );
+		echo json_encode($pegawai);
 	}
 }

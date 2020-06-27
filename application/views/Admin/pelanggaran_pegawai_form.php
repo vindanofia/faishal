@@ -31,15 +31,6 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>Jenis Pelanggaran *</label>
-					<?php echo form_dropdown(
-						'jenis_pelanggaran',
-						$jenis_pelanggaran,
-						$selectedjenispel,
-						['class' => 'form-control', 'required' => 'required']
-					) ?>
-				</div>
-				<div class="form-group">
 					<label>List Pelanggaran *</label>
 					<?php echo form_dropdown(
 						'list_pelanggaran',

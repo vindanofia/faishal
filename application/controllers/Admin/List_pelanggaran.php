@@ -8,7 +8,7 @@ class List_pelanggaran extends CI_Controller
 	{
 		parent::__construct();
 		check_not_login();
-		$this->load->model(['m_list_pelanggaran', 'm_jenis_pelanggaran']);
+		$this->load->model('m_list_pelanggaran');
 		// $this->load->library('form_validation');
 	}
 	public function index()
@@ -24,15 +24,9 @@ class List_pelanggaran extends CI_Controller
 		$list_pelanggaran->nama_list_pel = null;
 		$list_pelanggaran->point_pel = null;
 
-		$query_jenis_pelanggaran = $this->m_jenis_pelanggaran->get();
-		$jenis_pelanggaran[null] = '- Pilih -';
-		foreach ($query_jenis_pelanggaran->result() as $jenis_pel) {
-			$jenis_pelanggaran[$jenis_pel->id_jenis_pel] = $jenis_pel->nama_jenis_pel;
-		}
 		$data = array(
 			'page' => 'add',
 			'row' => $list_pelanggaran,
-			'jenis_pelanggaran' => $jenis_pelanggaran, 'selectedjenispel' => null,
 		);
 		$this->template->load('template', 'Admin/list_pelanggaran_form', $data);
 	}
@@ -57,15 +51,9 @@ class List_pelanggaran extends CI_Controller
 		$query = $this->m_list_pelanggaran->get($id);
 		if ($query->num_rows() > 0) {
 			$list_pelanggaran = $query->row();
-			$query_jenis_pelanggaran = $this->m_jenis_pelanggaran->get();
-			$jenis_pelanggaran[null] = '- Pilih -';
-			foreach ($query_jenis_pelanggaran->result() as $jenis_pel) {
-				$jenis_pelanggaran[$jenis_pel->id_jenis_pel] = $jenis_pel->nama_jenis_pel;
-			}
 			$data = array(
 				'page' => 'edit',
 				'row' => $list_pelanggaran,
-				'jenis_pelanggaran' => $jenis_pelanggaran, 'selectedjenispel' => $list_pelanggaran->id_jenis_pel,
 			);
 			$this->template->load('template', 'Admin/list_pelanggaran_form', $data);
 		} else {

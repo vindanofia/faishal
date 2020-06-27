@@ -145,8 +145,6 @@
 								<a href="<?= site_url('Admin/mitra'); ?>"><i class="fa fa-circle-o"></i> Perusahaan Mitra</a></li>
 							<li <?= $this->uri->segment(1) == 'pegawai_mitra' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/pegawai_mitra'); ?>"><i class="fa fa-circle-o"></i> Pegawai Mitra</a></li>
-							<!-- <li <?= $this->uri->segment(1) == 'jenis_pelanggaran' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Admin/jenis_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> Jenis Pelanggaran</a></li> -->
 							<li <?= $this->uri->segment(1) == 'list_pelanggaran' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/list_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> List Pelanggaran</a></li>
 							<li <?= $this->uri->segment(1) == 'jenis_penghargaan' ? 'class="active"' : '' ?>>
@@ -155,6 +153,8 @@
 								<a href="<?= site_url('Admin/sanksi'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi_mitra' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/sanksi_mitra'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai Mitra</a></li>
+							<li <?= $this->uri->segment(1) == 'konten' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/konten'); ?>"><i class="fa fa-circle-o"></i> Konten</a></li>
 						</ul>
 					</li>
 
@@ -169,7 +169,7 @@
 						<ul class="treeview-menu">
 							<li><a href="<?= site_url('Admin/pelanggaran_pegawai'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Pegawai</a></li>
 							<li><a href="<?= site_url('Admin/pelanggaran_mitra'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Mitra</a></li>
-							<li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Penghargaan Karyawan</a></li>
+							<li><a href="<?= site_url('Admin/penghargaan_pegawai'); ?>"><i class="fa fa-circle-o"></i> Apresiasi Pegawai</a></li>
 						</ul>
 					</li>
 				</ul>

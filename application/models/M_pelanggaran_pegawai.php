@@ -4,15 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_pelanggaran_pegawai extends CI_Model
 {
 	// start datatables
-	var $column_order = array(null, 'm_pegawai.nama_pegawai', 'm_jenis_pelanggaran.nama_jenis_pel', 'm_list_pelanggaran.nama_list_pel', 't_pelanggaran_pegawai.tanggal', 't_pelanggaran_pegawai.lokasi', 't_pelanggaran_pegawai.deskripsi'); //set column field database for datatable orderable
-	var $column_search = array('m_pegawai.nama_pegawai', 'm_jenis_pelanggaran.nama_jenis_pel', 'm_list_pelanggaran.nama_list_pel', 't_pelanggaran_pegawai.lokasi'); //set column field database for datatable searchable
+	var $column_order = array(null, 'm_pegawai.nama_pegawai', 'm_list_pelanggaran.nama_list_pel', 't_pelanggaran_pegawai.tanggal', 't_pelanggaran_pegawai.lokasi', 't_pelanggaran_pegawai.deskripsi'); //set column field database for datatable orderable
+	var $column_search = array('m_pegawai.nama_pegawai', 'm_list_pelanggaran.nama_list_pel', 't_pelanggaran_pegawai.lokasi'); //set column field database for datatable searchable
 	var $order = array('id_pelanggaran_peg' => 'desc'); // default order
 
 	private function _get_datatables_query()
 	{
 		$this->db->from('t_pelanggaran_pegawai');
 		$this->db->join('m_pegawai', 'm_pegawai.id_pegawai = t_pelanggaran_pegawai.id_pegawai');
-		$this->db->join('m_jenis_pelanggaran', 'm_jenis_pelanggaran.id_jenis_pel = t_pelanggaran_pegawai.id_jenis_pel');
 		$this->db->join('m_list_pelanggaran', 'm_list_pelanggaran.id_list_pel = t_pelanggaran_pegawai.id_list_pel');
 		$this->db->where('t_pelanggaran_pegawai.deleted = ', 1);
 		$i = 0;
@@ -80,7 +79,6 @@ class M_pelanggaran_pegawai extends CI_Model
 
 		$params = [
 			'id_pegawai' => $post['pegawai'],
-			'id_jenis_pel' => $post['jenis_pelanggaran'],
 			'id_list_pel' => $post['list_pelanggaran'],
 			'tanggal' => $post['tanggal'],
 			'lokasi' => $post['lokasi'],
@@ -97,7 +95,6 @@ class M_pelanggaran_pegawai extends CI_Model
 	{
 		$params = [
 			'id_pegawai' => $post['pegawai'],
-			'id_jenis_pel' => $post['jenis_pelanggaran'],
 			'id_list_pel' => $post['list_pelanggaran'],
 			'tanggal' => $post['tanggal'],
 			'lokasi' => $post['lokasi'],

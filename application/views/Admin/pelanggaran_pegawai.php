@@ -23,7 +23,6 @@
 				<tr>
 					<th>No</th>
 					<th>Nama Pegawai</th>
-					<th>Jenis Pelanggaran</th>
 					<th>List Pelanggaran</th>
 					<th>Tanggal</th>
 					<th>Lokasi</th>

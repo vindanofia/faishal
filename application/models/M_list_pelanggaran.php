@@ -7,7 +7,6 @@ class M_list_pelanggaran extends CI_Model
 	{
 		// $deleted = array(1);
 		$this->db->from('m_list_pelanggaran');
-		$this->db->join('m_jenis_pelanggaran', 'm_jenis_pelanggaran.id_jenis_pel = m_list_pelanggaran.id_jenis_pel');
 		if ($id !== NULL) {
 			$this->db->where('id_list_pel', $id);
 		}
@@ -20,7 +19,6 @@ class M_list_pelanggaran extends CI_Model
 	{
 		$params = [
 			'nama_list_pel' => $post['nama_pel'],
-			'id_jenis_pel' => $post['jenis_pelanggaran'],
 			'point_pel' => $post['point'],
 			'deleted' => 1,
 		];
@@ -31,10 +29,9 @@ class M_list_pelanggaran extends CI_Model
 	{
 		$params = [
 			'nama_list_pel' => $post['nama_pel'],
-			'id_jenis_pel' => $post['jenis_pelanggaran'],
 			'point_pel' => $post['point'],
 			'deleted' => 1,
-			'updated' => date('Y-mm-dd H:i:s')
+			'updated' => date("Y-mm-dd H:i:s"),
 		];
 		$this->db->where('id_list_pel', $post['id']);
 		$this->db->update('m_list_pelanggaran', $params);
