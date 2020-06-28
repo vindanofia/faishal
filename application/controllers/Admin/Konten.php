@@ -1,16 +1,43 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class konten extends CI_Controller
+class Konten extends CI_Controller
 {
 
 	function __construct()
 	{
 		parent::__construct();
 		check_not_login();
-		$this->load->model('m_konten');
-		// $this->load->library('form_validation');
+		$this->load->model([
+			'm_konten'
+		]);
 	}
+
+	function get_ajax()
+	{
+		$list = $this->m_konten->get_datatables();
+		$data = array();
+		$no = @$_POST['start'];
+		foreach ($list as $konten) {
+			$no++;
+			$row = array();
+			$row[] = $no . ".";
+			$row[] = $konten->judul_konten;
+			$row[] = $konten->deskripsi_konten;
+			$row[] = $konten->gambar_konten;
+			$row[] = '<a href="' . site_url('Admin/konten/del/' . $konten->id_konten) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$data[] = $row;
+		}
+		$output = array(
+			"draw" => @$_POST['draw'],
+			"recordsTotal" => $this->m_konten->count_all(),
+			"recordsFiltered" => $this->m_konten->count_filtered(),
+			"data" => $data,
+		);
+		// output to json format
+		echo json_encode($output);
+	}
+
 	public function index()
 	{
 		$data['row'] = $this->m_konten->get();
@@ -22,12 +49,14 @@ class konten extends CI_Controller
 		$konten = new stdClass();
 		$konten->id_konten = null;
 		$konten->judul_konten = null;
-		$konten->gambar_konten = null;
 		$konten->deskripsi_konten = null;
+		$konten->gambar_konten = null;
 
+		$query_konten = $this->m_konten->get();
 		$data = array(
 			'page' => 'add',
 			'row' => $konten,
+			'konten' => $query_konten,
 		);
 		$this->template->load('template', 'Admin/konten_form', $data);
 	}
@@ -67,8 +96,8 @@ class konten extends CI_Controller
 			if (@$_FILES['image']['name'] != null) {
 				if ($this->upload->do_upload('image')) {
 					$list = $this->m_konten->get($post['id'])->row();
-					if ($list->foto != null) {
-						$target_file = './uploads/konten' . $list->foto;
+					if ($list->gambar_konten != null) {
+						$target_file = './uploads/konten' . $list->gambar_konten;
 						unlink($target_file);
 					}
 					$post['image'] = $this->upload->data('file_name');
@@ -97,9 +126,11 @@ class konten extends CI_Controller
 		$query = $this->m_konten->get($id);
 		if ($query->num_rows() > 0) {
 			$konten = $query->row();
+			$query_konten = $this->m_konten->get();
 			$data = array(
 				'page' => 'edit',
 				'row' => $konten,
+				'konten' => $query_konten,
 			);
 			$this->template->load('template', 'Admin/konten_form', $data);
 		} else {

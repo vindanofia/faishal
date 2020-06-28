@@ -9,11 +9,11 @@ class Pelanggaran_pegawai extends CI_Controller
 		parent::__construct();
 		check_not_login();
 		$this->load->model([
-			'm_pelanggaran_pegawai',
-			'm_pegawai',
-			'm_jenis_pelanggaran',
-			'm_list_pelanggaran',
-			'm_sanksi'
+			'Member/m_pelanggaran_pegawai',
+			'Member/m_pegawai',
+			'Member/m_jenis_pelanggaran',
+			'Member/m_list_pelanggaran',
+			'Member/m_sanksi'
 		]);
 	}
 
@@ -33,7 +33,7 @@ class Pelanggaran_pegawai extends CI_Controller
 			$row[] = $pegawai->deskripsi;
 			$row[] = $pegawai->point_pel;
 			$row[] = $pegawai->foto;
-			$row[] = '<a href="' . site_url('Admin/pelanggaran_pegawai/del/' . $pegawai->id_pelanggaran_peg) . '/' . $pegawai->id_pegawai . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Member/pelanggaran_pegawai/del/' . $pegawai->id_pelanggaran_peg) . '/' . $pegawai->id_pegawai . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
 			$data[] = $row;
 		}
 		$output = array(
@@ -49,7 +49,7 @@ class Pelanggaran_pegawai extends CI_Controller
 	public function index()
 	{
 		$data['row'] = $this->m_pelanggaran_pegawai->get();
-		$this->template->load('template', 'Admin/pelanggaran_pegawai', $data);
+		$this->template->load('template', 'Member/pelanggaran_pegawai', $data);
 	}
 
 	public function add()
@@ -76,12 +76,12 @@ class Pelanggaran_pegawai extends CI_Controller
 			'pegawai' => $query_pegawai,
 			'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => null,
 		);
-		$this->template->load('template', 'Admin/pelanggaran_pegawai_form', $data);
+		$this->template->load('template', 'Member/pelanggaran_pegawai_form', $data);
 	}
 
 	public function process()
 	{
-		$config['upload_path'] = './uploads/pegawai';
+		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['max_size'] = 2048;
 		$config['max_width'] = 1024;
@@ -98,11 +98,11 @@ class Pelanggaran_pegawai extends CI_Controller
 					if ($this->db->affected_rows() > 0) {
 						$this->session->set_flashdata('success', 'Data berhasil disimpan');
 					}
-					redirect('Admin/pelanggaran_pegawai');
+					redirect('Member/pelanggaran_pegawai');
 				} else {
 					$error = $this->upload->display_errors();
 					$this->session->set_flashdata('error', $error);
-					redirect('Admin/pelanggaran_pegawai/add');
+					redirect('Member/pelanggaran_pegawai/add');
 				}
 			} else {
 				$this->m_pelanggaran_pegawai->add($post);
@@ -110,7 +110,7 @@ class Pelanggaran_pegawai extends CI_Controller
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				}
-				redirect('Admin/pelanggaran_pegawai');
+				redirect('Member/pelanggaran_pegawai');
 			}
 		} else if (isset($_POST['edit'])) {
 			if (@$_FILES['image']['name'] != null) {
@@ -126,11 +126,11 @@ class Pelanggaran_pegawai extends CI_Controller
 					if ($this->db->affected_rows() > 0) {
 						$this->session->set_flashdata('success', 'Data berhasil disimpan');
 					}
-					redirect('Admin/pelanggaran_pegawai');
+					redirect('Member/pelanggaran_pegawai');
 				} else {
 					$error = $this->upload->display_errors();
 					$this->session->set_flashdata('error', $error);
-					redirect('Admin/pelanggaran_pegawai/add');
+					redirect('Member/pelanggaran_pegawai/add');
 				}
 			} else {
 				$this->m_pelanggaran_pegawai->edit($post);
@@ -138,7 +138,7 @@ class Pelanggaran_pegawai extends CI_Controller
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				}
-				redirect('Admin/pelanggaran_pegawai');
+				redirect('Member/pelanggaran_pegawai');
 			}
 		}
 	}
@@ -161,10 +161,10 @@ class Pelanggaran_pegawai extends CI_Controller
 				'pegawai' => $query_pegawai,
 				'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => $pelanggaran_pegawai->id_list_pel,
 			);
-			$this->template->load('template', 'Admin/pelanggaran_pegawai_form', $data);
+			$this->template->load('template', 'Member/pelanggaran_pegawai_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
-			echo "window.location='" . site_url('Admin/pelanggaran_pegawai') . "';</script>";
+			echo "window.location='" . site_url('Member/pelanggaran_pegawai') . "';</script>";
 		}
 	}
 
@@ -179,6 +179,6 @@ class Pelanggaran_pegawai extends CI_Controller
 		if ($this->db->affected_rows() > 0) {
 			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		}
-		redirect('Admin/pelanggaran_pegawai');
+		redirect('Member/pelanggaran_pegawai');
 	}
 }

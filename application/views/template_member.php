@@ -131,9 +131,9 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> Pelanggaran Karyawan</a></li>
-							<li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Pelanggaran Mitra</a></li>
-							<li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Penghargaan Karyawan</a></li>
+							<li><a href="<?= site_url('Member/pelanggaran_pegawai'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Pegawai</a></li>
+							<li><a href="<?= site_url('Member/pelanggaran_mitra'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Mitra</a></li>
+							<li><a href="<?= site_url('Member/penghargaan_pegawai'); ?>"><i class="fa fa-circle-o"></i> Apresiasi Pegawai</a></li>
 						</ul>
 					</li>
 				</ul>

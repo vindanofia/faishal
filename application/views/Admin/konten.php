@@ -1,5 +1,5 @@
 <h1>
-	Konten
+	Realisasi Konten
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -10,7 +10,7 @@
 <?php $this->view('message') ?>
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title">Data Konten</h3>
+		<h3 class="box-title">Data Realisasi Konten</h3>
 		<div class="pull-right">
 			<a href="<?= site_url('Admin/konten/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
@@ -24,31 +24,37 @@
 					<th>No</th>
 					<th>Judul Konten</th>
 					<th>Deskripsi Konten</th>
-					<th>Gambar Konten</th>
+					<th>Gambar</th>
 					<th>Opsi</th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php $no = 1;
-				foreach ($row->result() as $key => $data) { ?>
-					<tr>
-						<td><?= $no++ ?>.</td>
-						<td><?= $data->judul_konten ?></td>
-						<td><?= $data->deskripsi_konten ?></td>
-						<td><?= $data->gambar_konten ?></td>
-						<td class="text-center" width="160px">
-							<a href="<?= site_url('Admin/konten/edit/' . $data->id_konten) ?>" class="btn btn-primary btn-xs">
-								<i class="fa fa-pencil"></i> Ubah
-							</a>
-							<a href="<?= site_url('Admin/konten/del/' . $data->id_konten) ?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">
-								<i class="fa fa-trash"></i> Delete
-							</a>
-							</form>
-						</td>
-					</tr>
-				<?php } ?>
 			</tbody>
 		</table>
 	</div>
 
 </div>
+
+<script>
+	$(document).ready(function() {
+		$('#table1').DataTable({
+			"processing": true,
+			"serverSide": true,
+			"ajax": {
+				"url": "<?= site_url('Admin/konten/get_ajax') ?>",
+				"type": "POST",
+			},
+			"columnDefs": [{
+				"targets": [2, 3, 5, 6],
+				"className": 'text-right'
+			}, {
+				"targets": [0, 7, -1],
+				"className": 'text-center'
+			}, {
+				"targets": [0, 7, -1],
+				"orderable": false
+			}],
+			"order": []
+		})
+	})
+</script>

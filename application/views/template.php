@@ -73,9 +73,6 @@
 								</li>
 								<!-- Menu Footer-->
 								<li class="user-footer">
-									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat bg-red">Profile</a>
-									</div>
 									<div class="pull-right">
 										<a href="<?= site_url('auth/logout'); ?>" class="btn btn-default btn-flat bg-red">Sign out</a>
 									</div>
@@ -153,8 +150,8 @@
 								<a href="<?= site_url('Admin/sanksi'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi_mitra' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/sanksi_mitra'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai Mitra</a></li>
-							<li <?= $this->uri->segment(1) == 'konten' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Admin/konten'); ?>"><i class="fa fa-circle-o"></i> Konten</a></li>
+							<!-- <li <?= $this->uri->segment(1) == 'konten' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/konten'); ?>"><i class="fa fa-circle-o"></i> Konten</a></li> -->
 						</ul>
 					</li>
 
