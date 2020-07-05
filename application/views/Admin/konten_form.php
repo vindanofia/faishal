@@ -32,9 +32,9 @@
 					<div class="form-group">
 						<label>Gambar *</label>
 						<?php if ($page == 'edit') {
-							if ($row->gambar_konten != null) { ?>
+							if ($row->foto != null) { ?>
 								<div style="margin-bottom: 5px">
-									<img src="<?= base_url('uploads/konten' . $row->gambar_konten) ?>" style="width:100px">
+									<img src="<?= base_url('uploads/konten' . $row->foto) ?>" style="width:100px">
 								</div>
 						<?php
 							}

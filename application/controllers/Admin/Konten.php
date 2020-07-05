@@ -24,8 +24,9 @@ class Konten extends CI_Controller
 			$row[] = $no . ".";
 			$row[] = $konten->judul_konten;
 			$row[] = $konten->deskripsi_konten;
-			$row[] = $konten->gambar_konten;
-			$row[] = '<a href="' . site_url('Admin/konten/del/' . $konten->id_konten) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = $konten->foto;
+			$row[] = '<a href="' . site_url('Admin/konten/edit/' . $konten->id_konten) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
+			<a href="' . site_url('Admin/konten/del/' . $konten->id_konten) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
 			$data[] = $row;
 		}
 		$output = array(
@@ -49,8 +50,8 @@ class Konten extends CI_Controller
 		$konten = new stdClass();
 		$konten->id_konten = null;
 		$konten->judul_konten = null;
+		$konten->foto = null;
 		$konten->deskripsi_konten = null;
-		$konten->gambar_konten = null;
 
 		$query_konten = $this->m_konten->get();
 		$data = array(
@@ -96,8 +97,8 @@ class Konten extends CI_Controller
 			if (@$_FILES['image']['name'] != null) {
 				if ($this->upload->do_upload('image')) {
 					$list = $this->m_konten->get($post['id'])->row();
-					if ($list->gambar_konten != null) {
-						$target_file = './uploads/konten' . $list->gambar_konten;
+					if ($list->foto != null) {
+						$target_file = './uploads/konten' . $list->foto;
 						unlink($target_file);
 					}
 					$post['image'] = $this->upload->data('file_name');

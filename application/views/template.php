@@ -20,6 +20,8 @@
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/skins/_all-skins.min.css">
+	<!-- jvectormap -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/jvectormap/jquery-jvectormap.css">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -150,8 +152,8 @@
 								<a href="<?= site_url('Admin/sanksi'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi_mitra' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/sanksi_mitra'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai Mitra</a></li>
-							<!-- <li <?= $this->uri->segment(1) == 'konten' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Admin/konten'); ?>"><i class="fa fa-circle-o"></i> Konten</a></li> -->
+							<li <?= $this->uri->segment(1) == 'konten' ? 'class="active"' : '' ?>>
+								<a href="<?= site_url('Admin/konten'); ?>"><i class="fa fa-circle-o"></i> Konten</a></li>
 						</ul>
 					</li>
 
@@ -209,6 +211,18 @@
 		<script src="<?= base_url() ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 		<!-- AdminLTE for demo purposes -->
 		<script src="<?= base_url() ?>assets/dist/js/demo.js"></script>
+		<!-- jQuery 3 -->
+		<script src="<?= base_url() ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+		<!-- Sparkline -->
+		<script src="<?= base_url() ?>assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+		<!-- jvectormap  -->
+		<script src="<?= base_url() ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+		<script src="<?= base_url() ?>assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+		<!-- SlimScroll -->
+		<!-- ChartJS -->
+		<script src="<?= base_url() ?>assets/bower_components/chart.js/Chart.js"></script>
+		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+		<script src="<?= base_url() ?>assets/dist/js/pages/dashboard2.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('#table1').DataTable()

@@ -45,13 +45,10 @@
 				"type": "POST",
 			},
 			"columnDefs": [{
-				"targets": [2, 3, 5, 6],
-				"className": 'text-right'
-			}, {
-				"targets": [0, 7, -1],
+				"targets": [0, 3],
 				"className": 'text-center'
 			}, {
-				"targets": [0, 7, -1],
+				"targets": [0, 4, -1],
 				"orderable": false
 			}],
 			"order": []

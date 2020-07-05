@@ -1,17 +1,40 @@
-<!-- Default box -->
-<!-- <div class="box">
-	<div class="box-header with-border">
-		<h3 class="box-title">Title</h3>
-	</div>
-	<div class="box-body">
-		Start creating your amazing application!
-	</div> -->
-<!-- /.box-body -->
-<!-- <div class="box-footer">
-		Footer
-	</div> -->
-<!-- /.box-footer-->
-<!-- </div> -->
-<!-- /.box -->
-
-Dashboard
+<h4>Cara Membuat Grafik dengan CodeIgniter dengan Chart.js</h4>
+<canvas id="myChart"></canvas>
+<?php
+//Inisialisasi nilai variabel awal
+$id_list_pel = '';
+$jumlah = null;
+foreach ($graph1->result() as $row) {
+	$list_pel = $row->id_list_pel;
+	$id_list_pel .= 'list_pel' . ', ';
+	$jum = $row->total;
+	$jumlah .= '$jum' . ', ';
+}
+?>
+<script>
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var chart = new Chart(ctx, {
+		// The type of chart we want to create
+		type: 'bar',
+		// The data for our dataset
+		data: {
+			labels: [<?php echo $id_list_pel; ?>],
+			datasets: [{
+				label: 'Data Pelanggaran Pegawai ',
+				backgroundColor: ['rgb(255, 99, 132)', 'rgba(56, 86, 255, 0.87)', 'rgb(60, 179, 113)', 'rgb(175, 238, 239)'],
+				borderColor: ['rgb(255, 99, 132)'],
+				data: [<?php echo $jumlah; ?>]
+			}]
+		},
+		// Configuration options go here
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			}
+		}
+	});
+</script>

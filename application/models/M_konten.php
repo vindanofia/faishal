@@ -50,7 +50,7 @@ class M_konten extends CI_Model
 	}
 	function count_all()
 	{
-		$this->db->from('t_konten');
+		$this->db->from('m_konten');
 		$this->db->where('deleted = ', 1);
 		return $this->db->count_all_results();
 	}
@@ -71,7 +71,7 @@ class M_konten extends CI_Model
 		$params = [
 			'judul_konten' => $post['judul_konten'],
 			'deskripsi_konten' => $post['deskripsi_konten'],
-			'gambar_konten' => $post['image'],
+			'foto' => $post['image'],
 			'deleted' => 1,
 		];
 		$this->db->insert('m_konten', $params);
@@ -82,12 +82,12 @@ class M_konten extends CI_Model
 		$params = [
 			'judul_konten' => $post['judul_konten'],
 			'deskripsi_konten' => $post['deskripsi_konten'],
-			'gambar_konten' => $post['image'],
+			'foto' => $post['image'],
 			'deleted' => 1,
 			'updated' => date("Y-m-d H:i:s"),
 		];
 		if ($post['image'] != null) {
-			$params['gambar_konten'] = $post['image'];
+			$params['foto'] = $post['image'];
 		}
 		$this->db->where('id_konten', $post['id']);
 		$this->db->update('m_konten', $params);

@@ -15,9 +15,9 @@
 			<a href="<?= site_url('Admin/pegawai/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
 			</a>
-			<!-- <a href="<?= site_url('Admin/pegawai/add') ?>" class="btn btn-primary btn-flat">
+			<a href="<?= site_url('Admin/pegawai/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Import Excel
-			</a> -->
+			</a>
 		</div>
 	</div>
 	<div class="box-body table-responsive">
