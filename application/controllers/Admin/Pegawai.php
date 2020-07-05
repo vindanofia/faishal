@@ -9,6 +9,7 @@ class Pegawai extends CI_Controller
 		parent::__construct();
 		check_not_login();
 		$this->load->model(['m_pegawai', 'm_sanksi']);
+		$this->load->helper(array('url','download'));
 		// $this->load->library('form_validation');
 	}
 
@@ -107,5 +108,51 @@ class Pegawai extends CI_Controller
 			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		}
 		redirect('Admin/pegawai');
+	}
+
+	public function downloadFormat(){
+		force_download('./uploads/data_pegawai/Format import excel pegawai.xlsx',NULL);
+	}
+
+	public function import(){
+		$data = array(
+			'page' => 'Import',
+		);
+		$this->template->load('template', 'Admin/pegawai_form_import', $data);
+	}
+
+	public function processImport(){
+		$this->load->helper('url');
+		include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+
+        $config['upload_path'] = './uploads/excel_pegawai';
+        $config['allowed_types'] = 'xlsx|xls|csv';
+        $config['max_size'] = '10000';
+		$config['file_name'] = 'data_pegawai-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+		$this->load->library('upload', $config);
+
+		if(isset($_FILES['file_excel'])){
+			if($this->upload->do_upload('file_excel')){
+				$data_upload 	= $this->upload->data();
+				$excelreader	= new PHPExcel_Reader_Excel2007();
+				$loadexcel		= $excelreader->load('uploads/excel_pegawai/'.$data_upload['file_name']); // Load file yang telah diupload ke folder excel
+				$sheet       	= $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+				
+				foreach($sheet as $key => $data) {
+					if($key > 2){
+						$this->m_pegawai->add([
+							'nama_peg' => $data['A'],
+							'nip_peg' => $data['B'],
+							'telp' => $data['C'],
+							'email' => $data['D'],
+						]);
+					}
+				}
+  				redirect('/Admin/pegawai', 'refresh');
+			}
+		}else{
+			echo "<script>alert('Input File Excel');";
+			echo "window.location='" . site_url('Admin/pegawai') . "';</script>";
+		}
 	}
 }
