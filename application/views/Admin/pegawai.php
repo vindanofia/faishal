@@ -18,6 +18,9 @@
 			<a href="<?= site_url('Admin/pegawai/import') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Import Excel
 			</a>
+			<a href="<?= site_url('Admin/pegawai/export') ?>" class="btn btn-primary btn-flat">
+				<i class="fa fa-download"></i> Export
+			</a>
 		</div>
 	</div>
 	<div class="box-body table-responsive">

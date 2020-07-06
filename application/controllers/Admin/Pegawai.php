@@ -155,4 +155,18 @@ class Pegawai extends CI_Controller
 			echo "window.location='" . site_url('Admin/pegawai') . "';</script>";
 		}
 	}
+
+	public function export()
+	{ 
+		require_once(APPPATH.'controllers/Excel.php'); 
+		$exportExcel =  new Excel();
+		$excel = $exportExcel->getExcel('pegawai');
+
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment; filename="Data Pegawai_'.date('ymd').'.xlsx"'); // Set nama file excel nya
+		header('Cache-Control: max-age=0');
+
+		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+		$write->save('php://output');
+	}
 }

@@ -116,4 +116,18 @@ class Pegawai_mitra extends CI_Controller
 		}
 		redirect('Admin/pegawai_mitra');
 	}
+
+	public function export()
+	{ 
+		require_once(APPPATH.'controllers/Excel.php'); 
+		$exportExcel =  new Excel();
+		$excel = $exportExcel->getExcel('pegawai_mitra');
+
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment; filename="Data Pegawai Mitra_'.date('ymd').'.xlsx"'); // Set nama file excel nya
+		header('Cache-Control: max-age=0');
+
+		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+		$write->save('php://output');
+	}
 }
