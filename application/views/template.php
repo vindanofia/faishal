@@ -211,8 +211,6 @@
 		<script src="<?= base_url() ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 		<!-- AdminLTE for demo purposes -->
 		<script src="<?= base_url() ?>assets/dist/js/demo.js"></script>
-		<!-- jQuery 3 -->
-		<script src="<?= base_url() ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Sparkline -->
 		<script src="<?= base_url() ?>assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 		<!-- jvectormap  -->
@@ -223,6 +221,7 @@
 		<script src="<?= base_url() ?>assets/bower_components/chart.js/Chart.js"></script>
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 		<script src="<?= base_url() ?>assets/dist/js/pages/dashboard2.js"></script>
+
 		<script>
 			$(document).ready(function() {
 				$('#table1').DataTable()
