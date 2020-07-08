@@ -138,15 +138,15 @@
 
 						<div class="icon-box" data-aos="fade-up">
 							<div class="icon"><i class="bx bx-fingerprint"></i></div>
-							<h4 class="title"><a href="">Visi</a></h4>
-							<p class="description">Menjadi produsen asam Phosporic yang menjamin kualitas dan kontinuitas</p>
+							<h4 class="title"><a href="">Vision</a></h4>
+							<p class="description">Being phosphoric acid manufacturer which ensures quality and continuity</p>
 						</div>
 
 						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
 							<div class="icon"><i class="bx bx-gift"></i></div>
 							<h4 class="title"><a href="">Mission</a></h4>
-							<p class="description">- Provising asam Phosporic yang produktif dan efisien proses produksi dan mengembangkan sumber daya manusia yang profesional dan amanah yang peduli pada lingkungan dan keselamatan</p>
-							<p class="description">- Mengembangkan sumber daya manusia yang profesional dan amanah yang peduli pada lingkungan dan keselamatan</p>
+							<p class="description">- Providing phosphoric acid with productive and efficient production process</p>
+							<p class="description">- Developing professional and trustful human resources who cares in safety and environment</p>
 						</div>
 
 						<div class="icon-box" data-aos="fade-up" data-aos-delay="200">

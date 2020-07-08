@@ -32,7 +32,7 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a><b>EFIMA</b> PGA</a>
+			<img src="<?= base_url() ?>assets/dist/img/logo_PJA.png">
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
