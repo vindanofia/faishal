@@ -29,7 +29,7 @@ class Auth extends CI_Controller
 					alert('Selamat, login berhasil');
 					window.location='" . site_url('Admin/dashboard') . "';
 					</script>";
-				} else if ($role == 2) {
+				} else {
 					echo "<script>
 					alert('Selamat, login berhasil');
 					window.location='" . site_url('Member/dashboard') . "';

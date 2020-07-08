@@ -9,11 +9,11 @@ class Pelanggaran_pegawai extends CI_Controller
 		parent::__construct();
 		check_not_login();
 		$this->load->model([
-			'Member/m_pelanggaran_pegawai',
-			'Member/m_pegawai',
-			'Member/m_jenis_pelanggaran',
-			'Member/m_list_pelanggaran',
-			'Member/m_sanksi'
+			'm_pelanggaran_pegawai',
+			'm_pegawai',
+			'm_jenis_pelanggaran',
+			'm_list_pelanggaran',
+			'm_sanksi'
 		]);
 	}
 
@@ -49,7 +49,7 @@ class Pelanggaran_pegawai extends CI_Controller
 	public function index()
 	{
 		$data['row'] = $this->m_pelanggaran_pegawai->get();
-		$this->template->load('template', 'Member/pelanggaran_pegawai', $data);
+		$this->template->load('template_member', 'Member/pelanggaran_pegawai', $data);
 	}
 
 	public function add()
@@ -81,7 +81,7 @@ class Pelanggaran_pegawai extends CI_Controller
 
 	public function process()
 	{
-		$config['upload_path'] = './uploads/';
+		$config['upload_path'] = './uploads/pegawai';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['max_size'] = 2048;
 		$config['max_width'] = 1024;

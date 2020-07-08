@@ -47,7 +47,7 @@ class Penghargaan_pegawai extends CI_Controller
 	public function index()
 	{
 		$data['row'] = $this->m_penghargaan_pegawai->get();
-		$this->template->load('template', 'Member/penghargaan_pegawai', $data);
+		$this->template->load('template_member', 'Member/penghargaan_pegawai', $data);
 	}
 
 	public function add()

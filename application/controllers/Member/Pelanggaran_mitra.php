@@ -51,7 +51,7 @@ class Pelanggaran_mitra extends CI_Controller
 	public function index()
 	{
 		$data['row'] = $this->m_pelanggaran_mitra->get();
-		$this->template->load('template', 'Member/pelanggaran_mitra', $data);
+		$this->template->load('template_member', 'Member/pelanggaran_mitra', $data);
 	}
 
 	public function add()
@@ -102,7 +102,7 @@ class Pelanggaran_mitra extends CI_Controller
 		$config['max_size'] = 2048;
 		$config['max_width'] = 1024;
 		$config['max_height'] = 768;
-		$config['file_name'] = 'pelanggaran-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+		$config['file_name'] = 'mitra-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 		$this->load->library('upload', $config);
 		$post = $this->input->post(null, TRUE);
 		if (isset($_POST['add'])) {
