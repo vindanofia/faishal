@@ -48,6 +48,6 @@ class Auth extends CI_Controller
 	{
 		$params = array('userid', 'level');
 		$this->session->unset_userdata($params);
-		redirect('auth/login');
+		redirect('efima');
 	}
 }
