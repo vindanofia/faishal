@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller
 	{
 		parent::__construct();
 		check_not_login();
-		$this->load->model('m_dashboard');
+		$this->load->model(['m_dashboard']);
 		// $this->load->library('form_validation');
 	}
 	public function index()

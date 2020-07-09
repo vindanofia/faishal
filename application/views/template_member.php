@@ -23,6 +23,14 @@
 	<!-- jvectormap -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/jvectormap/jquery-jvectormap.css">
 
+	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/jvectormap/jquery-jvectormap.css">
+
+	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/chart/Chart.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/chart/Chart.min.css" />
+
+	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/datepicker/bootstrap-datepicker.min.css" />
+	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/datepicker/bootstrap-datepicker.standalone.min.css" />
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -216,12 +224,78 @@
 		<!-- ChartJS -->
 		<script src="<?= base_url() ?>assets/bower_components/chart.js/Chart.js"></script>
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-		<script src="<?= base_url() ?>assets/dist/js/pages/dashboard2.js"></script>
+		<!-- <script src="<?= base_url() ?>assets/dist/js/pages/dashboard2.js"></script> -->
+
+		<script src="<?= base_url() ?>assets/dist/js/chart/Chart.bundle.js"></script>
+		<script src="<?= base_url() ?>assets/dist/js/chart/Chart.bundle.min.js"></script>
+		<script src="<?= base_url() ?>assets/dist/js/chart/Chart.js"></script>
+		<script src="<?= base_url() ?>assets/dist/js/chart/Chart.min.js"></script>
+
+		<script src="<?= base_url() ?>assets/dist/js/datepicker/bootstrap-datepicker.min.js"></script>
+		<script src="<?= base_url() ?>assets/dist/js/datepicker/bootstrap-datepicker.id.min.js"></script>
 
 		<script>
 			$(document).ready(function() {
 				$('#table1').DataTable()
 			})
+		</script>
+
+		<script>
+			var pelChart
+			var updatePelChart = function(e){
+				var period = $(e).val().replace(' ', '_')
+				$.get('List_pelanggaran/get_chart_data/'+period, function(result){
+					if(pelChart){
+						pelChart.destroy()
+						$('.ket-area').empty()
+					}
+					
+					var colors = [];
+					$.each(result.ket, function(index, value){
+						$('.ket-area').append('<h5>('+result.labels[index]+') '+value+'</h5>')
+						colors.push('rgb(115, 194, 251)')
+					})
+
+					pelChart= new Chart($('#pel-chart'), {
+						type: 'bar',
+						data: {
+							labels: result.labels,
+							datasets: [{
+								label: result.title,
+								data: result.data,
+								barPercentage: 0.5,
+								barThickness: 70,
+								maxBarThickness: 80,
+								minBarLength: 2,
+								backgroundColor: colors,
+							}]
+						},
+						options: {
+							scales: {
+								yAxes: [{
+									ticks: {
+										beginAtZero: true
+									}
+								}]
+							}
+						}
+					});
+				})
+			}
+
+			$('.month-year-picker').datepicker({
+				format: "MM yyyy",
+				viewMode: "months", 
+				minViewMode: "months",
+				language: "{{ app.request.locale }}",
+				autoclose: true,
+				months: [
+					"Januari", "Februari", "Maret", 
+					"April", "Mei", "Juni", "Juli", 
+					"Agustus", "September", "Oktober", 
+					"Nopember", "Desember"
+				],
+			}).datepicker('setDate', new Date());
 		</script>
 </body>
 

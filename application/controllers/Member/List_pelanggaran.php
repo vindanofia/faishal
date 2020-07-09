@@ -70,4 +70,25 @@ class List_pelanggaran extends CI_Controller
 		}
 		redirect('Member/list_pelanggaran');
 	}
+
+
+	public function get_chart_data($period = null){
+		$months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 
+		'Oktober', 'Nopember', 'Desember'];
+		if($period != null){
+			$period = explode("_",$period);
+			$bulan = intval(date("m", strtotime($period[0])));
+			$tahun = $period[1];
+			$title = 'bulan '.$months[$bulan-1].' tahun '.$tahun;
+		}else{
+			$tahun = $bulan = 0;
+			$title = 'Bulan - Tahun -';
+		}
+		
+		$result = $this->m_list_pelanggaran->chartDataPelPegawai($tahun, $bulan);
+		$result['title'] .= $title;
+
+		header('Content-Type: application/json');
+		echo json_encode($result);
+	}
 }
