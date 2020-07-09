@@ -46,7 +46,7 @@ body {
   position: relative;
 }
 .layout-boxed {
-  background: url('../img/boxed-bg.jpg') repeat fixed;
+  background: url('../img/photo4.jpg') repeat fixed;
 }
 /*
  * Content Wrapper - contains the main content
@@ -3246,7 +3246,7 @@ table.text-center th {
 }
 .login-page,
 .register-page {
-  background: #d2d6de;
+	background: url('../img/photo4.jpg') repeat fixed;
 }
 .login-box,
 .register-box {

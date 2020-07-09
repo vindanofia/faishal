@@ -70,7 +70,7 @@
 					<li><a href="#about">Profile</a></li>
 					<li><a href="#services">Berita</a></li>
 					<li><a href="#contact">Kontak</a></li>
-					<li class="active"><a href="<?= site_url('auth/login'); ?>">Login</a></li>
+					<li><a href="<?= site_url('auth/login'); ?>">Login</a></li>
 
 				</ul>
 			</nav><!-- .nav-menu -->
