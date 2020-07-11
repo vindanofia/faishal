@@ -56,7 +56,7 @@
 					<?php if ($page == 'edit') {
 						if ($row->foto != null) { ?>
 							<div style="margin-bottom: 5px">
-								<img src="<?= base_url('uploads/' . $row->foto) ?>" style="width:100px">
+								<img src="<?= base_url('uploads/pegawai' . $row->foto) ?>" style="width:100px">
 							</div>
 					<?php
 						}
