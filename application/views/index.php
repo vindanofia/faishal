@@ -82,7 +82,7 @@
 	<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
 		<div class="container" data-aos="fade-in">
 			<h1>Selamat Datang</h1>
-			<h2>di Website Resmi K3 PT. Petro Jordan Abadi</h2>
+			<h2>di Website K3 PJA</h2>
 		</div>
 	</section><!-- End Hero -->
 
@@ -91,34 +91,20 @@
 		<!-- ======= Why Us Section ======= -->
 		<section id="why-us" class="why-us">
 			<div class="container">
-
 				<div class="row">
 					<div class="col-xl-12 col-lg-7 d-flex">
 						<div class="icon-boxes d-flex flex-column justify-content-center">
 							<div class="row">
-								<div class="col-xl-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-									<div class="icon-box mt-4 mt-xl-0">
-										<i class="bx bx-receipt"></i>
-										<h4>VISI K3</h4>
-										<p>Menjadi organisasi profesi yang mandiri dan profesional dalam bidang keselamatan dan kesehatan kerja (k3) kontruksi</p>
-									</div>
-								</div>
-								<div class="col-xl-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-									<div class="icon-box mt-4 mt-xl-0">
-										<i class="bx bx-cube-alt"></i>
-										<h4>MISI K3</h4>
-										<p>* Membantu pemerintahan dalam melakukan pembinaan dan pengendalian serta pengawasan dan ditaatinya penyelenggaraan undang-undang dan peraturan k3 ,khususnya dibidang jasa dan kontruksi.</p>
-										<p>* Mengembangkan dan meningkatkan profesi ahli k3.</p>
-										<p>* Memberdayakan kemampuan profesi ahli k3 di indonesia.</p>
-										<p>* Mendorong terbentuknya masyarakat indonesia yang berbudaya k3 dalam sendi kehidupan.</p>
-										<p>* Program A2K4-indonesia.</p>
+								<div class="d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+									<div class="icon-box">
+										<h4>PETA POTENSI BAHAYA</h4>
+										<img src="<?= base_url() ?>flexor/assets/img/789.jpeg" alt="">
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</section><!-- End Why Us Section -->
 
@@ -164,7 +150,7 @@
 		</section><!-- End About Section -->
 
 		<!-- ======= Clients Section ======= -->
-		<section id="clients" class="clients">
+		<!-- <section id="clients" class="clients">
 			<div class="container" data-aos="fade-up">
 
 				<div class="owl-carousel clients-carousel">
@@ -179,7 +165,8 @@
 				</div>
 
 			</div>
-		</section><!-- End Clients Section -->
+		</section> -->
+		<!-- End Clients Section -->
 
 		<!-- ======= Services Section ======= -->
 		<section id="services" class="services section-bg">
@@ -193,48 +180,68 @@
 				<div class="row">
 					<div class="col-lg-4 col-md-6" data-aos="fade-up">
 						<div class="icon-box">
-							<div class="icon"><i class="icofont-computer"></i></div>
-							<h4 class="title"><a href="">Lorem Ipsum</a></h4>
-							<p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Topi Pelindung</a></h4>
+							<p class="description">Helmet atau Topi Pelindung digunakan untuk melindungi Kepala dari paparan bahaya seperti kejatuhan benda ataupun paparan bahaya aliran listrik.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
 						<div class="icon-box">
-							<div class="icon"><i class="icofont-chart-bar-graph"></i></div>
-							<h4 class="title"><a href="">Dolor Sitema</a></h4>
-							<p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Kaca Mata Pelindung</a></h4>
+							<p class="description">Kacamata Pelindung adalah alat yang digunakan untuk melindungi mata dari bahaya loncatan benda tajam, debu, partikel-partikel kecil, mengurangi sinar yang menyilaukan serta percikan bahan kimia.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
 						<div class="icon-box">
-							<div class="icon"><i class="icofont-earth"></i></div>
-							<h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-							<p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Penyumbat Telinga</a></h4>
+							<p class="description">Penyumbat Telinga atau Ear Plug digunakan untuk melindungi alat pendengaran yaitu telinga dari Intensitas Suara yang tinggi.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
 						<div class="icon-box">
-							<div class="icon"><i class="icofont-image"></i></div>
-							<h4 class="title"><a href="">Magni Dolores</a></h4>
-							<p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Penutup Telinga</a></h4>
+							<p class="description">Penutup Telinga atau Ear Muff adalah alat yang digunakan untuk melindungi alat pendengaran dari Intensitas Suara yang tinggi.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
 						<div class="icon-box">
-							<div class="icon"><i class="icofont-settings"></i></div>
-							<h4 class="title"><a href="">Nemo Enim</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Masker</a></h4>
+							<p class="description">Masker adalah alat yang digunakan untuk melindungi alat-alat pernafasan seperti Hidung dan Mulut dari resiko bahaya seperti asap solder, debu dan bau bahan kimia yang ringan.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
 						<div class="icon-box">
-							<div class="icon"><i class="icofont-tasks-alt"></i></div>
-							<h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-							<p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Respirator</a></h4>
+							<p class="description">Respirator adalah alat yang digunakan untuk melindungi alat-alat pernafasan seperti Hidung dan Mulut dari resiko bahaya seperti asap solder, bau bahan kimia, debu, Uap, Gas serta Partikel Mist dan Partikel Fume.</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+						<div class="icon-box">
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Apron</a></h4>
+							<p class="description">Apron atau sering disebut dengan Celemek adalah alat pelindung tubuh dari percikan bahan kimia dan suhu panas. Apron atau Celemek sering digunakan dalam proses persiapan bahan-bahan kimia dalam produksi seperti Grease, Oli, Minyak dan Adhesive.</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+						<div class="icon-box">
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Sarung Tangan</a></h4>
+							<p class="description">Sarung Tangan adalah perlengkapan yang digunkan untuk melindungi tangan dari kontak bahan kimia, tergores atau lukanya tangan akibat sentuhan dengan benda runcing dan tajam.</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+						<div class="icon-box">
+							<div class="icon"><i class="icofont-safety"></i></div>
+							<h4 class="title"><a href="">Sepatu Pelindung</a></h4>
+							<p class="description">Sepatu Pelindung atau Safety Shoes adalah perlengkapan yang digunakan untuk melindungi kaki dari kejatuhan benda, benda-benda tajam seperti kaca ataupun potongan baja, larutan kimia dan aliran listrik.</p>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</section><!-- End Services Section -->
 
@@ -286,7 +293,7 @@
 		</section><!-- End Values Section -->
 
 		<!-- ======= Testimonials Section ======= -->
-		<section id="testimonials" class="testimonials">
+		<!-- <section id="testimonials" class="testimonials">
 			<div class="container" data-aos="fade-up">
 
 				<div class="owl-carousel testimonials-carousel">
@@ -349,7 +356,8 @@
 				</div>
 
 			</div>
-		</section><!-- End Testimonials Section -->
+		</section> -->
+		<!-- End Testimonials Section -->
 
 		<!-- ======= Contact Section ======= -->
 		<section id="contact" class="contact">

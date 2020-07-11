@@ -83,7 +83,7 @@ class Pelanggaran_pegawai extends CI_Controller
 	{
 		$config['upload_path'] = './uploads/pegawai';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		$config['max_size'] = 2048;
+		$config['max_size'] = 20480;
 		$config['max_width'] = 1024;
 		$config['max_height'] = 768;
 		$config['file_name'] = 'pelanggaran-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);

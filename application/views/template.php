@@ -116,11 +116,11 @@
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">MAIN NAVIGATION</li>
-					<li <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
+					<!-- <li <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
 						<a href="<?= base_url('Admin/dashboard'); ?>">
 							<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 						</a>
-					</li>
+					</li> -->
 					<li class="treeview <?= $this->uri->segment(1) == 'user' ||
 											$this->uri->segment(1) == 'pegawai' ||
 											$this->uri->segment(1) == 'mitra' ||
