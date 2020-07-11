@@ -173,8 +173,8 @@
 			<div class="container">
 
 				<div class="section-title" data-aos="fade-up">
-					<h2>Services</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+					<h2>Alat Pelindung Diri</h2>
+					<p>Alat pelindung diri (APD) adalah seperangkat perlengkapan yang berfungsi untuk melindungi penggunanya dari bahaya atau gangguan kesehatan tertentu, misalnya infeksi virus atau bakteri. Bila digunakan dengan benar, APD mampu menghalangi masuknya virus atau bakteri ke dalam tubuh melalui mulut, hidung, mata, atau kulit.</p>
 				</div>
 
 				<div class="row">
