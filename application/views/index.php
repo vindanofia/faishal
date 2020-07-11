@@ -258,8 +258,8 @@
 								<div class="card" src="" style="background-image: url(<?= base_url('uploads/konten/' . $row['foto']) ?>">
 									<div class="card-body">
 										<h5 class="card-title"><a href=""><?php echo $row['judul_konten'] ?></a></h5>
-										<p class="card-text"><?php echo substr($row['deskripsi_konten'], 0, 200) ?></p>
-										<div class="read-more"><a href="<?= base_url('blog') ?>"><i class="icofont-arrow-right"></i> Read More</a></div>
+										<p class="card-text"><?php echo substr($row['deskripsi_konten'], 0, 200) ?>...</p>
+										<div class="read-more"><a href="<?= base_url('efima/konten_lengkap/' . $row['id_konten']) ?>"><i class="icofont-arrow-right"></i> Read More</a></div>
 									</div>
 								</div>
 							</div>
@@ -270,8 +270,8 @@
 								<div class="card" style="background-image: url(<?= base_url('uploads/konten/' . $row['foto']) ?>">
 									<div class="card-body">
 										<h5 class="card-title"><a href=""><?php echo $row['judul_konten'] ?></a></h5>
-										<p class="card-text"><?php echo substr($row['deskripsi_konten'], 0, 200) ?></p>
-										<div class="read-more"><a href="<?= base_url('blog') ?>"><i class="icofont-arrow-right"></i> Read More</a></div>
+										<p class="card-text"><?php echo substr($row['deskripsi_konten'], 0, 200) ?>...</p>
+										<div class="read-more"><a href="<?= base_url('efima/konten_lengkap/' . $row['id_konten']) ?>"><i class="icofont-arrow-right"></i> Read More</a></div>
 									</div>
 								</div>
 							</div>

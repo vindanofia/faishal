@@ -17,4 +17,11 @@ class Efima extends CI_Controller
 		);
 		$this->load->view('index', $data);
 	}
+	public function konten_lengkap()
+	{
+		$data = array(
+			'row' => $this->m_flexor->konten_lengkap($this->uri->segment(3))->row_array()
+		);
+		$this->load->view('blog-single', $data);
+	}
 }

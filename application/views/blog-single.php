@@ -87,7 +87,6 @@
 					<li><a href="<?= base_url() ?>">Home</a></li>
 					<li><a href="<?= base_url() ?>">Konten</a></li>
 				</ol>
-				<h2>Dolorum optio tempore voluptas dignissimos</h2>
 			</div>
 		</section><!-- End Breadcrumbs -->
 
@@ -102,25 +101,21 @@
 						<article class="entry entry-single">
 
 							<div class="entry-img">
-								<img src="<?= base_url() ?>flexor/assets/img/blog-1.jpg" alt="" class="img-fluid">
+								<img src="<?= base_url('uploads/konten/' . $row['foto']) ?>" alt="" class="img-fluid">
 							</div>
 
 							<h2 class="entry-title">
-								<a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+								<a href="blog-single.html"><?php echo $row['judul_konten'] ?></a>
 							</h2>
 
 							<div class="entry-meta">
 								<ul>
-									<li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
-									<li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+									<li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01"><?php echo $row['created'] ?></time></a></li>
 								</ul>
 							</div>
 
 							<div class="entry-content">
-								<p>
-									Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-									Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-								</p>
+								<p><?php echo $row['deskripsi_konten'] ?></p>
 							</div>
 						</article><!-- End blog entry -->
 					</div>
