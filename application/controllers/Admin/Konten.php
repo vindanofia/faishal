@@ -73,25 +73,17 @@ class Konten extends CI_Controller
 		$this->load->library('upload', $config);
 		$post = $this->input->post(null, TRUE);
 		if (isset($_POST['add'])) {
-			if (@$_FILES['image']['name'] != null) {
-				if ($this->upload->do_upload('image')) {
-					$post['image'] = $this->upload->data('file_name');
-					$this->m_konten->add($post);
-					if ($this->db->affected_rows() > 0) {
-						$this->session->set_flashdata('success', 'Data berhasil disimpan');
-					}
-					redirect('Admin/konten');
-				} else {
-					$error = $this->upload->display_errors();
-					$this->session->set_flashdata('error', $error);
-					redirect('Admin/konten/add');
-				}
-			} else {
+			if ($this->upload->do_upload('image')) {
+				$post['image'] = $this->upload->data('file_name');
 				$this->m_konten->add($post);
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				}
 				redirect('Admin/konten');
+			} else {
+				$error = $this->upload->display_errors();
+				$this->session->set_flashdata('error', $error);
+				redirect('Admin/konten/add');
 			}
 		} else if (isset($_POST['edit'])) {
 			if (@$_FILES['image']['name'] != null) {

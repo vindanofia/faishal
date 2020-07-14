@@ -39,7 +39,7 @@
 						<?php
 							}
 						} ?>
-						<input type="file" name="image" class="form-control">
+						<input type="file" name="image" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<button type="submit" name="<?= $page ?>" class="btn btn-success btn-flat">
