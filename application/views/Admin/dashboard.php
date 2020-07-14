@@ -1,40 +1,42 @@
-<h4>Cara Membuat Grafik dengan CodeIgniter dengan Chart.js</h4>
-<canvas id="myChart"></canvas>
-<?php
-//Inisialisasi nilai variabel awal
-$id_list_pel = '';
-$jumlah = null;
-foreach ($graph1->result() as $row) {
-	$list_pel = $row->id_list_pel;
-	$id_list_pel .= 'list_pel' . ', ';
-	$jum = $row->total;
-	$jumlah .= '$jum' . ', ';
-}
-?>
-<script>
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var chart = new Chart(ctx, {
-		// The type of chart we want to create
-		type: 'bar',
-		// The data for our dataset
-		data: {
-			labels: [<?php echo $id_list_pel; ?>],
-			datasets: [{
-				label: 'Data Pelanggaran Pegawai ',
-				backgroundColor: ['rgb(255, 99, 132)', 'rgba(56, 86, 255, 0.87)', 'rgb(60, 179, 113)', 'rgb(175, 238, 239)'],
-				borderColor: ['rgb(255, 99, 132)'],
-				data: [<?php echo $jumlah; ?>]
-			}]
-		},
-		// Configuration options go here
-		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
-					}
-				}]
-			}
-		}
-	});
-</script>
+<div id="page-wrapper">
+
+	<div class="container-fluid">
+
+		<!-- Page Heading -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>
+					<i class="fa fa-home fa-fw"></i> Homepage Admin
+				</h1>
+				<ol class="breadcrumb">
+					<li class="active">
+						Dashboard
+					</li>
+					<li>Home</li>
+				</ol>
+			</div>
+		</div>
+		<!-- /.row -->
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<!--konten pilihan start-->
+				<div class="jumbotron">
+					<div class="container">
+						<h1 class="display-3">SELAMAT DATANG </h1>
+						<p class="lead">Selamat bekerja ! Gunakan sistem ini untuk mencapai penegakan peraturan K3. Utamakan keselamatan dan kesehatan kerja</p>
+						<p>Tim Support</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->

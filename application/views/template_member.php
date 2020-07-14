@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>EFIMA PGA</title>
+	<title>SHE - PJA</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
@@ -50,7 +50,7 @@
 			<!-- Logo -->
 			<a href="<?= base_url() ?>assets/index2.html" class="logo">
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>EFIMA</b> PGA</span>
+				<span class="logo-lg"><b>SHE</b> PJA</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">
@@ -68,13 +68,13 @@
 						<!-- User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="<?= base_url() ?>assets/dist/img/avatar2.png" class="user-image" alt="User Image">
+								<img src="<?= base_url() ?>assets/dist/img/user.png" class="user-image" alt="User Image">
 								<span class="hidden-xs"><?= $this->fungsi->user_login()->username ?></span>
 							</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header">
-									<img src="<?= base_url() ?>assets/dist/img/avatar2.png" class="img-circle" alt="User Image">
+									<img src="<?= base_url() ?>assets/dist/img/user.png" class="img-circle" alt="User Image">
 
 									<p>
 										<?= ucfirst($this->fungsi->user_login()->name) ?>
@@ -103,7 +103,7 @@
 				<!-- Sidebar user panel -->
 				<div class="user-panel">
 					<div class="pull-left image">
-						<img src="<?= base_url() ?>assets/dist/img/avatar2.png" class="img-circle" alt="User Image">
+						<img src="<?= base_url() ?>assets/dist/img/user.png" class="img-circle" alt="User Image">
 					</div>
 					<div class="pull-left info">
 						<p><?= ucfirst($this->fungsi->user_login()->username) ?></p>
@@ -151,9 +151,9 @@
 							<li <?= $this->uri->segment(1) == 'pegawai_mitra' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Member/pegawai_mitra'); ?>"><i class="fa fa-circle-o"></i> Pegawai Mitra</a></li>
 							<li <?= $this->uri->segment(1) == 'list_pelanggaran' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Member/list_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> List Pelanggaran</a></li>
+								<a href="<?= site_url('Member/list_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> Daftar Tindakan Pelanggaran</a></li>
 							<li <?= $this->uri->segment(1) == 'jenis_penghargaan' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Member/reward'); ?>"><i class="fa fa-circle-o"></i> Jenis Penghargaan</a></li>
+								<a href="<?= site_url('Member/reward'); ?>"><i class="fa fa-circle-o"></i> Daftar Tindakan Apresiatif</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Member/sanksi'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi_mitra' ? 'class="active"' : '' ?>>
@@ -242,21 +242,21 @@
 
 		<script>
 			var pelChart
-			var updatePelChart = function(e){
+			var updatePelChart = function(e) {
 				var period = $(e).val().replace(' ', '_')
-				$.get('List_pelanggaran/get_chart_data/'+period, function(result){
-					if(pelChart){
+				$.get('List_pelanggaran/get_chart_data/' + period, function(result) {
+					if (pelChart) {
 						pelChart.destroy()
 						$('.ket-area').empty()
 					}
-					
+
 					var colors = [];
-					$.each(result.ket, function(index, value){
-						$('.ket-area').append('<h5>('+result.labels[index]+') '+value+'</h5>')
+					$.each(result.ket, function(index, value) {
+						$('.ket-area').append('<h5>(' + result.labels[index] + ') ' + value + '</h5>')
 						colors.push('rgb(115, 194, 251)')
 					})
 
-					pelChart= new Chart($('#pel-chart'), {
+					pelChart = new Chart($('#pel-chart'), {
 						type: 'bar',
 						data: {
 							labels: result.labels,
@@ -285,14 +285,14 @@
 
 			$('.month-year-picker').datepicker({
 				format: "MM yyyy",
-				viewMode: "months", 
+				viewMode: "months",
 				minViewMode: "months",
 				language: "{{ app.request.locale }}",
 				autoclose: true,
 				months: [
-					"Januari", "Februari", "Maret", 
-					"April", "Mei", "Juni", "Juli", 
-					"Agustus", "September", "Oktober", 
+					"Januari", "Februari", "Maret",
+					"April", "Mei", "Juni", "Juli",
+					"Agustus", "September", "Oktober",
 					"Nopember", "Desember"
 				],
 			}).datepicker('setDate', new Date());

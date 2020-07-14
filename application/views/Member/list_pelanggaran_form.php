@@ -1,5 +1,5 @@
 <h1>
-	List Pelanggaran
+	Daftar Tindakan Pelanggaran
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -9,7 +9,7 @@
 <!-- Main Content -->
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title"><?= ucfirst($page) ?> Data List Pelanggaran</h3>
+		<h3 class="box-title"><?= ucfirst($page) ?> Data Tindakan Pelanggaran</h3>
 		<div class="pull-right">
 			<a href="<?= site_url('Member/list_pelanggaran') ?>" class="btn btn-warning btn-flat">
 				<i class="fa fa-undo"></i> Kembali
@@ -21,7 +21,7 @@
 			<div class="col-md-4 col-md-offset-4">
 				<form action="<?= site_url('Member/list_pelanggaran/process'); ?>" method="post">
 					<div class="form-group">
-						<label>Nama List Pelanggaran *</label>
+						<label>Nama Tindakan Pelanggaran *</label>
 						<input type="hidden" name="id" value="<?= $row->id_list_pel ?>">
 						<input type="text" name="nama_pel" value="<?= $row->nama_list_pel ?>" class="form-control" required>
 					</div>

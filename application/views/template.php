@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>EFIMA PGA</title>
+	<title>SHE - PJA</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
@@ -42,7 +42,7 @@
 			<!-- Logo -->
 			<a href="<?= base_url() ?>assets/index2.html" class="logo">
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>EFIMA</b> PGA</span>
+				<span class="logo-lg"><b>SHE</b> PJA</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">
@@ -60,13 +60,13 @@
 						<!-- User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="<?= base_url() ?>assets/dist/img/avatar2.png" class="user-image" alt="User Image">
+								<img src="<?= base_url() ?>assets/dist/img/user.png" class="user-image" alt="User Image">
 								<span class="hidden-xs"><?= $this->fungsi->user_login()->username ?></span>
 							</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header">
-									<img src="<?= base_url() ?>assets/dist/img/avatar2.png" class="img-circle" alt="User Image">
+									<img src="<?= base_url() ?>assets/dist/img/user.png" class="img-circle" alt="User Image">
 
 									<p>
 										<?= ucfirst($this->fungsi->user_login()->name) ?>
@@ -95,7 +95,7 @@
 				<!-- Sidebar user panel -->
 				<div class="user-panel">
 					<div class="pull-left image">
-						<img src="<?= base_url() ?>assets/dist/img/avatar2.png" class="img-circle" alt="User Image">
+						<img src="<?= base_url() ?>assets/dist/img/user.png" class="img-circle" alt="User Image">
 					</div>
 					<div class="pull-left info">
 						<p><?= ucfirst($this->fungsi->user_login()->username) ?></p>
@@ -116,11 +116,11 @@
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">MAIN NAVIGATION</li>
-					<!-- <li <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
+					<li <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
 						<a href="<?= base_url('Admin/dashboard'); ?>">
 							<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 						</a>
-					</li> -->
+					</li>
 					<li class="treeview <?= $this->uri->segment(1) == 'user' ||
 											$this->uri->segment(1) == 'pegawai' ||
 											$this->uri->segment(1) == 'mitra' ||
@@ -145,9 +145,9 @@
 							<li <?= $this->uri->segment(1) == 'pegawai_mitra' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/pegawai_mitra'); ?>"><i class="fa fa-circle-o"></i> Pegawai Mitra</a></li>
 							<li <?= $this->uri->segment(1) == 'list_pelanggaran' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Admin/list_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> List Pelanggaran</a></li>
+								<a href="<?= site_url('Admin/list_pelanggaran'); ?>"><i class="fa fa-circle-o"></i> Daftar Tindakan Pelanggaran</a></li>
 							<li <?= $this->uri->segment(1) == 'jenis_penghargaan' ? 'class="active"' : '' ?>>
-								<a href="<?= site_url('Admin/reward'); ?>"><i class="fa fa-circle-o"></i> Jenis Penghargaan</a></li>
+								<a href="<?= site_url('Admin/reward'); ?>"><i class="fa fa-circle-o"></i> Daftar Tindakan Apresiatif</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi' ? 'class="active"' : '' ?>>
 								<a href="<?= site_url('Admin/sanksi'); ?>"><i class="fa fa-circle-o"></i> Sanksi Pegawai</a></li>
 							<li <?= $this->uri->segment(1) == 'sanksi_mitra' ? 'class="active"' : '' ?>>

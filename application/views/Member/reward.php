@@ -1,5 +1,5 @@
 <h1>
-	Jenis Penghargaan
+	Daftar Tindakan Apresiatif
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -10,7 +10,7 @@
 <?php $this->view('message') ?>
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title">Data Jenis Penghargaan</h3>
+		<h3 class="box-title">Data Tindakan Apresiatif</h3>
 		<div class="pull-right">
 			<a href="<?= site_url('Member/reward/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
@@ -22,7 +22,7 @@
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>Nama reward</th>
+					<th>Nama Tindakan Apresiatif</th>
 					<th>Point</th>
 					<th>Opsi</th>
 				</tr>
