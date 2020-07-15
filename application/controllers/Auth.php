@@ -25,10 +25,14 @@ class Auth extends CI_Controller
 				$this->session->set_userdata($params);
 				$role = $this->session->userdata('level');
 				if ($role == 1) {
-					echo "<script>
-					alert('Selamat, login berhasil');
-					window.location='" . site_url('Admin/dashboard') . "';
-					</script>";
+					echo "<script language=\"javascript\">
+					swal('Please adjust the values in user' , 'Bad data format', 'error');
+				  </script>";
+					redirect('Admin/dashboard');
+					// echo "<script>
+					// alert('Selamat, login berhasil');
+					// window.location='" . site_url('Admin/dashboard') . "';
+					// </script>";
 				} else {
 					echo "<script>
 					alert('Selamat, login berhasil');

@@ -23,6 +23,7 @@
 	<link href="<?= base_url() ?>flexor/assets/vendor/venobox/venobox.css" rel="stylesheet">
 	<link href="<?= base_url() ?>flexor/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 	<link href="<?= base_url() ?>flexor/assets/vendor/aos/aos.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/dist/sweetalert2.all.min.js">
 
 	<!-- Template Main CSS File -->
 	<link href="<?= base_url() ?>flexor/assets/css/style.css" rel="stylesheet">
@@ -110,6 +111,7 @@
 	<script src="<?= base_url() ?>flexor/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 	<script src="<?= base_url() ?>flexor/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 	<script src="<?= base_url() ?>flexor/assets/vendor/aos/aos.js"></script>
+	<script src="<?= base_url() ?>assets/dist/dist/sweetalert2.all.min.js"></script>
 
 	<!-- Template Main JS File -->
 	<script src="<?= base_url() ?>flexor/assets/js/main.js"></script>
@@ -119,6 +121,15 @@
 				checkboxClass: 'icheckbox_square-blue',
 				radioClass: 'iradio_square-blue',
 				increaseArea: '20%' /* optional */
+			});
+			$(".btn-primary").click(function() {
+				Swal.fire({
+					position: 'top-end',
+					icon: 'success',
+					title: 'Your work has been saved',
+					showConfirmButton: false,
+					timer: 1500
+				});
 			});
 		});
 	</script>

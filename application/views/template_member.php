@@ -233,6 +233,8 @@
 
 		<script src="<?= base_url() ?>assets/dist/js/datepicker/bootstrap-datepicker.min.js"></script>
 		<script src="<?= base_url() ?>assets/dist/js/datepicker/bootstrap-datepicker.id.min.js"></script>
+		<script src="<?= base_url() ?>assets/dist/dist/sweetalert2.all.min.js"></script>
+
 
 		<script>
 			$(document).ready(function() {

@@ -221,6 +221,7 @@
 		<script src="<?= base_url() ?>assets/bower_components/chart.js/Chart.js"></script>
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 		<script src="<?= base_url() ?>assets/dist/js/pages/dashboard2.js"></script>
+		<script src="<?= base_url() ?>assets/dist/dist/sweetalert2.all.min.js"></script>
 
 		<script>
 			$(document).ready(function() {
