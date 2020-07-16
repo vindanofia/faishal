@@ -3,8 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Excel
 {
-	public function __construct(){
-		$CI =&get_instance();
+	public function __construct()
+	{
+		$CI = &get_instance();
 
 		$CI->load->model(['m_sanksi', 'm_pegawai', 'm_pegawai_mitra']);
 		$this->m_sanksi = $CI->m_sanksi;
@@ -12,9 +13,10 @@ class Excel
 		$this->m_pegawai_mitra = $CI->m_pegawai_mitra;
 	}
 
-    public function getExcel($type){
-        include APPPATH.'third_party/PHPExcel/PHPExcel.php';
-	
+	public function getExcel($type)
+	{
+		include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
 		$excel = new PHPExcel();
 		$style_col = array(
 			'font' => array('bold' => true), // Set font nya jadi bold
@@ -42,18 +44,18 @@ class Excel
 			)
 		);
 
-		switch($type){
-			case 'pegawai' :
+		switch ($type) {
+			case 'pegawai':
 				$data = $this->m_pegawai->get()->result();
 				$key_data = array('nama_pegawai', 'nip_pegawai', 'point', 'potongan');
 				$header = 'DATA PEGAWAI';
 				break;
-			case 'pegawai_mitra' :
+			case 'pegawai_mitra':
 				$data = $this->m_pegawai_mitra->get()->result();
 				$key_data = ['nama_pegawai_mitra', 'nip_pegawai_mitra', 'point_peg_mitra', 'potongan_peg_mitra'];
 				$header = 'DATA PEGAWAI MITRA';
 				break;
-			default :
+			default:
 				$data = null;
 		}
 
@@ -61,7 +63,7 @@ class Excel
 		$excel->getActiveSheet()->mergeCells('A1:F1');
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE);
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15);
-		$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); 
+		$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
 		$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5);
 		$excel->getActiveSheet()->getColumnDimension('B')->setWidth(30);
@@ -86,33 +88,33 @@ class Excel
 
 		$no = 1;
 		$numrow = 3;
-		if($data != null){
-			foreach($data as $pegawai){
-				$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-				$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $pegawai->{$key_data[0]});
-				$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $pegawai->{$key_data[1]});
-				$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $this->m_sanksi->getSanksi($pegawai->{$key_data[2]}));
-				$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $pegawai->{$key_data[2]});
-				$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $this->m_sanksi->getSanksi($pegawai->{$key_data[3]}, true));
-	
-				$excel->getActiveSheet()->getStyle('A'.$numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-				$excel->getActiveSheet()->getStyle('C'.$numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-				$excel->getActiveSheet()->getStyle('D'.$numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-				$excel->getActiveSheet()->getStyle('E'.$numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-				$excel->getActiveSheet()->getStyle('F'.$numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-				
-				$excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
-				$excel->getActiveSheet()->getStyle('B'.$numrow)->applyFromArray($style_row);
-				$excel->getActiveSheet()->getStyle('C'.$numrow)->applyFromArray($style_row);
-				$excel->getActiveSheet()->getStyle('D'.$numrow)->applyFromArray($style_row);
-				$excel->getActiveSheet()->getStyle('E'.$numrow)->applyFromArray($style_row);
-				$excel->getActiveSheet()->getStyle('F'.$numrow)->applyFromArray($style_row);
-	
+		if ($data != null) {
+			foreach ($data as $pegawai) {
+				$excel->setActiveSheetIndex(0)->setCellValue('A' . $numrow, $no);
+				$excel->setActiveSheetIndex(0)->setCellValue('B' . $numrow, $pegawai->{$key_data[0]});
+				$excel->setActiveSheetIndex(0)->setCellValue('C' . $numrow, $pegawai->{$key_data[1]});
+				$excel->setActiveSheetIndex(0)->setCellValue('D' . $numrow, $this->m_sanksi->getSanksi($pegawai->{$key_data[2]}));
+				$excel->setActiveSheetIndex(0)->setCellValue('E' . $numrow, $pegawai->{$key_data[2]});
+				$excel->setActiveSheetIndex(0)->setCellValue('F' . $numrow, $this->m_sanksi->getSanksi($pegawai->{$key_data[2]}, true));
+
+				$excel->getActiveSheet()->getStyle('A' . $numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+				$excel->getActiveSheet()->getStyle('C' . $numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+				$excel->getActiveSheet()->getStyle('D' . $numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+				$excel->getActiveSheet()->getStyle('E' . $numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+				$excel->getActiveSheet()->getStyle('F' . $numrow)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+				$excel->getActiveSheet()->getStyle('A' . $numrow)->applyFromArray($style_row);
+				$excel->getActiveSheet()->getStyle('B' . $numrow)->applyFromArray($style_row);
+				$excel->getActiveSheet()->getStyle('C' . $numrow)->applyFromArray($style_row);
+				$excel->getActiveSheet()->getStyle('D' . $numrow)->applyFromArray($style_row);
+				$excel->getActiveSheet()->getStyle('E' . $numrow)->applyFromArray($style_row);
+				$excel->getActiveSheet()->getStyle('F' . $numrow)->applyFromArray($style_row);
+
 				$numrow++;
 				$no++;
 			}
 		}
-		
-        return $excel;
-    }
+
+		return $excel;
+	}
 }

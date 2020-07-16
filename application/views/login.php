@@ -23,7 +23,7 @@
 	<link href="<?= base_url() ?>flexor/assets/vendor/venobox/venobox.css" rel="stylesheet">
 	<link href="<?= base_url() ?>flexor/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 	<link href="<?= base_url() ?>flexor/assets/vendor/aos/aos.css" rel="stylesheet">
-	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/dist/sweetalert2.all.min.js">
+	<link href="<?= base_url() ?>assets/dist/dist/sweetalert2.all.min.js">
 
 	<!-- Template Main CSS File -->
 	<link href="<?= base_url() ?>flexor/assets/css/style.css" rel="stylesheet">
@@ -115,24 +115,6 @@
 
 	<!-- Template Main JS File -->
 	<script src="<?= base_url() ?>flexor/assets/js/main.js"></script>
-	<script>
-		$(function() {
-			$('input').iCheck({
-				checkboxClass: 'icheckbox_square-blue',
-				radioClass: 'iradio_square-blue',
-				increaseArea: '20%' /* optional */
-			});
-			$(".btn-primary").click(function() {
-				Swal.fire({
-					position: 'top-end',
-					icon: 'success',
-					title: 'Your work has been saved',
-					showConfirmButton: false,
-					timer: 1500
-				});
-			});
-		});
-	</script>
 </body>
 
 </html>

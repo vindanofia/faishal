@@ -19,35 +19,35 @@
 	<div class="box-body">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<form action="<?= site_url('Admin/konten/process'); ?>" method="post">
-					<div class="form-group">
-						<label>Judul Konten *</label>
-						<input type="hidden" name="id" value="<?= $row->id_konten ?>">
-						<input type="text" name="judul_konten" value="<?= $row->judul_konten ?>" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Deskripsi *</label>
-						<input type="text" name="deskripsi_konten" value="<?= $row->deskripsi_konten ?>" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Gambar *</label>
-						<?php if ($page == 'edit') {
-							if ($row->foto != null) { ?>
-								<div style="margin-bottom: 5px">
-									<img src="<?= base_url('uploads/konten' . $row->foto) ?>" style="width:100px">
-								</div>
-						<?php
-							}
-						} ?>
-						<input type="file" name="image" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<button type="submit" name="<?= $page ?>" class="btn btn-success btn-flat">
-							<i class="fa fa-paper-plane"></i> Simpan
-						</button>
-						<button type="reset" class="btn btn-flat">Reset</button>
-					</div>
-				</form>
+				<?php echo form_open_multipart('Admin/konten/process') ?>
+				<div class="form-group">
+					<label>Judul Konten *</label>
+					<input type="hidden" name="id" value="<?= $row->id_konten ?>">
+					<input type="text" name="judul_konten" value="<?= $row->judul_konten ?>" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label>Deskripsi *</label>
+					<input type="text" name="deskripsi_konten" value="<?= $row->deskripsi_konten ?>" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label>Gambar *</label>
+					<?php if ($page == 'edit') {
+						if ($row->foto != null) { ?>
+							<div style="margin-bottom: 5px">
+								<img src="<?= base_url('uploads/konten' . $row->foto) ?>" style="width:100px">
+							</div>
+					<?php
+						}
+					} ?>
+					<input type="file" name="image" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<button type="submit" name="<?= $page ?>" class="btn btn-success btn-flat">
+						<i class="fa fa-paper-plane"></i> Simpan
+					</button>
+					<button type="reset" class="btn btn-flat">Reset</button>
+				</div>
+				<?php echo form_close() ?>
 			</div>
 		</div>
 	</div>

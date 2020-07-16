@@ -9,7 +9,7 @@ class M_flexor extends CI_Model
 	function get()
 	{
 		$this->db->where('deleted', 1);
-		$this->db->limit(4);
+		// $this->db->limit(4);
 		$this->db->order_by('created', 'DESC');
 		return $this->db->get('m_konten');
 	}
@@ -18,7 +18,7 @@ class M_flexor extends CI_Model
 	{
 		$this->db->where('id_konten', $id_konten);
 		$this->db->where('deleted', 1);
-		$this->db->limit(4);
+		// $this->db->limit(4);
 		$this->db->order_by('created', 'DESC');
 		return $this->db->get('m_konten');
 	}
