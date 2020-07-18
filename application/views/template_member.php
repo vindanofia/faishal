@@ -173,6 +173,7 @@
 							<li><a href="<?= site_url('Member/pelanggaran_pegawai'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Pegawai</a></li>
 							<li><a href="<?= site_url('Member/pelanggaran_mitra'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Mitra</a></li>
 							<li><a href="<?= site_url('Member/penghargaan_pegawai'); ?>"><i class="fa fa-circle-o"></i> Apresiasi Pegawai</a></li>
+							<li><a href="<?= site_url('Member/penghargaan_mitra'); ?>"><i class="fa fa-circle-o"></i> Apresiasi Mitra</a></li>
 						</ul>
 					</li>
 				</ul>
