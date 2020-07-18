@@ -34,10 +34,10 @@ class Auth extends CI_Controller
 					// window.location='" . site_url('Admin/dashboard') . "';
 					// </script>";
 				} else {
-					echo "<script>
-					alert('Selamat, login berhasil');
-					window.location='" . site_url('Member/dashboard') . "';
-					</script>";
+					echo "<script language=\"javascript\">
+					swal('Please adjust the values in user' , 'Bad data format', 'error');
+				  </script>";
+					redirect('Member/dashboard');
 				}
 			} else {
 				echo "<script>

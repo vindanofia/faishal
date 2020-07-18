@@ -77,7 +77,7 @@
 
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="<?= base_url() ?>assets/index2.html" class="logo">
+			<a href="<?= base_url('Admin/dashboard'); ?>" class="logo">
 				<!-- logo for regular state and mobile devices -->
 				<span class="logo-lg"><b>SHE</b> PJA</span>
 			</a>

@@ -68,7 +68,7 @@
 				<ul>
 					<li class="active"><a href="<?= base_url() ?>">Home</a></li>
 					<li><a href="#about">Profile</a></li>
-					<li><a href="#services">Berita</a></li>
+					<li><a href="#services">Informasi</a></li>
 					<li><a href="#contact">Kontak</a></li>
 					<li><a href="<?= site_url('auth/login'); ?>">Login</a></li>
 
@@ -174,43 +174,29 @@
 
 				<div class="section-title" data-aos="fade-up">
 					<h2>Alat Pelindung Diri</h2>
-					<p>Alat pelindung diri (APD) adalah seperangkat perlengkapan yang berfungsi untuk melindungi penggunanya dari bahaya atau gangguan kesehatan tertentu, misalnya infeksi virus atau bakteri. Bila digunakan dengan benar, APD mampu menghalangi masuknya virus atau bakteri ke dalam tubuh melalui mulut, hidung, mata, atau kulit.</p>
+					<p>APD adalah suatu alat yang mempunyai kemampuan untuk melindungi seseorang yang fungsinya mengisolasi sebagian atau seluruh tubuh dari potensi bahaya di tempat kerja. APD ini terdiri dari kelengkapan wajib yang digunakan oleh pekerja sesuai dengan bahaya dan risiko kerja yang digunakan untuk menjaga keselamatan pekerja sekaligus orang di sekelilingnya.</p>
 				</div>
 
 				<div class="row">
 					<div class="col-lg-4 col-md-6" data-aos="fade-up">
 						<div class="icon-box">
 							<div class="icon"><i class="icofont-safety"></i></div>
-							<h4 class="title"><a href="">Topi Pelindung</a></h4>
+							<h4 class="title"><a href="">Safety Helmet</a></h4>
 							<p class="description">Helmet atau Topi Pelindung digunakan untuk melindungi Kepala dari paparan bahaya seperti kejatuhan benda ataupun paparan bahaya aliran listrik.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
 						<div class="icon-box">
 							<div class="icon"><i class="icofont-safety"></i></div>
-							<h4 class="title"><a href="">Kaca Mata Pelindung</a></h4>
+							<h4 class="title"><a href="">Safety Glasses</a></h4>
 							<p class="description">Kacamata Pelindung adalah alat yang digunakan untuk melindungi mata dari bahaya loncatan benda tajam, debu, partikel-partikel kecil, mengurangi sinar yang menyilaukan serta percikan bahan kimia.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
 						<div class="icon-box">
 							<div class="icon"><i class="icofont-safety"></i></div>
-							<h4 class="title"><a href="">Penyumbat Telinga</a></h4>
+							<h4 class="title"><a href="">Ear Plug</a></h4>
 							<p class="description">Penyumbat Telinga atau Ear Plug digunakan untuk melindungi alat pendengaran yaitu telinga dari Intensitas Suara yang tinggi.</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-						<div class="icon-box">
-							<div class="icon"><i class="icofont-safety"></i></div>
-							<h4 class="title"><a href="">Penutup Telinga</a></h4>
-							<p class="description">Penutup Telinga atau Ear Muff adalah alat yang digunakan untuk melindungi alat pendengaran dari Intensitas Suara yang tinggi.</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-						<div class="icon-box">
-							<div class="icon"><i class="icofont-safety"></i></div>
-							<h4 class="title"><a href="">Masker</a></h4>
-							<p class="description">Masker adalah alat yang digunakan untuk melindungi alat-alat pernafasan seperti Hidung dan Mulut dari resiko bahaya seperti asap solder, debu dan bau bahan kimia yang ringan.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
@@ -223,21 +209,14 @@
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
 						<div class="icon-box">
 							<div class="icon"><i class="icofont-safety"></i></div>
-							<h4 class="title"><a href="">Apron</a></h4>
-							<p class="description">Apron atau sering disebut dengan Celemek adalah alat pelindung tubuh dari percikan bahan kimia dan suhu panas. Apron atau Celemek sering digunakan dalam proses persiapan bahan-bahan kimia dalam produksi seperti Grease, Oli, Minyak dan Adhesive.</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-						<div class="icon-box">
-							<div class="icon"><i class="icofont-safety"></i></div>
-							<h4 class="title"><a href="">Sarung Tangan</a></h4>
+							<h4 class="title"><a href="">Safety Gloves</a></h4>
 							<p class="description">Sarung Tangan adalah perlengkapan yang digunkan untuk melindungi tangan dari kontak bahan kimia, tergores atau lukanya tangan akibat sentuhan dengan benda runcing dan tajam.</p>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
 						<div class="icon-box">
 							<div class="icon"><i class="icofont-safety"></i></div>
-							<h4 class="title"><a href="">Sepatu Pelindung</a></h4>
+							<h4 class="title"><a href="">Safety Shoes</a></h4>
 							<p class="description">Sepatu Pelindung atau Safety Shoes adalah perlengkapan yang digunakan untuk melindungi kaki dari kejatuhan benda, benda-benda tajam seperti kaca ataupun potongan baja, larutan kimia dan aliran listrik.</p>
 						</div>
 					</div>
