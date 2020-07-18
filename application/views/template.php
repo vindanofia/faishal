@@ -36,6 +36,43 @@
 
 <body class="hold-transition skin-blue sidebar-mini">
 	<!-- Site wrapper -->
+	<!-- Modal Awal -->
+	<div class="modal fade in" id="my-modal">
+		<div class="modal-dialog moda-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">x</button>
+					<div class="modal-title">
+						<h5>Edit Profile</h5>
+					</div>
+				</div>
+				<div class="modal-body">
+					<form id="mb">
+						<input type="hidden" name="id" value="">
+
+						<div class="form-group">
+							<label>Username</label>
+							<input type="password" name="passlama" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Password Lama *</label>
+							<input type="password" name="passlama" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Password Baru *</label>
+							<input type="password" name="passbaru" class="form-control" required>
+						</div>
+						<div class="form-group clearfix">
+							<button type="button" data-dismiss="modal">Batal</button>
+							<button type="button" id='btn' class="btn btn-success pull-right">Simpan</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Modal -->
+
 	<div class="wrapper">
 
 		<header class="main-header">
@@ -75,6 +112,9 @@
 								</li>
 								<!-- Menu Footer-->
 								<li class="user-footer">
+									<div class="pull-left">
+										<a href="" class="btn btn-default btn-flat bg-red" id="change">Edit Profile</a>
+									</div>
 									<div class="pull-right">
 										<a href="<?= site_url('auth/logout'); ?>" class="btn btn-default btn-flat bg-red">Sign out</a>
 									</div>
@@ -157,7 +197,7 @@
 						</ul>
 					</li>
 
-					<li class="treeview">
+					<!-- <li class="treeview">
 						<a href="#">
 							<i class="fa fa-laptop"></i>
 							<span>Realisasi</span>
@@ -170,7 +210,7 @@
 							<li><a href="<?= site_url('Admin/pelanggaran_mitra'); ?>"><i class="fa fa-circle-o"></i> Pelanggaran Mitra</a></li>
 							<li><a href="<?= site_url('Admin/penghargaan_pegawai'); ?>"><i class="fa fa-circle-o"></i> Apresiasi Pegawai</a></li>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 			</section>
 			<!-- /.sidebar -->
@@ -227,6 +267,13 @@
 			$(document).ready(function() {
 				$('#table1').DataTable()
 			})
+			$('#change').click(function(e) {
+				e.preventDefault();
+				$('#my-modal').modal({
+					backdrop: 'static',
+					show: true
+				});
+			});
 		</script>
 </body>
 

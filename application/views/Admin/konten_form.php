@@ -27,14 +27,14 @@
 				</div>
 				<div class="form-group">
 					<label>Deskripsi *</label>
-					<input type="text" name="deskripsi_konten" value="<?= $row->deskripsi_konten ?>" class="form-control" required>
+					<textarea name="deskripsi_konten" style="width:395px; height:80px" class="form-control" required><?= $row->deskripsi_konten ?></textarea>
 				</div>
 				<div class="form-group">
 					<label>Gambar *</label>
 					<?php if ($page == 'edit') {
 						if ($row->foto != null) { ?>
 							<div style="margin-bottom: 5px">
-								<img src="<?= base_url('uploads/konten' . $row->foto) ?>" style="width:100px">
+								<img src="<?php echo base_url(); ?>uploads/konten/<?= $row->foto ?>" style="width:80%">
 							</div>
 					<?php
 						}

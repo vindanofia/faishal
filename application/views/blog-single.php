@@ -115,7 +115,7 @@
 							</div>
 
 							<div class="entry-content">
-								<p><?php echo $row['deskripsi_konten'] ?></p>
+								<?php echo nl2br($row['deskripsi_konten']) ?>
 							</div>
 						</article><!-- End blog entry -->
 					</div>

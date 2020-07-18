@@ -32,7 +32,7 @@ class Pelanggaran_pegawai extends CI_Controller
 			$row[] = $pegawai->lokasi;
 			$row[] = $pegawai->deskripsi;
 			$row[] = $pegawai->point_pel;
-			$row[] = $pegawai->foto;
+			$row[] = '<img src="' . base_url() . 'uploads/pegawai/' . $pegawai->foto . '" style="width:80%">';
 			$row[] = '<a href="' . site_url('Member/pelanggaran_pegawai/del/' . $pegawai->id_pelanggaran_peg) . '/' . $pegawai->id_pegawai . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
 			$data[] = $row;
 		}

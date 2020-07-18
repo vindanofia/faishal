@@ -24,7 +24,7 @@ class Konten extends CI_Controller
 			$row[] = $no . ".";
 			$row[] = $konten->judul_konten;
 			$row[] = $konten->deskripsi_konten;
-			$row[] = $konten->foto;
+			$row[] = '<img src="' . base_url() . 'uploads/konten/' . $konten->foto . '">';
 			$row[] = '<a href="' . site_url('Admin/konten/edit/' . $konten->id_konten) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
 			<a href="' . site_url('Admin/konten/del/' . $konten->id_konten) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
 			$data[] = $row;
@@ -67,8 +67,6 @@ class Konten extends CI_Controller
 		$config['upload_path'] = './uploads/konten';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['max_size'] = 20480;
-		$config['max_width'] = 1024;
-		$config['max_height'] = 768;
 		$config['file_name'] = 'konten-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 		$this->load->library('upload', $config);
 		$post = $this->input->post(null, TRUE);

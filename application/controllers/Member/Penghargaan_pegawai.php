@@ -30,7 +30,7 @@ class Penghargaan_pegawai extends CI_Controller
 			$row[] = $pegawai->lokasi;
 			$row[] = $pegawai->deskripsi;
 			$row[] = $pegawai->point_penghargaan;
-			$row[] = $pegawai->foto;
+			$row[] = '<img src="' . base_url() . 'uploads/apresiasi/' . $pegawai->foto . '" style="width:80%">';
 			$row[] = '<a href="' . site_url('Member/penghargaan_pegawai/del/' . $pegawai->id_penghargaan_peg) . '/' . $pegawai->id_pegawai . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
 			$data[] = $row;
 		}

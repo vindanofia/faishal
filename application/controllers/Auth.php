@@ -48,6 +48,11 @@ class Auth extends CI_Controller
 		}
 	}
 
+	public function change_password()
+	{
+		$this->load->view('changepassword');
+	}
+
 	public function logout()
 	{
 		$params = array('userid', 'level');
