@@ -11,6 +11,7 @@ class Penghargaan_mitra extends CI_Controller
 		$this->load->model([
 			'm_penghargaan_mitra',
 			'm_mitra',
+			'm_pegawai_mitra',
 			'm_reward',
 		]);
 	}
@@ -25,6 +26,7 @@ class Penghargaan_mitra extends CI_Controller
 			$row = array();
 			$row[] = $no . ".";
 			$row[] = $mitra->nama_mitra;
+			$row[] = $mitra->nama_pegawai_mitra;
 			$row[] = $mitra->nama_reward;
 			$row[] = $mitra->tanggal;
 			$row[] = $mitra->lokasi;
@@ -55,6 +57,7 @@ class Penghargaan_mitra extends CI_Controller
 		$penghargaan_mitra = new stdClass();
 		$penghargaan_mitra->id_penghargaan_mitra = null;
 		$penghargaan_mitra->id_mitra = null;
+		$penghargaan_mitra->id_pegawai_mitra = null;
 		$penghargaan_mitra->id_reward = null;
 		$penghargaan_mitra->tanggal = null;
 		$penghargaan_mitra->lokasi = null;
@@ -62,8 +65,18 @@ class Penghargaan_mitra extends CI_Controller
 		$penghargaan_mitra->foto = null;
 
 		$query_mitra = $this->m_mitra->get();
+		$mitra[null] = '- Pilih -';
+		$id_mitra = $this->input->post('id_mitra');
+		$query_pegawai_mitra = $this->m_pegawai_mitra->get_mitra($id_mitra);
+		$pegawai_mitra[null] = '- Pilih -';
 		$query_jenis_penghargaan = $this->m_reward->get();
 		$jenis_penghargaan[null] = '- Pilih -';
+		foreach ($query_mitra->result() as $mitra1) {
+			$mitra[$mitra1->id_mitra] = $mitra1->nama_mitra;
+		}
+		foreach ($query_pegawai_mitra as $peg_mitra) {
+			$pegawai_mitra[$peg_mitra->id_pegawai_mitra] = $peg_mitra->nama_pegawai_mitra;
+		}
 		foreach ($query_jenis_penghargaan->result() as $jenis_reward) {
 			$jenis_penghargaan[$jenis_reward->id_reward] = $jenis_reward->nama_reward;
 		}
@@ -71,7 +84,8 @@ class Penghargaan_mitra extends CI_Controller
 		$data = array(
 			'page' => 'add',
 			'row' => $penghargaan_mitra,
-			'mitra' => $query_mitra,
+			'mitra' => $mitra, 'selectedmitra' => null,
+			'pegawai_mitra' => $pegawai_mitra, 'selectedpegmitra' => null,
 			'jenis_penghargaan' => $jenis_penghargaan, 'selectedjenispel' => null,
 		);
 		$this->template->load('template', 'Member/penghargaan_mitra_form', $data);
@@ -90,7 +104,7 @@ class Penghargaan_mitra extends CI_Controller
 				if ($this->upload->do_upload('image')) {
 					$post['image'] = $this->upload->data('file_name');
 					$this->m_penghargaan_mitra->add($post);
-					$this->m_mitra->update_penghargaan($post);
+					$this->m_pegawai_mitra->update_penghargaan($post);
 					if ($this->db->affected_rows() > 0) {
 						$this->session->set_flashdata('success', 'Data berhasil disimpan');
 					}
@@ -102,7 +116,7 @@ class Penghargaan_mitra extends CI_Controller
 				}
 			} else {
 				$this->m_penghargaan_mitra->add($post);
-				$this->m_mitra->update_penghargaan($post);
+				$this->m_pegawai_mitra->update_penghargaan($post);
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				}
@@ -118,7 +132,7 @@ class Penghargaan_mitra extends CI_Controller
 					}
 					$post['image'] = $this->upload->data('file_name');
 					$this->m_penghargaan_mitra->edit($post);
-					$this->m_mitra->update_penghargaan($post);
+					$this->m_pegawai_mitra->update_penghargaan($post);
 					if ($this->db->affected_rows() > 0) {
 						$this->session->set_flashdata('success', 'Data berhasil disimpan');
 					}
@@ -130,7 +144,7 @@ class Penghargaan_mitra extends CI_Controller
 				}
 			} else {
 				$this->m_penghargaan_mitra->edit($post);
-				$this->m_mitra->update_penghargaan($post);
+				$this->m_pegawai_mitra->update_penghargaan($post);
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				}
@@ -145,8 +159,17 @@ class Penghargaan_mitra extends CI_Controller
 		if ($query->num_rows() > 0) {
 			$penghargaan_mitra = $query->row();
 			$query_mitra = $this->m_mitra->get();
+			$mitra[null] = '- Pilih -';
+			$query_pegawai_mitra = $this->m_pegawai_mitra->get();
+			$pegawai_mitra[null] = '- Pilih -';
 			$query_jenis_penghargaan = $this->m_jenis_penghargaan->get();
 			$jenis_penghargaan[null] = '- Pilih -';
+			foreach ($query_mitra->result() as $mitra1) {
+				$mitra[$mitra1->id_mitra] = $mitra1->nama_mitra;
+			}
+			foreach ($query_pegawai_mitra->result() as $peg_mitra) {
+				$pegawai_mitra[$peg_mitra->id_pegawai_mitra] = $peg_mitra->nama_pegawai_mitra;
+			}
 			foreach ($query_jenis_penghargaan->result() as $jenis_apresiasi) {
 				$jenis_penghargaan[$jenis_apresiasi->id_reward] = $jenis_apresiasi->nama_reward;
 			}
@@ -154,7 +177,8 @@ class Penghargaan_mitra extends CI_Controller
 			$data = array(
 				'page' => 'edit',
 				'row' => $penghargaan_mitra,
-				'mitra' => $query_mitra,
+				'mitra' => $mitra, 'selectedmitra' => null,
+				'pegawai_mitra' => $pegawai_mitra, 'selectedpegmitra' => null,
 				'jenis_penghargaan' => $jenis_penghargaan, 'selectedjenispel' => $penghargaan_mitra->id_jenis_pel,
 			);
 			$this->template->load('template', 'Member/penghargaan_mitra_form', $data);

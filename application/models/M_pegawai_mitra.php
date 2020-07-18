@@ -155,4 +155,20 @@ class M_pegawai_mitra extends CI_Model
 			'potongan_peg_mitra' => 0,
 		]);
 	}
+
+	public function update_penghargaan($data)
+	{
+		$id_reward = $data['jenis_penghargaan'];
+		$id_pegawai_mitra = $data['mitra'];
+		$this->db->from('m_jenis_penghargaan');
+		$this->db->where('id_reward', $id_reward);
+		$query = $this->db->get()->row();
+		$point_penghargaan = $query->point_reward;
+		if ($point <= $point_penghargaan) {
+			$sql = 'UPDATE m_pegawai_mitra SET point = 0 WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
+		} else {
+			$sql = 'UPDATE m_pegawai_mitra SET point = point - ' . $point_penghargaan . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
+		}
+		$this->db->query($sql);
+	}
 }

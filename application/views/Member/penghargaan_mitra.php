@@ -22,8 +22,9 @@
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>Nama mitra</th>
-					<th>Jenis penghargaan</th>
+					<th>Nama Perusahaan</th>
+					<th>Nama Pegawai</th>
+					<th>Jenis Apresiasi</th>
 					<th>Tanggal</th>
 					<th>Lokasi</th>
 					<th>Deskripsi</th>

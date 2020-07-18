@@ -150,7 +150,7 @@ class Pelanggaran_mitra extends CI_Controller
 				}
 			} else {
 				$this->m_pelanggaran_mitra->edit($post);
-				$this->m_mitra->update_point($post);
+				$this->m_pegawai_mitra->update_point($post);
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				}

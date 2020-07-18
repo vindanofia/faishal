@@ -21,14 +21,23 @@
 			<div class="col-md-4 col-md-offset-4">
 				<?php echo form_open_multipart('Member/penghargaan_mitra/process') ?>
 				<div class="form-group">
-					<label>Nama mitra *</label>
+					<label>Nama Perusahaan *</label>
 					<input type="hidden" name="id" value="<?= $row->id_penghargaan_mitra ?>">
-					<select name="mitra" class="form-control" required>
-						<option value="">- Pilih -</option>
-						<?php foreach ($mitra->result() as $key => $data) { ?>
-							<option value="<?= $data->id_mitra ?>" <?= $data->id_mitra == $row->id_mitra ? "selected" : null ?>><?= $data->nama_mitra ?></option>
-						<?php } ?>
-					</select>
+					<?php echo form_dropdown(
+						'mitra',
+						$mitra,
+						$selectedmitra,
+						['class' => 'form-control', 'required' => 'required', 'onChange' => 'getPegawai(this)']
+					) ?>
+				</div>
+				<div class="form-group">
+					<label>Nama Pegawai *</label>
+					<?php echo form_dropdown(
+						'pegawai_mitra',
+						$pegawai_mitra,
+						$selectedpegmitra,
+						['class' => 'form-control', 'required' => 'required']
+					) ?>
 				</div>
 				<div class="form-group">
 					<label>Jenis penghargaan *</label>
@@ -73,5 +82,20 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+
+<script>
+	var getPegawai = function(e) {
+		$.get('pegawai_mitra/' + $(e).val(), function(result) {
+			$('select[name="pegawai_mitra"]').empty();
+			if (result.length > 0) {
+				$.each(result, function(index, value) {
+					$('select[name="pegawai_mitra"]').append('<option value=\
+					"' + value.id_pegawai_mitra + '">' + value.nama_pegawai_mitra + '</option>');
+				});
+			} else {
+				$('select[name="pegawai_mitra"]').append('<option>- Pilih -</option>');
+			}
+		})
+	}
+</script>
