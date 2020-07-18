@@ -26,7 +26,7 @@ class Jenis_pelanggaran extends CI_Controller
 			'page' => 'add',
 			'row' => $jenis_pelanggaran
 		);
-		$this->template->load('template', 'Member/jenis_pelanggaran_form', $data);
+		$this->template->load('template_member', 'Member/jenis_pelanggaran_form', $data);
 	}
 
 	public function process()
@@ -53,7 +53,7 @@ class Jenis_pelanggaran extends CI_Controller
 				'page' => 'edit',
 				'row' => $jenis_pelanggaran
 			);
-			$this->template->load('template', 'Member/jenis_pelanggaran_form', $data);
+			$this->template->load('template_member', 'Member/jenis_pelanggaran_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/jenis_pelanggaran') . "';</script>";

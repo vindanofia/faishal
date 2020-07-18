@@ -28,7 +28,7 @@ class List_pelanggaran extends CI_Controller
 			'page' => 'add',
 			'row' => $list_pelanggaran,
 		);
-		$this->template->load('template', 'Member/list_pelanggaran_form', $data);
+		$this->template->load('template_member', 'Member/list_pelanggaran_form', $data);
 	}
 
 	public function process()
@@ -55,7 +55,7 @@ class List_pelanggaran extends CI_Controller
 				'page' => 'edit',
 				'row' => $list_pelanggaran,
 			);
-			$this->template->load('template', 'Member/list_pelanggaran_form', $data);
+			$this->template->load('template_member', 'Member/list_pelanggaran_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/list_pelanggaran') . "';</script>";
@@ -72,19 +72,22 @@ class List_pelanggaran extends CI_Controller
 	}
 
 
-	public function get_chart_data($period = null){
-		$months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 
-		'Oktober', 'Nopember', 'Desember'];
-		if($period != null){
-			$period = explode("_",$period);
+	public function get_chart_data($period = null)
+	{
+		$months = [
+			'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
+			'Oktober', 'Nopember', 'Desember'
+		];
+		if ($period != null) {
+			$period = explode("_", $period);
 			$bulan = intval(date("m", strtotime($period[0])));
 			$tahun = $period[1];
-			$title = 'bulan '.$months[$bulan-1].' tahun '.$tahun;
-		}else{
+			$title = 'bulan ' . $months[$bulan - 1] . ' tahun ' . $tahun;
+		} else {
 			$tahun = $bulan = 0;
 			$title = 'Bulan - Tahun -';
 		}
-		
+
 		$result = $this->m_list_pelanggaran->chartDataPelPegawai($tahun, $bulan);
 		$result['title'] .= $title;
 

@@ -27,7 +27,7 @@ class Reward extends CI_Controller
 			'page' => 'add',
 			'row' => $reward
 		);
-		$this->template->load('template', 'Member/reward_form', $data);
+		$this->template->load('template_member', 'Member/reward_form', $data);
 	}
 
 	public function process()
@@ -54,7 +54,7 @@ class Reward extends CI_Controller
 				'page' => 'edit',
 				'row' => $reward
 			);
-			$this->template->load('template', 'Member/reward_form', $data);
+			$this->template->load('template_member', 'Member/reward_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/reward') . "';</script>";

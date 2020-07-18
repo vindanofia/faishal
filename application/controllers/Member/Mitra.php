@@ -29,7 +29,7 @@ class Mitra extends CI_Controller
 			'page' => 'add',
 			'row' => $mitra
 		);
-		$this->template->load('template', 'Member/mitra_form', $data);
+		$this->template->load('template_member', 'Member/mitra_form', $data);
 	}
 
 	public function process()
@@ -56,7 +56,7 @@ class Mitra extends CI_Controller
 				'page' => 'edit',
 				'row' => $mitra
 			);
-			$this->template->load('template', 'Member/mitra_form', $data);
+			$this->template->load('template_member', 'Member/mitra_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/mitra') . "';</script>";

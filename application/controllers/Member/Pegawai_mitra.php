@@ -67,7 +67,7 @@ class Pegawai_mitra extends CI_Controller
 			'row' => $pegawai_mitra,
 			'mitra' => $mitra, 'selectedmitra' => null,
 		);
-		$this->template->load('template', 'Member/pegawai_mitra_form', $data);
+		$this->template->load('template_member', 'Member/pegawai_mitra_form', $data);
 	}
 
 	public function process()
@@ -101,7 +101,7 @@ class Pegawai_mitra extends CI_Controller
 				'row' => $pegawai_mitra,
 				'mitra' => $mitra, 'selectedmitra' => $pegawai_mitra->id_perusahaan,
 			);
-			$this->template->load('template', 'Member/pegawai_mitra_form', $data);
+			$this->template->load('template_member', 'Member/pegawai_mitra_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/pegawai_mitra') . "';</script>";

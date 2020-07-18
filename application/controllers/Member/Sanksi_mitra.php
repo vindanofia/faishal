@@ -27,7 +27,7 @@ class Sanksi_mitra extends CI_Controller
 			'page' => 'add',
 			'row' => $sanksi_mitra
 		);
-		$this->template->load('template', 'Member/sanksi_mitra_form', $data);
+		$this->template->load('template_member', 'Member/sanksi_mitra_form', $data);
 	}
 
 	public function process()
@@ -54,7 +54,7 @@ class Sanksi_mitra extends CI_Controller
 				'page' => 'edit',
 				'row' => $sanksi_mitra
 			);
-			$this->template->load('template', 'Member/sanksi_mitra_form', $data);
+			$this->template->load('template_member', 'Member/sanksi_mitra_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/sanksi_mitra') . "';</script>";

@@ -38,7 +38,7 @@ class User extends CI_Controller
 		$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
 		if ($this->form_validation->run() == false) {
-			$this->template->load('template', 'Member/user_form_add');
+			$this->template->load('template_member', 'Member/user_form_add');
 		} else {
 			$post = $this->input->post(null, TRUE);
 			$this->m_user->add($post);
@@ -87,7 +87,7 @@ class User extends CI_Controller
 			$query = $this->m_user->get($id);
 			if ($query->num_rows() > 0) {
 				$data['row'] = $query->row();
-				$this->template->load('template', 'Member/user_form_edit', $data);
+				$this->template->load('template_member', 'Member/user_form_edit', $data);
 			} else {
 				echo "<script>alert('Data tidak ditemukan');";
 				echo "window.location='" . site_url('Member/user') . "';</script>";

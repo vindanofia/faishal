@@ -74,7 +74,7 @@ class Penghargaan_pegawai extends CI_Controller
 			'pegawai' => $query_pegawai,
 			'jenis_penghargaan' => $jenis_penghargaan, 'selectedjenispel' => null,
 		);
-		$this->template->load('template', 'Member/penghargaan_pegawai_form', $data);
+		$this->template->load('template_member', 'Member/penghargaan_pegawai_form', $data);
 	}
 
 	public function process()
@@ -157,7 +157,7 @@ class Penghargaan_pegawai extends CI_Controller
 				'pegawai' => $query_pegawai,
 				'jenis_penghargaan' => $jenis_penghargaan, 'selectedjenispel' => $penghargaan_pegawai->id_jenis_pel,
 			);
-			$this->template->load('template', 'Member/penghargaan_pegawai_form', $data);
+			$this->template->load('template_member', 'Member/penghargaan_pegawai_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/penghargaan_pegawai') . "';</script>";

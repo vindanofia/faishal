@@ -88,7 +88,7 @@ class Penghargaan_mitra extends CI_Controller
 			'pegawai_mitra' => $pegawai_mitra, 'selectedpegmitra' => null,
 			'jenis_penghargaan' => $jenis_penghargaan, 'selectedjenispel' => null,
 		);
-		$this->template->load('template', 'Member/penghargaan_mitra_form', $data);
+		$this->template->load('template_member', 'Member/penghargaan_mitra_form', $data);
 	}
 
 	public function process()
@@ -181,7 +181,7 @@ class Penghargaan_mitra extends CI_Controller
 				'pegawai_mitra' => $pegawai_mitra, 'selectedpegmitra' => null,
 				'jenis_penghargaan' => $jenis_penghargaan, 'selectedjenispel' => $penghargaan_mitra->id_jenis_pel,
 			);
-			$this->template->load('template', 'Member/penghargaan_mitra_form', $data);
+			$this->template->load('template_member', 'Member/penghargaan_mitra_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/penghargaan_mitra') . "';</script>";

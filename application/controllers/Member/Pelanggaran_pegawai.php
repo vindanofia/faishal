@@ -76,7 +76,7 @@ class Pelanggaran_pegawai extends CI_Controller
 			'pegawai' => $query_pegawai,
 			'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => null,
 		);
-		$this->template->load('template', 'Member/pelanggaran_pegawai_form', $data);
+		$this->template->load('template_member', 'Member/pelanggaran_pegawai_form', $data);
 	}
 
 	public function process()
@@ -159,7 +159,7 @@ class Pelanggaran_pegawai extends CI_Controller
 				'pegawai' => $query_pegawai,
 				'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => $pelanggaran_pegawai->id_list_pel,
 			);
-			$this->template->load('template', 'Member/pelanggaran_pegawai_form', $data);
+			$this->template->load('template_member', 'Member/pelanggaran_pegawai_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/pelanggaran_pegawai') . "';</script>";

@@ -9,7 +9,7 @@
 <!-- Main Content -->
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title"><?= ucfirst($page) ?> Realisasi Penghargaan mitra</h3>
+		<h3 class="box-title"><?= ucfirst($page) ?> Realisasi Penghargaan Mitra</h3>
 		<div class="pull-right">
 			<a href="<?= site_url('Member/penghargaan_mitra') ?>" class="btn btn-warning btn-flat">
 				<i class="fa fa-undo"></i> Kembali

@@ -59,7 +59,7 @@ class Konten extends CI_Controller
 			'row' => $konten,
 			'konten' => $query_konten,
 		);
-		$this->template->load('template', 'Member/konten_form', $data);
+		$this->template->load('template_member', 'Member/konten_form', $data);
 	}
 
 	public function process()
@@ -133,7 +133,7 @@ class Konten extends CI_Controller
 				'row' => $konten,
 				'konten' => $query_konten,
 			);
-			$this->template->load('template', 'Member/konten_form', $data);
+			$this->template->load('template_member', 'Member/konten_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/konten') . "';</script>";

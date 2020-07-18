@@ -67,7 +67,7 @@ class Pegawai extends CI_Controller
 			'page' => 'add',
 			'row' => $pegawai
 		);
-		$this->template->load('template', 'Member/pegawai_form', $data);
+		$this->template->load('template_member', 'Member/pegawai_form', $data);
 	}
 
 	public function process()
@@ -94,7 +94,7 @@ class Pegawai extends CI_Controller
 				'page' => 'edit',
 				'row' => $pegawai
 			);
-			$this->template->load('template', 'Member/pegawai_form', $data);
+			$this->template->load('template_member', 'Member/pegawai_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/pegawai') . "';</script>";
@@ -120,7 +120,7 @@ class Pegawai extends CI_Controller
 		$data = array(
 			'page' => 'Import',
 		);
-		$this->template->load('template', 'Member/pegawai_form_import', $data);
+		$this->template->load('template_member', 'Member/pegawai_form_import', $data);
 	}
 
 	public function processImport()

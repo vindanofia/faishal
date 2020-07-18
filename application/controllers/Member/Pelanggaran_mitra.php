@@ -92,7 +92,7 @@ class Pelanggaran_mitra extends CI_Controller
 		);
 
 		// print_r($pegawai_mitra);
-		$this->template->load('template', 'Member/pelanggaran_mitra_form', $data);
+		$this->template->load('template_member', 'Member/pelanggaran_mitra_form', $data);
 	}
 
 	public function process()
@@ -187,7 +187,7 @@ class Pelanggaran_mitra extends CI_Controller
 				'pegawai_mitra' => $pegawai_mitra, 'selectedpegmitra' => null,
 				'list_pelanggaran' => $list_pelanggaran, 'selectedlistpel' => null,
 			);
-			$this->template->load('template', 'Member/pelanggaran_mitra_form', $data);
+			$this->template->load('template_member', 'Member/pelanggaran_mitra_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/pelanggaran_mitra') . "';</script>";

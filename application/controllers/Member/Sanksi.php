@@ -27,7 +27,7 @@ class Sanksi extends CI_Controller
 			'page' => 'add',
 			'row' => $sanksi
 		);
-		$this->template->load('template', 'Member/sanksi_form', $data);
+		$this->template->load('template_member', 'Member/sanksi_form', $data);
 	}
 
 	public function process()
@@ -54,7 +54,7 @@ class Sanksi extends CI_Controller
 				'page' => 'edit',
 				'row' => $sanksi
 			);
-			$this->template->load('template', 'Member/sanksi_form', $data);
+			$this->template->load('template_member', 'Member/sanksi_form', $data);
 		} else {
 			echo "<script>alert('Data tidak ditemukan');";
 			echo "window.location='" . site_url('Member/sanksi') . "';</script>";
