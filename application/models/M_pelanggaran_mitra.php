@@ -4,8 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_pelanggaran_mitra extends CI_Model
 {
 	// start datatables
-	var $column_order = array(null, 'm_mitra.nama_mitra', 'm_mitra_mitra.nama_mitra_mitra', 'm_list_pelanggaran.nama_list_pel', 't_pelanggaran_mitra.tanggal', 't_pelanggaran_mitra.lokasi', 't_pelanggaran_mitra.deskripsi'); //set column field database for datatable orderable
-	var $column_search = array('m_mitra.nama_mitra', 'm_mitra_mitra.nama_mitra_mitra', 'm_list_pelanggaran.nama_list_pel', 't_pelanggaran_mitra.lokasi'); //set column field database for datatable searchable
+	var $column_order = array(null, 'm_mitra.nama_mitra', 'm_pegawai_mitra.nama_pegawai_mitra', 'm_list_pelanggaran.nama_list_pel', 't_pelanggaran_mitra.tanggal', 't_pelanggaran_mitra.lokasi', 't_pelanggaran_mitra.deskripsi'); //set column field database for datatable orderable
+	var $column_search = array('m_mitra.nama_mitra', 'm_pegawai_mitra.nama_pegawai_mitra', 'm_list_pelanggaran.nama_list_pel', 't_pelanggaran_mitra.lokasi'); //set column field database for datatable searchable
 	var $order = array('id_pelanggaran_mitra' => 'desc'); // default order
 
 	private function _get_datatables_query()

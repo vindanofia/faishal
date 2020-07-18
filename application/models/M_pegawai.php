@@ -144,6 +144,10 @@ class M_pegawai extends CI_Model
 		$this->db->where('id_reward', $id_reward);
 		$query = $this->db->get()->row();
 		$point_penghargaan = $query->point_reward;
+		$this->db->from('m_pegawai');
+		$this->db->where('id_pegawai', $id_pegawai);
+		$query1 = $this->db->get()->row();
+		$point = $query1->point;
 		if ($point <= $point_penghargaan) {
 			$sql = 'UPDATE m_pegawai SET point = 0 WHERE id_pegawai = ' . $id_pegawai;
 		} else {

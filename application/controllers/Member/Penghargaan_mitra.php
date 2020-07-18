@@ -191,14 +191,21 @@ class Penghargaan_mitra extends CI_Controller
 	public function del($id)
 	{
 		$id_penghargaan_mitra = $this->uri->segment(4);
-		$id_mitra = $this->uri->segment(5);
+		$id_pegawai_mitra = $this->uri->segment(5);
 		$point_penghargaan = $this->m_penghargaan_mitra->get($id_penghargaan_mitra)->row()->point_penghargaan;
-		$data = ['point_penghargaan' => $point_penghargaan, 'id_mitra' => $id_mitra, 'id_penghargaan_mitra' => $id_penghargaan_mitra];
-		$this->m_mitra->delete_penghargaan($data);
+		$data = ['point_penghargaan' => $point_penghargaan, 'id_pegawai_mitra' => $id_pegawai_mitra, 'id_penghargaan_mitra' => $id_penghargaan_mitra];
+		$this->m_pegawai_mitra->delete_point($data);
 		$this->m_penghargaan_mitra->del($id);
 		if ($this->db->affected_rows() > 0) {
 			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		}
 		redirect('Member/penghargaan_mitra');
+	}
+
+	public function pegawai_mitra($id_mitra = 0)
+	{
+		$pegawai = $this->m_pegawai_mitra->get_mitra($id_mitra);
+		header('Content-Type: application/json');
+		echo json_encode($pegawai);
 	}
 }

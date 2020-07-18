@@ -122,13 +122,13 @@ class M_pegawai_mitra extends CI_Model
 
 	public function delete_point($data)
 	{
-		$id_pelanggaran_mitra = $data['id_pelanggaran_mitra'];
+		$id_penghargaan_mitra = $data['id_penghargaan_mitra'];
 		$id_pegawai_mitra = $data['id_pegawai_mitra'];
-		$this->db->from('t_pelanggaran_mitra');
-		$this->db->where('id_pelanggaran_mitra', $id_pelanggaran_mitra);
+		$this->db->from('t_penghargaan_mitra');
+		$this->db->where('id_penghargaan_mitra', $id_penghargaan_mitra);
 		$query = $this->db->get()->row();
-		$point_pel = $query->point_tpel;
-		$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = point_peg_mitra - ' . $point_pel . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
+		$point_penghargaan = $query->point_penghargaan;
+		$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = point_peg_mitra + ' . $point_penghargaan . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
 		$this->db->query($sql);
 	}
 
@@ -159,15 +159,19 @@ class M_pegawai_mitra extends CI_Model
 	public function update_penghargaan($data)
 	{
 		$id_reward = $data['jenis_penghargaan'];
-		$id_pegawai_mitra = $data['mitra'];
+		$id_pegawai_mitra = $data['pegawai_mitra'];
 		$this->db->from('m_jenis_penghargaan');
 		$this->db->where('id_reward', $id_reward);
 		$query = $this->db->get()->row();
 		$point_penghargaan = $query->point_reward;
-		if ($point <= $point_penghargaan) {
-			$sql = 'UPDATE m_pegawai_mitra SET point = 0 WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
+		$this->db->from('m_pegawai_mitra');
+		$this->db->where('id_pegawai_mitra', $id_pegawai_mitra);
+		$query1 = $this->db->get()->row();
+		$point_peg_mitra = $query1->point_peg_mitra;
+		if ($point_peg_mitra <= $point_penghargaan) {
+			$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = 0 WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
 		} else {
-			$sql = 'UPDATE m_pegawai_mitra SET point = point - ' . $point_penghargaan . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
+			$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = point_peg_mitra - ' . $point_penghargaan . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
 		}
 		$this->db->query($sql);
 	}

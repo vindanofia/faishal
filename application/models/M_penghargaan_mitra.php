@@ -4,14 +4,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_penghargaan_mitra extends CI_Model
 {
 	// start datatables
-	var $column_order = array(null, 'm_mitra.nama_mitra', 'm_jenis_penghargaan.nama_reward', 't_penghargaan_mitra.tanggal', 't_penghargaan_mitra.lokasi', 't_penghargaan_mitra.deskripsi'); //set column field database for datatable orderable
-	var $column_search = array('m_mitra.nama_mitra', 'm_jenis_penghargaan.nama_reawrd', 't_penghargaan_mitra.lokasi'); //set column field database for datatable searchable
+	var $column_order = array(null, 'm_mitra.nama_mitra', 'm_pegawai_mitra.nama_pegawai_mitra', 'm_jenis_penghargaan.nama_reward', 't_penghargaan_mitra.tanggal', 't_penghargaan_mitra.lokasi', 't_penghargaan_mitra.deskripsi'); //set column field database for datatable orderable
+	var $column_search = array('m_mitra.nama_mitra', 'm_pegawai_mitra.nama_pegawai_mitra', 'm_jenis_penghargaan.nama_reawrd', 't_penghargaan_mitra.lokasi'); //set column field database for datatable searchable
 	var $order = array('id_penghargaan_mitra' => 'desc'); // default order
 
 	private function _get_datatables_query()
 	{
 		$this->db->from('t_penghargaan_mitra');
 		$this->db->join('m_mitra', 'm_mitra.id_mitra = t_penghargaan_mitra.id_mitra');
+		$this->db->join('m_pegawai_mitra', 'm_pegawai_mitra.id_pegawai_mitra = t_penghargaan_mitra.id_pegawai_mitra');
 		$this->db->join('m_jenis_penghargaan', 'm_jenis_penghargaan.id_reward = t_penghargaan_mitra.id_reward');
 		$this->db->where('t_penghargaan_mitra.deleted = ', 1);
 		$i = 0;
@@ -78,6 +79,7 @@ class M_penghargaan_mitra extends CI_Model
 
 		$params = [
 			'id_mitra' => $post['mitra'],
+			'id_pegawai_mitra' => $post['pegawai_mitra'],
 			'id_reward' => $post['jenis_penghargaan'],
 			'tanggal' => $post['tanggal'],
 			'lokasi' => $post['lokasi'],
@@ -94,6 +96,7 @@ class M_penghargaan_mitra extends CI_Model
 	{
 		$params = [
 			'id_mitra' => $post['mitra'],
+			'id_pegawai_mitra' => $post['pegawai_mitra'],
 			'id_reward' => $post['jenis_penghargaan'],
 			'tanggal' => $post['tanggal'],
 			'lokasi' => $post['lokasi'],
