@@ -63,7 +63,7 @@ class M_pegawai_mitra extends CI_Model
 		// $deleted = array(1);
 		$this->db->from('m_pegawai_mitra');
 		if ($id !== NULL) {
-			$this->db->where('id_perusahaan', $id);
+			$this->db->where('id_pegawai_mitra', $id);
 		}
 		$this->db->where('deleted = ', 1);
 		$query = $this->db->get();

@@ -48,19 +48,31 @@
 				</div>
 				<div class="modal-body">
 					<form id="mb">
-						<input type="hidden" name="id" value="">
-
-						<div class="form-group">
-							<label>Username</label>
-							<input type="password" name="passlama" class="form-control" required>
+						<div class="form-group <?= form_error('fullname') ? 'has-error' : null ?>">
+							<label>Nama *</label>
+							<input type="hidden" name="id" value="">
+							<input type="text" name="fullname" class="form-control">
+							<?= form_error('fullname') ?>
 						</div>
-						<div class="form-group">
-							<label>Password Lama *</label>
-							<input type="password" name="passlama" class="form-control" required>
+						<div class="form-group <?= form_error('username') ? 'has-error' : null ?>">
+							<label>Username *</label>
+							<input type="text" name="username" class="form-control">
+							<?= form_error('username') ?>
 						</div>
-						<div class="form-group">
-							<label>Password Baru *</label>
-							<input type="password" name="passbaru" class="form-control" required>
+						<div class="form-group <?= form_error('email') ? 'has-error' : null ?>">
+							<label>Email *</label>
+							<input type="email" name="email" class="form-control">
+							<?= form_error('email') ?>
+						</div>
+						<div class="form-group <?= form_error('password') ? 'has-error' : null ?>">
+							<label>Password</label><small> (Kosongi apabila tidak ada perubahan)</small>
+							<input type="password" name="password" class="form-control">
+							<?= form_error('password') ?>
+						</div>
+						<div class="form-group <?= form_error('passconf') ? 'has-error' : null ?>">
+							<label>Ketik Ulang Password</label>
+							<input type="password" name="passconf" class="form-control">
+							<?= form_error('passconf') ?>
 						</div>
 						<div class="form-group clearfix">
 							<button type="button" data-dismiss="modal">Batal</button>
@@ -113,7 +125,7 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="" class="btn btn-default btn-flat bg-red" id="change">Edit Profile</a>
+										<a href="<?= site_url('edit_profile/edit/' . $this->session->userdata('user_id')); ?>" class="btn btn-default btn-flat bg-red">Edit Profile</a>
 									</div>
 									<div class="pull-right">
 										<a href="<?= site_url('auth/logout'); ?>" class="btn btn-default btn-flat bg-red">Sign out</a>
@@ -272,6 +284,18 @@
 				$('#my-modal').modal({
 					backdrop: 'static',
 					show: true
+				});
+				id = $(this).data('id');
+				// mengambil nilai data-id yang di click
+				$.ajax({
+					url: '<?= site_url('edit_profile/edit/') ?>' + id, //ini url manggil controller bukan?
+					success: function(data) {
+						$("input[name='id']").val(data.id);
+						$("input[name='fullname']").val(data.name);
+						$("input[name='username']").val(data.username);
+						$("input[name='email']").val(data.email);
+						$("input[name='password']").val(data.password);
+					}
 				});
 			});
 		</script>

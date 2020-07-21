@@ -15,9 +15,6 @@
 			<a href="<?= site_url('Admin/pegawai_mitra/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
 			</a>
-			<!-- <a href="<?= site_url('Admin/pegawai_mitra/add') ?>" class="btn btn-primary btn-flat">
-				<i class="fa fa-user-plus"></i> Import Excel
-			</a> -->
 			<a href="<?= site_url('Admin/pegawai_mitra/export') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-download"></i> Export
 			</a>
