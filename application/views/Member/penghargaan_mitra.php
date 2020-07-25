@@ -1,5 +1,5 @@
 <h1>
-	Realisasi penghargaan Mitra
+	Realisasi Apresiasi Mitra
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -10,7 +10,7 @@
 <?php $this->view('message') ?>
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title">Data Realisasi penghargaan mitra</h3>
+		<h3 class="box-title">Data Realisasi Apresiasi Mitra</h3>
 		<div class="pull-right">
 			<a href="<?= site_url('Member/penghargaan_mitra/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
@@ -24,7 +24,7 @@
 					<th>No</th>
 					<th>Nama Perusahaan</th>
 					<th>Nama Pegawai</th>
-					<th>Jenis Apresiasi</th>
+					<th>Tindakan Apresiasi</th>
 					<th>Tanggal</th>
 					<th>Lokasi</th>
 					<th>Deskripsi</th>

@@ -1,5 +1,5 @@
 <h1>
-	Realisasi Penghargaan Pegawai
+	Realisasi Apresiasi Pegawai
 </h1>
 <!-- <ol class="breadcrumb">
 	<li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -9,7 +9,7 @@
 <!-- Main Content -->
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title"><?= ucfirst($page) ?> Realisasi Penghargaan Pegawai</h3>
+		<h3 class="box-title"><?= ucfirst($page) ?> Realisasi Apresiasi Pegawai</h3>
 		<div class="pull-right">
 			<a href="<?= site_url('Member/penghargaan_pegawai') ?>" class="btn btn-warning btn-flat">
 				<i class="fa fa-undo"></i> Kembali
@@ -31,7 +31,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>Jenis penghargaan *</label>
+					<label>Tindakan Apresiasi *</label>
 					<?php echo form_dropdown(
 						'jenis_penghargaan',
 						$jenis_penghargaan,
