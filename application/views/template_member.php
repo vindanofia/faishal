@@ -128,6 +128,9 @@
 						<a href="<?= base_url('Member/dashboard'); ?>">
 							<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 						</a>
+						<a href="<?= site_url('Member/edit_profile/edit/' . $this->session->userdata('userid')) ?>">
+							<i class="fa fa-user"></i> <span>Edit Profile</span>
+						</a>
 					</li>
 					<li class="treeview <?= $this->uri->segment(1) == 'user' ||
 											$this->uri->segment(1) == 'pegawai' ||
