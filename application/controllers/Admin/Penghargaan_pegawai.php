@@ -31,7 +31,7 @@ class Penghargaan_pegawai extends CI_Controller
 			$row[] = $pegawai->deskripsi;
 			$row[] = $pegawai->point_penghargaan;
 			$row[] = $pegawai->foto;
-			$row[] = '<a href="' . site_url('Admin/penghargaan_pegawai/del/' . $pegawai->id_penghargaan_peg) . '/' . $pegawai->id_pegawai . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Admin/penghargaan_pegawai/del/' . $pegawai->id_penghargaan_peg) . '/' . $pegawai->id_pegawai . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>';
 			$data[] = $row;
 		}
 		$output = array(

@@ -39,7 +39,7 @@
 								<i class="fa fa-pencil"></i> Ubah
 							</a>
 							<a href="<?= site_url('Admin/sanksi/del/' . $data->id_sanksi) ?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">
-								<i class="fa fa-trash"></i> Delete
+								<i class="fa fa-trash"></i> Hapus
 							</a>
 							<!-- <input type="hidden" name="sanksi_id" value="<?= $data->id_sanksi ?>">
 							<button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">

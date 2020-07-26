@@ -25,8 +25,8 @@ class Konten extends CI_Controller
 			$row[] = $konten->judul_konten;
 			$row[] = $konten->deskripsi_konten;
 			$row[] = '<img src="' . base_url() . 'uploads/konten/' . $konten->foto . '">';
-			$row[] = '<a href="' . site_url('Admin/konten/edit/' . $konten->id_konten) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
-			<a href="' . site_url('Admin/konten/del/' . $konten->id_konten) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Admin/konten/edit/' . $konten->id_konten) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Ubah</a>
+			<a href="' . site_url('Admin/konten/del/' . $konten->id_konten) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>';
 			$data[] = $row;
 		}
 		$output = array(

@@ -39,7 +39,7 @@
 								<i class="fa fa-pencil"></i> Ubah
 							</a>
 							<a href="<?= site_url('Member/list_pelanggaran/del/' . $data->id_list_pel) ?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">
-								<i class="fa fa-trash"></i> Delete
+								<i class="fa fa-trash"></i> Hapus
 							</a>
 							</form>
 						</td>

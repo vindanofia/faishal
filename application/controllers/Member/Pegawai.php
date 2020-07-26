@@ -35,8 +35,8 @@ class Pegawai extends CI_Controller
 			$row[] = $this->m_sanksi->getPotongan($pegawai->point);
 			// $row[] = $item->image != null ? '<img src="' . base_url('uploads/product/' . $item->image) . '" class="img" style="width:100px">' : null;
 			// add html for action
-			$row[] = '<a href="' . site_url('Member/pegawai/edit/' . $pegawai->id_pegawai) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
-                   <a href="' . site_url('Member/pegawai/del/' . $pegawai->id_pegawai) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Member/pegawai/edit/' . $pegawai->id_pegawai) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Ubah</a>
+                   <a href="' . site_url('Member/pegawai/del/' . $pegawai->id_pegawai) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>';
 			$data[] = $row;
 		}
 		$output = array(

@@ -98,7 +98,7 @@
 								<div class="d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
 									<div class="icon-box">
 										<h4>PETA POTENSI BAHAYA</h4>
-										<img id="why-us" src="<?= base_url() ?>flexor/assets/img/789.jpeg" alt="">
+										<img id="why-us" src="<?= base_url() ?>flexor/assets/img/peta_potensi.png" alt="">
 									</div>
 								</div>
 							</div>

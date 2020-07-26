@@ -64,7 +64,7 @@ class M_sanksi extends CI_Model
 		$minimum_point = $sanksi[0]->point_sanksi;
 		foreach ($sanksi as $key => $s) {
 			if ($key < count($sanksi)) {
-				if ($point >= $s->point_sanksi && $point < $sanksi[$key+1]->point_sanksi) {
+				if ($point >= $s->point_sanksi && $point < $sanksi[$key + 1]->point_sanksi) {
 					if ($denda) {
 						$potongan = strpos(strtolower($s->nama_sanksi), 'denda') !== false ?  ($point * 2500) : 0;
 						return indo_currency($potongan);
@@ -72,10 +72,10 @@ class M_sanksi extends CI_Model
 						return $s->nama_sanksi;
 					}
 				} else if ($denda && $point >= $maxPointPotongan) {
-					return indo_currency($maxPointPotongan * 1000);
+					return indo_currency($maxPointPotongan * 2500);
 				}
 			} else if ($point == $s->point_sanksi) {
-				return $denda ? indo_currency($maxPointPotongan * 1000) : $s->nama_sanksi;
+				return $denda ? indo_currency($maxPointPotongan * 2500) : $s->nama_sanksi;
 			}
 			$minimum_point = $s->point_sanksi;
 		}

@@ -28,8 +28,8 @@ class Pegawai_mitra extends CI_Controller
 			$row[] = $pegawai_mitra->point_peg_mitra;
 			$row[] = $this->m_sanksi_mitra->getSanksi_mitraPoint($pegawai_mitra->point_peg_mitra);
 			$row[] = $this->m_sanksi_mitra->getPotongan($pegawai_mitra->point_peg_mitra);
-			$row[] = '<a href="' . site_url('Member/pegawai_mitra/edit/' . $pegawai_mitra->id_pegawai_mitra) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
-                   <a href="' . site_url('Member/pegawai_mitra/del/' . $pegawai_mitra->id_pegawai_mitra) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Member/pegawai_mitra/edit/' . $pegawai_mitra->id_pegawai_mitra) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Ubah</a>
+                   <a href="' . site_url('Member/pegawai_mitra/del/' . $pegawai_mitra->id_pegawai_mitra) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>';
 			$data[] = $row;
 		}
 		$output = array(

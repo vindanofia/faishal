@@ -35,7 +35,7 @@ class Pelanggaran_mitra extends CI_Controller
 			$row[] = $mitra->deskripsi;
 			$row[] = $mitra->point_tpel;
 			$row[] = $mitra->foto;
-			$row[] = '<a href="' . site_url('Admin/pelanggaran_mitra/del/' . $mitra->id_pelanggaran_mitra) . '/' . $mitra->id_pegawai_mitra . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Admin/pelanggaran_mitra/del/' . $mitra->id_pelanggaran_mitra) . '/' . $mitra->id_pegawai_mitra . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>';
 			$data[] = $row;
 		}
 		$output = array(

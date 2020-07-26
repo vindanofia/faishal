@@ -9,7 +9,7 @@ class Pegawai extends CI_Controller
 		parent::__construct();
 		check_not_login();
 		$this->load->model(['m_pegawai', 'm_sanksi']);
-		$this->load->helper(array('url','download'));
+		$this->load->helper(array('url', 'download'));
 		// $this->load->library('form_validation');
 	}
 
@@ -35,8 +35,8 @@ class Pegawai extends CI_Controller
 			$row[] = $this->m_sanksi->getPotongan($pegawai->point);
 			// $row[] = $item->image != null ? '<img src="' . base_url('uploads/product/' . $item->image) . '" class="img" style="width:100px">' : null;
 			// add html for action
-			$row[] = '<a href="' . site_url('Admin/pegawai/edit/' . $pegawai->id_pegawai) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
-                   <a href="' . site_url('Admin/pegawai/del/' . $pegawai->id_pegawai) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Admin/pegawai/edit/' . $pegawai->id_pegawai) . '" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Ubah</a>
+                   <a href="' . site_url('Admin/pegawai/del/' . $pegawai->id_pegawai) . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>';
 			$data[] = $row;
 		}
 		$output = array(
@@ -110,36 +110,39 @@ class Pegawai extends CI_Controller
 		redirect('Admin/pegawai');
 	}
 
-	public function downloadFormat(){
-		force_download('./uploads/data_pegawai/Format import excel pegawai.xlsx',NULL);
+	public function downloadFormat()
+	{
+		force_download('./uploads/data_pegawai/Format import excel pegawai.xlsx', NULL);
 	}
 
-	public function import(){
+	public function import()
+	{
 		$data = array(
 			'page' => 'Import',
 		);
 		$this->template->load('template', 'Admin/pegawai_form_import', $data);
 	}
 
-	public function processImport(){
+	public function processImport()
+	{
 		$this->load->helper('url');
-		include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+		include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
 
-        $config['upload_path'] = './uploads/excel_pegawai';
-        $config['allowed_types'] = 'xlsx|xls|csv';
-        $config['max_size'] = '10000';
+		$config['upload_path'] = './uploads/excel_pegawai';
+		$config['allowed_types'] = 'xlsx|xls|csv';
+		$config['max_size'] = '10000';
 		$config['file_name'] = 'data_pegawai-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 		$this->load->library('upload', $config);
 
-		if(isset($_FILES['file_excel'])){
-			if($this->upload->do_upload('file_excel')){
+		if (isset($_FILES['file_excel'])) {
+			if ($this->upload->do_upload('file_excel')) {
 				$data_upload 	= $this->upload->data();
 				$excelreader	= new PHPExcel_Reader_Excel2007();
-				$loadexcel		= $excelreader->load('uploads/excel_pegawai/'.$data_upload['file_name']); // Load file yang telah diupload ke folder excel
-				$sheet       	= $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
-				
-				foreach($sheet as $key => $data) {
-					if($key > 2){
+				$loadexcel		= $excelreader->load('uploads/excel_pegawai/' . $data_upload['file_name']); // Load file yang telah diupload ke folder excel
+				$sheet       	= $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+
+				foreach ($sheet as $key => $data) {
+					if ($key > 2) {
 						$this->m_pegawai->add([
 							'nama_peg' => $data['A'],
 							'nip_peg' => $data['B'],
@@ -148,22 +151,22 @@ class Pegawai extends CI_Controller
 						]);
 					}
 				}
-  				redirect('/Admin/pegawai', 'refresh');
+				redirect('/Admin/pegawai', 'refresh');
 			}
-		}else{
+		} else {
 			echo "<script>alert('Input File Excel');";
 			echo "window.location='" . site_url('Admin/pegawai') . "';</script>";
 		}
 	}
 
 	public function export()
-	{ 
-		require_once(APPPATH.'controllers/Excel.php'); 
+	{
+		require_once(APPPATH . 'controllers/Excel.php');
 		$exportExcel =  new Excel();
 		$excel = $exportExcel->getExcel('pegawai');
 
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment; filename="Data Pegawai_'.date('ymd').'.xlsx"'); // Set nama file excel nya
+		header('Content-Disposition: attachment; filename="Data Pegawai_' . date('ymd') . '.xlsx"'); // Set nama file excel nya
 		header('Cache-Control: max-age=0');
 
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');

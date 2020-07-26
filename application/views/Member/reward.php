@@ -39,7 +39,7 @@
 								<i class="fa fa-pencil"></i> Ubah
 							</a>
 							<a href="<?= site_url('Member/reward/del/' . $data->id_reward) ?>" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">
-								<i class="fa fa-trash"></i> Delete
+								<i class="fa fa-trash"></i> Hapus
 							</a>
 							<!-- <input type="hidden" name="reward_id" value="<?= $data->id_reward ?>">
 							<button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger btn-xs">

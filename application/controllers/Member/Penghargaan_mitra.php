@@ -33,7 +33,7 @@ class Penghargaan_mitra extends CI_Controller
 			$row[] = $mitra->deskripsi;
 			$row[] = $mitra->point_penghargaan;
 			$row[] = '<img src="' . base_url() . 'uploads/apresiasi/' . $mitra->foto . '" style="width:80%">';
-			$row[] = '<a href="' . site_url('Member/penghargaan_mitra/del/' . $mitra->id_penghargaan_mitra) . '/' . $mitra->id_mitra . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+			$row[] = '<a href="' . site_url('Member/penghargaan_mitra/del/' . $mitra->id_penghargaan_mitra) . '/' . $mitra->id_mitra . '" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>';
 			$data[] = $row;
 		}
 		$output = array(
