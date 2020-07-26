@@ -83,6 +83,9 @@
 								</li>
 								<!-- Menu Footer-->
 								<li class="user-footer">
+									<div class="pull-left">
+										<a href="<?= site_url('Member/edit_profile/edit/' . $this->session->userdata('userid')) ?>" class="btn btn-default btn-flat bg-red">Edit Profile</a>
+									</div>
 									<div class="pull-right">
 										<a href="<?= site_url('auth/logout'); ?>" class="btn btn-default btn-flat bg-red">Sign out</a>
 									</div>
@@ -127,9 +130,6 @@
 					<li <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
 						<a href="<?= base_url('Member/dashboard'); ?>">
 							<i class="fa fa-dashboard"></i> <span>Dashboard</span>
-						</a>
-						<a href="<?= site_url('Member/edit_profile/edit/' . $this->session->userdata('userid')) ?>">
-							<i class="fa fa-user"></i> <span>Edit Profile</span>
 						</a>
 					</li>
 					<li class="treeview <?= $this->uri->segment(1) == 'user' ||
