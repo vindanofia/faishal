@@ -55,7 +55,7 @@ class Edit_profile extends CI_Controller
 			// $query = $this->db->get_where('user', ['id_user' => $this->session->userdata('user_id')])->row_array();
 			if ($query->num_rows() > 0) {
 				$data['row'] = $query->row();
-				$this->template->load('template', 'Member/edit_profile', $data);
+				$this->template->load('template_member', 'Member/edit_profile', $data);
 			} else {
 				echo "<script>alert('Data tidak ditemukan');";
 				echo "window.location='" . site_url('Member/dashboard') . "';</script>";

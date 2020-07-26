@@ -609,6 +609,17 @@ section {
   color: #716f6f;
 }
 
+@media (max-width: 768px) {
+  #why-us{
+		text-align: center;
+		border-radius: 10px;
+		background: #fff;
+		box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+		/* padding: 40px 40px; */
+		width: 100%;
+  }
+}
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
