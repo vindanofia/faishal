@@ -14,14 +14,14 @@ class M_dashboard extends CI_Model
 		return $query;
 	}
 
-	// public function get_pelanggaran_mitra($id = NULL)
-	// {
-	// 	$this->db->group_by('id_list_pel');
-	// 	$this->db->select('id_list_pel');
-	// 	$this->db->select('count(*) as total');
-	// 	$this->db->from('t_pelanggaran_mitra');
-	// 	$this->db->where('deleted = ', 1);
-	// 	$query = $this->db->get();
-	// 	return $query;
-	// }
+	public function get_pelanggaran_mitra($id = NULL)
+	{
+		$this->db->group_by('id_list_pel');
+		$this->db->select('id_list_pel');
+		$this->db->select('count(*) as total');
+		$this->db->from('t_pelanggaran_mitra');
+		$this->db->where('deleted = ', 1);
+		$query = $this->db->get();
+		return $query;
+	}
 }

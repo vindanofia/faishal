@@ -14,6 +14,7 @@ class Dashboard extends CI_Controller
 	public function index()
 	{
 		$data['graph1'] = $this->m_dashboard->get_pelanggaran_pegawai();
+		$data['graph2'] = $this->m_dashboard->get_pelanggaran_mitra();
 		$this->template->load('template_member', 'Member/dashboard', $data);
 	}
 }

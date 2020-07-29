@@ -44,24 +44,51 @@ class M_list_pelanggaran extends CI_Model
 		$this->db->update('m_list_pelanggaran', $params);
 	}
 
-	public function chartDataPelPegawai($tahun = 0, $bulan = 0){
+	public function chartDataPelPegawai($tahun = 0, $bulan = 0)
+	{
 		$result = [
 			'labels' => [],
 			'ket' => [],
 			'data' => [],
-			'title' =>'Periode '
+			'title' => 'Periode '
 		];
 
-		if($tahun != 0 && $bulan != 0){
+		if ($tahun != 0 && $bulan != 0) {
 			$query = $this->db->query('SELECT m.id_list_pel id_pel, m.nama_list_pel ket, 
 				COUNT(*) total FROM m_list_pelanggaran m 
 				INNER JOIN t_pelanggaran_pegawai t ON m.id_list_pel = t.id_list_pel 
-				WHERE YEAR(t.tanggal)='.$tahun.' AND MONTH(t.tanggal) = '.$bulan.'
+				WHERE YEAR(t.tanggal)=' . $tahun . ' AND MONTH(t.tanggal) = ' . $bulan . ' AND t.deleted = 1
 				GROUP BY m.id_list_pel');
 
-			foreach($query->result() as $data){
+			foreach ($query->result() as $data) {
 				array_push($result['labels'], $data->id_pel);
 				array_push($result['ket'], $data->ket);
+				array_push($result['data'], $data->total);
+			}
+		}
+
+		return $result;
+	}
+
+	public function chartDataPelMitra($tahun = 0, $bulan = 0)
+	{
+		$result = [
+			'labels' => [],
+			'ket2' => [],
+			'data' => [],
+			'title' => 'Periode '
+		];
+
+		if ($tahun != 0 && $bulan != 0) {
+			$query = $this->db->query('SELECT m.id_list_pel id_pel, m.nama_list_pel ket2, 
+				COUNT(*) total FROM m_list_pelanggaran m 
+				INNER JOIN t_pelanggaran_mitra t ON m.id_list_pel = t.id_list_pel 
+				WHERE YEAR(t.tanggal)=' . $tahun . ' AND MONTH(t.tanggal) = ' . $bulan . ' and t.deleted=1
+				GROUP BY m.id_list_pel');
+
+			foreach ($query->result() as $data) {
+				array_push($result['labels'], $data->id_pel);
+				array_push($result['ket2'], $data->ket2);
 				array_push($result['data'], $data->total);
 			}
 		}
