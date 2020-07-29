@@ -42,7 +42,7 @@
 						<?= form_error('passconf') ?>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-success btn-flat">
+						<button href="<?= site_url('Member/edit_profile/edit/' . $row->id_user) ?>" type="submit" class="btn btn-success btn-flat">
 							<i class="fa fa-paper-plane"></i> Simpan
 						</button>
 						<button type="reset" class="btn btn-flat">Reset</button>

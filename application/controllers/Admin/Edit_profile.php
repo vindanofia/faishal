@@ -42,8 +42,6 @@ class Edit_profile extends CI_Controller
 			);
 		}
 
-		$this->form_validation->set_rules('level', 'Level', 'required');
-
 		$this->form_validation->set_message('required', '%s tidak boleh kosong');
 		$this->form_validation->set_message('min_length', '%s minimal 5 karakter');
 		$this->form_validation->set_message('is_unique', '%s sudah digunakan');
@@ -52,7 +50,6 @@ class Edit_profile extends CI_Controller
 
 		if ($this->form_validation->run() == false) {
 			$query = $this->m_user->get($id);
-			// $query = $this->db->get_where('user', ['id_user' => $this->session->userdata('user_id')])->row_array();
 			if ($query->num_rows() > 0) {
 				$data['row'] = $query->row();
 				$this->template->load('template', 'Admin/edit_profile', $data);
@@ -64,8 +61,8 @@ class Edit_profile extends CI_Controller
 			$post = $this->input->post(null, TRUE);
 			$this->m_user->edit($post);
 			if ($this->db->affected_rows() > 0) {
-				$this->session->set_flashdata('success', 'Data berhasil diubah');
-				// echo "<script>alert('Data berhasil diubah');</script>";
+				// $this->session->set_flashdata('success', 'Data berhasil diubah');
+				echo "<script>alert('Data berhasil diubah');</script>";
 			}
 			redirect('Admin/dashboard');
 			// echo "<script>window.location='" . site_url('Admin/user') . "';</script>";

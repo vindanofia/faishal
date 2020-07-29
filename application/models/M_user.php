@@ -41,7 +41,6 @@ class M_user extends CI_Model
 		if (!empty($post['password'])) {
 			$params['password'] = md5($post['password']);
 		}
-		$params['id_role'] = $post['level'];
 		$this->db->where('id_user', $post['user_id']);
 		$this->db->update('user', $params);
 	}
