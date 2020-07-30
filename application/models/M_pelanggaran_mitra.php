@@ -62,6 +62,10 @@ class M_pelanggaran_mitra extends CI_Model
 	public function get($id = NULL)
 	{
 		$this->db->from('t_pelanggaran_mitra');
+		$this->db->join('m_mitra', 'm_mitra.id_mitra = t_pelanggaran_mitra.id_mitra');
+		$this->db->join('m_pegawai_mitra', 'm_pegawai_mitra.id_pegawai_mitra = t_pelanggaran_mitra.id_pegawai_mitra');
+		$this->db->join('m_list_pelanggaran', 'm_list_pelanggaran.id_list_pel = t_pelanggaran_mitra.id_list_pel');
+		$this->db->where('t_pelanggaran_mitra.deleted = ', 1);
 		if ($id != null) {
 			$this->db->where('id_pelanggaran_mitra', $id);
 		}

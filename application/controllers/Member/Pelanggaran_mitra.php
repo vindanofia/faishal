@@ -214,4 +214,11 @@ class Pelanggaran_mitra extends CI_Controller
 		header('Content-Type: application/json');
 		echo json_encode($pegawai);
 	}
+
+	function export_pdf()
+	{
+		$data['row'] = $this->m_pelanggaran_mitra->get()->result();
+		$html = $this->load->view('Member/print_pdf_mitra', $data, true);
+		$this->fungsi->PdfGenerator($html, 'Pelanggaran-Mitra-' . date('ymd'), 'A4', 'landscape');
+	}
 }

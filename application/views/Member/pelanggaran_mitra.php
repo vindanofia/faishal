@@ -15,6 +15,9 @@
 			<a href="<?= site_url('Member/pelanggaran_mitra/add') ?>" class="btn btn-primary btn-flat">
 				<i class="fa fa-user-plus"></i> Tambah
 			</a>
+			<a href="<?= site_url('Member/pelanggaran_mitra/export_pdf') ?>" target="_blank" class="btn btn-primary btn-flat">
+				<i class="fa fa-print"></i> Cetak PDF
+			</a>
 		</div>
 	</div>
 	<div class="box-body table-responsive">

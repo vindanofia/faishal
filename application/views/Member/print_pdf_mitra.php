@@ -8,13 +8,14 @@
 	<center>
 		<h1>PT. Petro Jordan Abadi</h1>
 		<h2>Safety, Health and Enviroment</h2>
-		<h2><u>TEMUAN TINDAKAN PELANGGARAN PEGAWAI</u></h2>
+		<h2><u>TEMUAN TINDAKAN PELANGGARAN MITRA</u></h2>
 		<br>
 		<div class="box-body table-responsive">
 			<table class="table table-bordered table-striped" id="table1" border="1" width="100%" style="text-align:center;">
 				<thead>
 					<tr>
 						<th>No</th>
+						<th>Nama Perusahaan</th>
 						<th>Nama Pegawai</th>
 						<th>List Pelanggaran</th>
 						<th>Tanggal</th>
@@ -27,13 +28,14 @@
 					foreach ($row as $data) { ?>
 						<tr>
 							<td><?= $no++ ?>.</td>
-							<td><?= $data->nama_pegawai ?></td>
+							<td><?= $data->nama_mitra ?></td>
+							<td><?= $data->nama_pegawai_mitra ?></td>
 							<td><?= $data->nama_list_pel ?></td>
 							<td><?= $data->tanggal ?></td>
 							<td><?= $data->lokasi ?></td>
 							<td><?= $data->deskripsi ?></td>
 							<td><?= $data->point_pel ?></td>
-							<td><img src="<?= base_url() . 'uploads/pegawai/' . $data->foto ?>" style="width: 250px"></td>
+							<td><img src="<?= base_url() . 'uploads/mitra/' . $data->foto ?>" style="width: 250px"></td>
 						</tr>
 					<?php } ?>
 				</thead>

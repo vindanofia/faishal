@@ -182,7 +182,7 @@ class Pelanggaran_pegawai extends CI_Controller
 
 	function export_pdf()
 	{
-		$data['row'] = $this->m_pelanggaran_pegawai->get();
+		$data['row'] = $this->m_pelanggaran_pegawai->get()->result();
 		$html = $this->load->view('Member/print_pdf', $data, true);
 		$this->fungsi->PdfGenerator($html, 'Pelanggaran-Pegawai-' . date('ymd'), 'A4', 'landscape');
 	}

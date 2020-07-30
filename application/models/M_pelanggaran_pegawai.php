@@ -60,10 +60,13 @@ class M_pelanggaran_pegawai extends CI_Model
 
 	public function get($id = NULL)
 	{
-		$this->db->select('id_list_pel');
 		$this->db->from('t_pelanggaran_pegawai');
+		$this->db->join('m_pegawai', 'm_pegawai.id_pegawai = t_pelanggaran_pegawai.id_pegawai');
+		$this->db->join('m_list_pelanggaran', 'm_list_pelanggaran.id_list_pel = t_pelanggaran_pegawai.id_list_pel');
+		$this->db->where('t_pelanggaran_pegawai.deleted = ', 1);
 		if ($id != null) {
 			$this->db->where('id_pelanggaran_peg', $id);
+			// $this->db->where('deleted', 1);
 		}
 		$query = $this->db->get();
 		return $query;
