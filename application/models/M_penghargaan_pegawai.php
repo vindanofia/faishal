@@ -61,6 +61,9 @@ class M_penghargaan_pegawai extends CI_Model
 	public function get($id = NULL)
 	{
 		$this->db->from('t_penghargaan_pegawai');
+		$this->db->join('m_pegawai', 'm_pegawai.id_pegawai = t_penghargaan_pegawai.id_pegawai');
+		$this->db->join('m_jenis_penghargaan', 'm_jenis_penghargaan.id_reward = t_penghargaan_pegawai.id_reward');
+		$this->db->where('t_penghargaan_pegawai.deleted = ', 1);
 		if ($id != null) {
 			$this->db->where('id_penghargaan_peg', $id);
 		}

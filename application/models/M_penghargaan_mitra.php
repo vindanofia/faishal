@@ -62,6 +62,10 @@ class M_penghargaan_mitra extends CI_Model
 	public function get($id = NULL)
 	{
 		$this->db->from('t_penghargaan_mitra');
+		$this->db->join('m_mitra', 'm_mitra.id_mitra = t_penghargaan_mitra.id_mitra');
+		$this->db->join('m_pegawai_mitra', 'm_pegawai_mitra.id_pegawai_mitra = t_penghargaan_mitra.id_pegawai_mitra');
+		$this->db->join('m_jenis_penghargaan', 'm_jenis_penghargaan.id_reward = t_penghargaan_mitra.id_reward');
+		$this->db->where('t_penghargaan_mitra.deleted = ', 1);
 		if ($id != null) {
 			$this->db->where('id_penghargaan_mitra', $id);
 		}

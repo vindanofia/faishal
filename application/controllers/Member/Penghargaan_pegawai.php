@@ -177,4 +177,11 @@ class Penghargaan_pegawai extends CI_Controller
 		}
 		redirect('Member/penghargaan_pegawai');
 	}
+
+	function export_pdf()
+	{
+		$data['row'] = $this->m_penghargaan_pegawai->get()->result();
+		$html = $this->load->view('Member/print_pdf2', $data, true);
+		$this->fungsi->PdfGenerator($html, 'Apresiasi-Pegawai-' . date('ymd'), 'A4', 'landscape');
+	}
 }
