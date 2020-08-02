@@ -99,9 +99,7 @@ class Pelanggaran_mitra extends CI_Controller
 	{
 		$config['upload_path'] = './uploads/mitra';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		$config['max_size'] = 2048;
-		$config['max_width'] = 1024;
-		$config['max_height'] = 768;
+		$config['max_size'] = 20480;
 		$config['file_name'] = 'mitra-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 		$this->load->library('upload', $config);
 		$post = $this->input->post(null, TRUE);

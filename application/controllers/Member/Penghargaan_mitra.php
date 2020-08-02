@@ -194,7 +194,7 @@ class Penghargaan_mitra extends CI_Controller
 		$id_pegawai_mitra = $this->uri->segment(5);
 		$point_penghargaan = $this->m_penghargaan_mitra->get($id_penghargaan_mitra)->row()->point_penghargaan;
 		$data = ['point_penghargaan' => $point_penghargaan, 'id_pegawai_mitra' => $id_pegawai_mitra, 'id_penghargaan_mitra' => $id_penghargaan_mitra];
-		$this->m_pegawai_mitra->delete_point($data);
+		$this->m_pegawai_mitra->delete_penghargaan($data);
 		$this->m_penghargaan_mitra->del($id);
 		if ($this->db->affected_rows() > 0) {
 			$this->session->set_flashdata('success', 'Data berhasil dihapus');

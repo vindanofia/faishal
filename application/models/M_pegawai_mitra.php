@@ -122,13 +122,17 @@ class M_pegawai_mitra extends CI_Model
 
 	public function delete_point($data)
 	{
-		$id_penghargaan_mitra = $data['id_penghargaan_mitra'];
-		$id_pegawai_mitra = $data['id_pegawai_mitra'];
-		$this->db->from('t_penghargaan_mitra');
-		$this->db->where('id_penghargaan_mitra', $id_penghargaan_mitra);
+		$id_pelanggaran_peg = $data['id_pelanggaran_peg'];
+		$id_pegawai = $data['id_pegawai'];
+		$this->db->from('t_pelanggaran_pegawai');
+		$this->db->where('id_pelanggaran_peg', $id_pelanggaran_peg);
 		$query = $this->db->get()->row();
-		$point_penghargaan = $query->point_penghargaan;
-		$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = point_peg_mitra + ' . $point_penghargaan . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
+		$point_tpel = $query->point_tpel;
+		if ($point <= $point_tpel) {
+			$sql = 'UPDATE m_pegawai SET point = 0 WHERE id_pegawai = ' . $id_pegawai;
+		} else {
+			$sql = 'UPDATE m_pegawai SET point = point - ' . $point_tpel . ' WHERE id_pegawai = ' . $id_pegawai;
+		}
 		$this->db->query($sql);
 	}
 
@@ -173,6 +177,18 @@ class M_pegawai_mitra extends CI_Model
 		} else {
 			$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = point_peg_mitra - ' . $point_penghargaan . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
 		}
+		$this->db->query($sql);
+	}
+
+	public function delete_penghargaan($data)
+	{
+		$id_penghargaan_mitra = $data['id_penghargaan_mitra'];
+		$id_pegawai_mitra = $data['id_pegawai_mitra'];
+		$this->db->from('t_penghargaan_mitra');
+		$this->db->where('id_penghargaan_mitra', $id_penghargaan_mitra);
+		$query = $this->db->get()->row();
+		$point_penghargaan = $query->point_penghargaan;
+		$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = point_peg_mitra + ' . $point_penghargaan . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
 		$this->db->query($sql);
 	}
 }
