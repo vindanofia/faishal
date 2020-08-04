@@ -105,7 +105,7 @@
 							</div>
 
 							<h2 class="entry-title">
-								<a href="blog-single.html"><?php echo $row['judul_konten'] ?></a>
+								<a><?php echo $row['judul_konten'] ?></a>
 							</h2>
 
 							<div class="entry-meta">
