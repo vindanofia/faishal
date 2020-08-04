@@ -332,7 +332,7 @@
 						colors.push('rgb(115, 194, 251)')
 					})
 
-					pelChart = new Chart($('#pel-chart2'), {
+					pelChart2 = new Chart($('#pel-chart2'), {
 						type: 'bar',
 						data: {
 							labels: result.labels,
