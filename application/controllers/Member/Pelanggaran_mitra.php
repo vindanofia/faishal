@@ -215,6 +215,7 @@ class Pelanggaran_mitra extends CI_Controller
 
 	function export_pdf()
 	{
+		set_time_limit(120);
 		$data['row'] = $this->m_pelanggaran_mitra->get()->result();
 		$html = $this->load->view('Member/print_pdf_mitra', $data, true);
 		$this->fungsi->PdfGenerator($html, 'Pelanggaran-Mitra-' . date('ymd'), 'A4', 'landscape');
