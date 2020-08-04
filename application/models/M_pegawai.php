@@ -125,8 +125,10 @@ class M_pegawai extends CI_Model
 		$id_pelanggaran_peg = $data['id_pelanggaran_peg'];
 		$id_pegawai = $data['id_pegawai'];
 		$this->db->from('t_pelanggaran_pegawai');
+		$this->db->join('m_pegawai', 't_pelanggaran_pegawai.id_pegawai = m_pegawai.id_pegawai');
 		$this->db->where('id_pelanggaran_peg', $id_pelanggaran_peg);
 		$query = $this->db->get()->row();
+		$point = $query->point;
 		$point_tpel = $query->point_tpel;
 		if ($point <= $point_tpel) {
 			$sql = 'UPDATE m_pegawai SET point = 0 WHERE id_pegawai = ' . $id_pegawai;

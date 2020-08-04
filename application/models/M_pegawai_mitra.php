@@ -122,16 +122,18 @@ class M_pegawai_mitra extends CI_Model
 
 	public function delete_point($data)
 	{
-		$id_pelanggaran_peg = $data['id_pelanggaran_peg'];
-		$id_pegawai = $data['id_pegawai'];
-		$this->db->from('t_pelanggaran_pegawai');
-		$this->db->where('id_pelanggaran_peg', $id_pelanggaran_peg);
+		$id_pelanggaran_mitra = $data['id_pelanggaran_mitra'];
+		$id_pegawai_mitra = $data['id_pegawai_mitra'];
+		$this->db->from('t_pelanggaran_mitra');
+		$this->db->join('m_pegawai_mitra', 't_pelanggaran_mitra.id_pegawai_mitra = m_pegawai_mitra.id_pegawai_mitra');
+		$this->db->where('t_pelanggaran_mitra.id_pelanggaran_mitra', $id_pelanggaran_mitra);
 		$query = $this->db->get()->row();
+		$point_peg_mitra = $query->point_peg_mitra;
 		$point_tpel = $query->point_tpel;
-		if ($point <= $point_tpel) {
-			$sql = 'UPDATE m_pegawai SET point = 0 WHERE id_pegawai = ' . $id_pegawai;
+		if ($point_peg_mitra <= $point_tpel) {
+			$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = 0 WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
 		} else {
-			$sql = 'UPDATE m_pegawai SET point = point - ' . $point_tpel . ' WHERE id_pegawai = ' . $id_pegawai;
+			$sql = 'UPDATE m_pegawai_mitra SET point_peg_mitra = point_peg_mitra - ' . $point_tpel . ' WHERE id_pegawai_mitra = ' . $id_pegawai_mitra;
 		}
 		$this->db->query($sql);
 	}
