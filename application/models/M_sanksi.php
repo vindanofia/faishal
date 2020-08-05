@@ -63,7 +63,7 @@ class M_sanksi extends CI_Model
 
 		$minimum_point = $sanksi[0]->point_sanksi;
 		foreach ($sanksi as $key => $s) {
-			if ($key < count($sanksi)) {
+			if ($key + 1 < count($sanksi)) {
 				if ($point >= $s->point_sanksi && $point < $sanksi[$key + 1]->point_sanksi) {
 					if ($denda) {
 						$potongan = strpos(strtolower($s->nama_sanksi), 'denda') !== false ?  ($point * 2500) : 0;
