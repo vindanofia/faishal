@@ -90,7 +90,7 @@ class M_sanksi extends CI_Model
 
 		$point = 0;
 		foreach ($sanksi as $key => $s) {
-			$point = strpos(strtolower($s->nama_sanksi), 'denda') !== false ? $sanksi[$key]->point_sanksi : $point;
+			$point = strpos(strtolower($s->nama_sanksi), 'denda') !== false ? $sanksi[$key + 1]->point_sanksi : $point;
 		}
 
 		return $point;
